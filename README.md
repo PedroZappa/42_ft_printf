@@ -5,9 +5,6 @@
 
 ( a [42 School](https://github.com/42School) Project )
 
-#### Table o´Contents
-
-\~ [About](./#about) \~ [Usage](./#usage) \~ [Implementation](./#implementation) \~ [License](./#license) \~
 
 <p>
     <img src="https://img.shields.io/badge/score-...%20%2F%20100-success?style=for-the-badge" />
@@ -19,21 +16,17 @@
 
 ___
 
-<h3>Table o'Contents</h3>
-<p>
-    ~
-    <a href="#about">About</a> ~
-    <a href="#usage">Usage</a> ~
-    <a href="#implementation">Implementation</a> ~
-    <a href="#license">License</a> ~
-</p>
+### Table o'Contents
+
+\~ [About](./#about) \~ [Usage](./#usage) \~ [Implementation](./#implementation) \~ [License](./#license) \~
+
 <div/>
 
 ___
 
 <div align="left">
 
-# About 📌
+# About :pushpin:
 
 </div>
 
