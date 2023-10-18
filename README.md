@@ -39,7 +39,7 @@ ___
 
 <div align="left">
 
-This project is an exploration into how `printf()` works. The objective is to write a library that mimics the behaviour of `printf()`. A recode exercise with the aiming of revealing how `variadic functions` work in C. This project is a challenge on how to build a well-planned, well-structured extensible code base.
+This project is an exploration into how `printf()` works. The objective is to write a library that mimics the behaviour of `printf()`. A re-code challenge with the aiming of revealing how `variadic functions` work in C. This project is a exercise on how to build a well-planned, well-structured extensible code base.
 
 </div>
 
@@ -67,9 +67,23 @@ void	ft_printf(const char *format, ...);
 
 To accomplish this, the implementation is limited to the use of [libft](https://github.com/PedroZappa/libft) and the following standard functions:
 
-- malloc();
-- free();
-- write();
+<div>
+    <detail>
+        <summary>malloc()</summary>
+        <p>Allocated `size` bytes of memory and returns a pointer to the allocated memory. The memory is not initialized. </p>
+    </detail>
+    <detail>
+        <summary>free()</summary>
+        <p>Deallocates the memory previously allocated by `malloc()`.</p>
+    </detail>
+    <detail>
+        <summary>write()</summary>
+            ```c
+                ssize_t write(int fd, const void *_buf_, size_t _nbyte_);
+            ```
+        <p>Writes `nbytes` from the buffer pointer to by `buff` associated with the open file descriptor.</p>
+</div>
+
 - va_start();
 - va_arg();
 - va_copy();
