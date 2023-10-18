@@ -16,10 +16,14 @@
 
 ___
 
-### Table o'Contents
-
-\~ [About](./#about) \~ [Usage](./#usage) \~ [Implementation](./#implementation) \~ [License](./#license) \~
-
+<h3>Table o'Contents</h3>
+<p>
+    ~
+    <a href="#about">About</a> ~
+    <a href="#usage">Usage</a> ~
+    <a href="#implementation">Implementation</a> ~
+    <a href="#license">License</a> ~
+</p>
 <div/>
 
 ___
