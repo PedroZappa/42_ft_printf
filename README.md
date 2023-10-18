@@ -71,7 +71,7 @@ void	ft_printf(const char *format, ...);
     >
     > To support **variadic functionality**: `va_start()`, `va_arg()`, `va_copy()`, `va_end()`;
 
-- This `printf()` doesn't handle overflows and unexpected inputs the same way the real `printf()` would.
+- `ft_printf()` doesn't handle overflows and unexpected inputs the same way the real `printf()` would.
 
 ## Mandatory Requirements:exclamation:
 
@@ -121,14 +121,46 @@ void	ft_printf(const char *format, ...);
     | ` ` | If no sign is going to be written, print a space before the value |
     | `+` | Forces a plus or minus sign before printing the result |
 
+## Structure:bar_chart:
+
+### Files & Folders
+
+`ft_printf`s code base has the following folder structure:
+
+.., [ Insert Diagram ]
+
+```mermaid
+```
+
+___
+
+### Processing Flow
+
+The subprocesses of `ft_printf` are called in the following order:
+
+```mermaid
+graph TD;
+    ft_printf-->ft_parse;
+    ft_parse-->ft_parse_width;
+    ft_parse-->ft_parse_precision;
+    ft_parse-->ft_parse_bonus;
+    ft_parse-->ft_print_specifier;
+    ft_print_specifier-->ft_print_char;
+    ft_print_specifier-->ft_print_str;
+    ft_print_specifier-->ft_print_diu;
+    ft_print_specifier-->ft_print_hex;
+    ft_print_specifier-->ft_print_ptr;
+    ft_print_diu-->ft_printf_nbr;
+    ft_print_hex-->ft_printf_recur_hex;
+    ft_print_hex-->ft_printf_sharp;
+```
+
 </div>
-
-
 
 ___
 
 ### License
 
-This work is published under the terms of <a href="https://github.com/PedroZappa/libft/blob/master/LICENSE">42 Unlicense</a>.
+This work is published under the terms of <a href="https://github.com/PedroZappa/ft_printf/blob/master/LICENSE">42 Unlicense</a>.
 
 <p align="right">(<a href="#readme-top">get to top</a>)</p>
