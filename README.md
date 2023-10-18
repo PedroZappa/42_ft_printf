@@ -1,24 +1,14 @@
-# README
+<a name="readme-top"></a>
+<div align="center">
 
-<<<<<<< Updated upstream
-## ft\_printf
-=======
 # ft_printf
->>>>>>> Stashed changes
 
 ( a [42 School](https://github.com/42School) Project )
-
-<<<<<<< Updated upstream
-![](https://img.shields.io/badge/score-...%20%2F%20100-success?style=for-the-badge) ![](https://img.shields.io/github/repo-size/PedroZappa/ft\_printf?style=for-the-badge\&logo=github) ![](https://img.shields.io/github/languages/count/PedroZappa/ft\_printf?style=for-the-badge\&logo=) ![](https://img.shields.io/github/languages/top/PedroZappa/ft\_printf?style=for-the-badge) ![](https://img.shields.io/github/last-commit/PedroZappa/ft\_printf?style=for-the-badge)
-
-***
 
 #### Table o´Contents
 
 \~ [About](./#about) \~ [Usage](./#usage) \~ [Implementation](./#implementation) \~ [License](./#license) \~
 
-([get to top](./#readme-top))
-=======
 <p>
     <img src="https://img.shields.io/badge/score-...%20%2F%20100-success?style=for-the-badge" />
     <img src="https://img.shields.io/github/repo-size/PedroZappa/ft_printf?style=for-the-badge&logo=github">
@@ -31,7 +21,7 @@
 
 ___
 
-<h3 align=center>Table o´Contents</h3>
+<h3 align=center>Table o'Contents</h3>
 <p>
     ~
     <a href="#about">About</a> ~
@@ -45,9 +35,9 @@ ___
 
 # About
 
-> Because ft_putnbr() and ft_putstr() aren't enough!
+> Because `ft_putnbr()` and `ft_putstr()` aren't enough!
 
-This project is an exploration into how printf() works. A recode exercise with the aiming to reveal how `variadic functions` work in C. This project is a challenge on how to build a well-planned, well-structured extensible code base.
+This project is an exploration into how `printf()` works. A recode exercise with the aiming to reveal how `variadic functions` work in C. This project is a challenge on how to build a well-planned, well-structured extensible code base.
 
 ___
 
