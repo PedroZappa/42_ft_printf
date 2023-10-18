@@ -139,8 +139,9 @@ ___
 The subprocesses of `ft_printf` are called in the following order:
 
 ```mermaid
-graph TD;
+graph LR;
     ft_printf-->ft_parse;
+    ft_parse-->ft_parse_newformat;
     ft_parse-->ft_parse_width;
     ft_parse-->ft_parse_precision;
     ft_parse-->ft_parse_bonus;
@@ -150,9 +151,9 @@ graph TD;
     ft_print_specifier-->ft_print_diu;
     ft_print_specifier-->ft_print_hex;
     ft_print_specifier-->ft_print_ptr;
-    ft_print_diu-->ft_printf_nbr;
-    ft_print_hex-->ft_printf_recur_hex;
-    ft_print_hex-->ft_printf_sharp;
+    ft_print_diu-->ft_print_nbr;
+    ft_print_hex-->ft_print_recur_hex;
+    ft_print_hex-->ft_print_sharp;
 ```
 
 </div>
