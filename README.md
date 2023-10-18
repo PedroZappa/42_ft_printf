@@ -50,7 +50,7 @@ ___
 
 <div align="left">
 
-# Usage
+# Usage :checkered_flag:
 
 </div>
 
@@ -58,7 +58,7 @@ ____
 
 <div align="left">
 
-# Implementation
+# Implementation :scroll:
 
 In this project `printf()` is implemented with the following prototype:
 
@@ -76,7 +76,7 @@ To accomplish this, the implementation is limited to the use of [libft](https://
 - va_copy();
 - va_end();
 
-## Requirements
+## Requirements :exclamation:
 
 - Do NOT implement the buffer management of the original `printf()`;
 - The function has to handle the following conversions (format specifiers):
