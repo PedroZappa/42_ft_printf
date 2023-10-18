@@ -17,11 +17,9 @@
     <img src="https://img.shields.io/github/last-commit/PedroZappa/ft_printf?style=for-the-badge" />
 </p>
 
-</div>
-
 ___
 
-<h3 align=center>Table o'Contents</h3>
+<h3>Table o'Contents</h3>
 <p>
     ~
     <a href="#about">About</a> ~
@@ -33,19 +31,82 @@ ___
 
 ___
 
-# About
+<div align="left">
+
+# About 📌
+
+</div>
+
+<div align=center>
 
 > Because `ft_putnbr()` and `ft_putstr()` aren't enough!
 
-This project is an exploration into how `printf()` works. A recode exercise with the aiming to reveal how `variadic functions` work in C. This project is a challenge on how to build a well-planned, well-structured extensible code base.
+<div align="left">
+
+This project is an exploration into how `printf()` works. The objective is to write a library that mimics the behaviour of `printf()`. A recode exercise with the aiming of revealing how `variadic functions` work in C. This project is a challenge on how to build a well-planned, well-structured extensible code base.
+
+</div>
+
+[ft_printf (Subject English)](/libft.en.subject.pdf)
 
 ___
 
+<div align="left">
+
 # Usage
+
+</div>
 
 ____
 
+<div align="left">
+
 # Implementation
+
+In this project `printf()` is implemented with the following prototype:
+
+```c
+void	ft_printf(const char *format, ...);
+```
+
+To accomplish this, the implementation is limited to the use of [libft](https://github.com/PedroZappa/libft) and the following standard functions:
+
+- malloc();
+- free();
+- write();
+- va_start();
+- va_arg();
+- va_copy();
+- va_end();
+
+## Requirements
+
+- Do NOT implement the buffer management of the original `printf()`;
+- The function has to handle the following conversions (format specifiers):
+
+    > `%c` → `character`;
+
+    > `%s` → `char *` (String of Characters);
+
+    > `%p` → `void *` (Pointer Address);
+    
+    > `%d` → `signed decimal integer`;
+    
+    > `%i` → `signed decimal integer`;
+        
+    > `%u` → `unsigned decimal int`;
+    
+    > `%x` → `unsigned hexadecimal int` (lowercase);
+    
+    > `%X` → `unsigned hexadecimal int` (uppercase);
+
+    > `%%` → `% Character`;
+
+
+</div>
+
+
+
 
 ___
 
@@ -54,4 +115,3 @@ ___
 This work is published under the terms of <a href="https://github.com/PedroZappa/libft/blob/master/LICENSE">42 Unlicense</a>.
 
 <p align="right">(<a href="#readme-top">get to top</a>)</p>
->>>>>>> Stashed changes
