@@ -6,7 +6,7 @@
 /*   By: zedr0 <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 10:37:28 by zedr0             #+#    #+#             */
-/*   Updated: 2023/10/19 13:28:18 by zedr0            ###   ########.fr       */
+/*   Updated: 2023/10/19 15:11:07 by zedr0            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,10 @@ typedef struct s_format
 
 /* Function Prototypes */
 /* Formats and prints the input 'format' data */
-int		ft_printf(const char *format, ...);
+int			ft_printf(const char *format, ...);
+/* Initializes a t_format struct with all members set to 0 */
+t_format	ft_newformat(void);
+/* Parsing */
+int			ft_parse(const char *format, va_list ap);
 
 #endif
