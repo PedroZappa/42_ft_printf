@@ -6,14 +6,15 @@
 /*   By: zedr0 <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 13:56:53 by zedr0             #+#    #+#             */
-/*   Updated: 2023/10/19 15:18:03 by zedr0            ###   ########.fr       */
+/*   Updated: 2023/10/19 15:44:05 by zedr0            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
 static t_format	ft_parse_width(const char *format, va_list ap, t_format fmtd);
-static t_format	ft_parse_prec(const char *format, va_list ap, t_format fmtd);
+static t_format	ft_parse_prec(const char *format, t_format fmtd);
+static t_format	ft_parse_bonus(const char *format, t_format fmtd);
 
 int	ft_parse(const char *format, va_list ap)
 {
@@ -26,7 +27,7 @@ int	ft_parse(const char *format, va_list ap)
 	if (*format == '.' && !formatted.specifier)
 	{
 		formatted.dot = 1;
-		formatted = ft_parse_precision(++format, ap, formatted);
+		formatted = ft_parse_prec(++format, formatted);
 		while (!ft_strchr(SPECIFIERS, *format))
 			++format;
 	}
@@ -56,6 +57,38 @@ static t_format	ft_parse_width(const char *format, va_list ap, t_format fmtd)
 			fmtd.width = ft_atoi(format);
 			width_set = 1;
 		}
+		++format;
+	}
+	return (fmtd);
+}
+
+static t_format	ft_parse_prec(const char *format, t_format fmtd)
+{
+	int		precision_set;
+
+	precision_set = 0;
+	while (!ft_strchr(SPECIFIERS, *format))
+	{
+		if (ft_isdigit(*format) && !precision_set)
+		{
+			fmtd.precision = ft_atoi(format);
+			precision_set = 1;
+		}
+		++format;
+	}
+	return (fmtd);
+}
+
+static t_format	ft_parse_bonus(const char *format, t_format fmtd)
+{
+	while (*format != '.' && !ft_strchr(SPECIFIERS, *format))
+	{
+		if (*format == '#')
+			fmtd.sharp = 1;
+		if (*format == ' ')
+			fmtd.space = 1;
+		if (*format == '+')
+			fmtd.plus = 1;
 		++format;
 	}
 	return (fmtd);
