@@ -6,7 +6,7 @@
 /*   By: zedr0 <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 10:37:28 by zedr0             #+#    #+#             */
-/*   Updated: 2023/10/19 17:44:28 by zedr0            ###   ########.fr       */
+/*   Updated: 2023/10/19 18:00:54 by zedr0            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int			ft_parse(const char *format, va_list ap);
 /* Printing */
 int			ft_print_specifier(t_format parsed, va_list ap);
 int			ft_print_char(t_format parsed, va_list ap);
+int			ft_print_str(t_format parsed, va_list ap);
 int			ft_print_diu(t_format parsed, va_list ap);
 int			ft_print_hex(t_format parsed, va_list ap);
 int			ft_print_ptr(t_format parsed, va_list ap);
