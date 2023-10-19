@@ -6,7 +6,7 @@
 #    By: zedr0 <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/19 12:13:19 by zedr0             #+#    #+#              #
-#    Updated: 2023/10/19 17:04:09 by zedr0            ###   ########.fr        #
+#    Updated: 2023/10/19 20:22:11 by zedr0            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ all: $(NAME)
 	$(CC) $(CFLAGS) $(INC) -c $<
 
 $(NAME): $(OBJS)
-	$(MAKE) $(LIBFT_PATH) all
+	$(MAKE) $(LIBFT_PATH) extra
 	cp $(LIBFT) $(NAME)
 	$(AR) $(NAME) $(OBJS)
 
