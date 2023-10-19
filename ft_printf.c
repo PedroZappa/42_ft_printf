@@ -6,7 +6,7 @@
 /*   By: zedr0 <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 12:54:04 by zedr0             #+#    #+#             */
-/*   Updated: 2023/10/19 16:21:53 by zedr0            ###   ########.fr       */
+/*   Updated: 2023/10/19 16:26:00 by zedr0            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,5 @@ int	ft_print_specifier(t_format parsed, va_list ap)
 		len = ft_print_hex(parsed, ap);
 	else if (parsed.specifier == 'p')
 		len = ft_print_ptr(parsed, ap);
+	return (len);
 }
