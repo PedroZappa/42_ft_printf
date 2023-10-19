@@ -129,7 +129,7 @@ void	ft_printf(const char *format, ...);
 
 ```mermaid
 ---
-title> ft_printf Structure
+title ft_printf Structure
 ---
 classDiagram
     class Makefile
@@ -169,6 +169,9 @@ ___
 The subprocesses of `ft_printf` are called in the following order:
 
 ```mermaid
+---
+title ft_printf Processing Flow
+---
 graph LR;
     ft_printf-->ft_parse;
     ft_parse-->ft_parse_newformat;
