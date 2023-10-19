@@ -6,7 +6,7 @@
 /*   By: zedr0 <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 13:56:53 by zedr0             #+#    #+#             */
-/*   Updated: 2023/10/19 16:01:56 by zedr0            ###   ########.fr       */
+/*   Updated: 2023/10/19 21:01:05 by zedr0            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_parse(const char *format, va_list ap)
 	if (*format == '.' && !formatted.specifier)
 	{
 		formatted.dot = 1;
-		formatted = ft_parse_prec(++format, formatted);
+		formatted = ft_parse_prec(format++, formatted);
 		while (!ft_strchr(SPECIFIERS, *format))
 			++format;
 	}
@@ -46,7 +46,7 @@ static t_format	ft_parse_width(const char *format, t_format fmtd)
 	int		width_set;
 
 	width_set = 0;
-	while (*format == '.' && !ft_strchr(SPECIFIERS, *format))
+	while (*format != '.' && !ft_strchr(SPECIFIERS, *format))
 	{
 		if (*format == '-')
 			fmtd.minus = 1;

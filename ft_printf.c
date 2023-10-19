@@ -6,7 +6,7 @@
 /*   By: zedr0 <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 12:54:04 by zedr0             #+#    #+#             */
-/*   Updated: 2023/10/19 16:34:31 by zedr0            ###   ########.fr       */
+/*   Updated: 2023/10/19 20:51:56 by zedr0            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	ft_printf(const char *format, ...)
 {
 	va_list	ap;
 	int		len;
-	char	*format_start;
+	char	*specifier_start;
 
 	len = 0;
 	va_start(ap, format);
@@ -24,13 +24,13 @@ int	ft_printf(const char *format, ...)
 	{
 		if (*format == '%')
 		{
-			format_start = (char *)format;
+			specifier_start = (char *)format;
 			if (*(++format))
-				len += ft_parse(format, ap);
+				len += ft_parse((char *)format, ap);
 			while (*format && !ft_strchr(SPECIFIERS, *format))
 				++format;
 			if (!(*format))
-				format = format_start;
+				format = specifier_start;
 		}
 		else
 			len += ft_putchar_fd(*format, 1);
