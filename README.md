@@ -125,11 +125,41 @@ void	ft_printf(const char *format, ...);
 
 ### Files & Folders
 
-`ft_printf`s code base has the following folder structure:
-
-.., [ Insert Diagram ]
+`ft_printf()`s library code base is split into the following file/folder structure:
 
 ```mermaid
+---
+title> ft_printf Structure
+---
+classDiagram
+    class Makefile
+    Makefile --> File0
+    class File0["ft_printf.h"]
+    File0 --> File1
+    File0 --> File2
+    File0 --> File3
+    File0 --> File4
+    File0 --> File5
+    class File1["ft_printf.c"]
+    File1 : ft_printf()
+    File1 : ft_print_specifier()
+    File1 : ft_newformat()
+    class File2["ft_parse.c"]
+    File2 : ft_parse()
+    File2 : ft_parse_width()
+    File2 : ft_parse_precision()
+    File2 : ft_parse_bonus()
+    class File3["ft_print_chars.c"]
+    File3 : ft_print_char()
+    File3 : ft_print_str()
+    class File4["ft_print_nbrs.c"]
+    File4 : ft_print_diu()
+    File4 : ft_print_nbr()
+    class File5["ft_print_hex.c"]
+    File5 : ft_print_hex()
+    File5 : ft_print_ptr()
+    File5 : ft_recur_hex()
+    File5 : ft_sharp()
 ```
 
 ___
