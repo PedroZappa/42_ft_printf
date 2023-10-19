@@ -147,7 +147,7 @@ classDiagram
     class File2["ft_parse.c"]
     File2 : ft_parse()
     File2 : ft_parse_width()
-    File2 : ft_parse_precision()
+    File2 : ft_parse_prec()
     File2 : ft_parse_bonus()
     class File3["ft_print_chars.c"]
     File3 : ft_print_char()
@@ -176,7 +176,7 @@ graph LR;
     ft_printf-->ft_parse;
     ft_parse-->ft_parse_newformat;
     ft_parse-->ft_parse_width;
-    ft_parse-->ft_parse_precision;
+    ft_parse-->ft_parse_prec;
     ft_parse-->ft_parse_bonus;
     ft_parse-->ft_print_specifier;
     ft_print_specifier-->ft_print_char;

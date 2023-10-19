@@ -6,13 +6,14 @@
 /*   By: zedr0 <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 13:56:53 by zedr0             #+#    #+#             */
-/*   Updated: 2023/10/19 15:15:55 by zedr0            ###   ########.fr       */
+/*   Updated: 2023/10/19 15:18:03 by zedr0            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
 static t_format	ft_parse_width(const char *format, va_list ap, t_format fmtd);
+static t_format	ft_parse_prec(const char *format, va_list ap, t_format fmtd);
 
 int	ft_parse(const char *format, va_list ap)
 {
