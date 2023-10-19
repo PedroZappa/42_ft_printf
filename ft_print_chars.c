@@ -6,7 +6,7 @@
 /*   By: zedr0 <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 17:16:29 by zedr0             #+#    #+#             */
-/*   Updated: 2023/10/19 18:19:13 by zedr0            ###   ########.fr       */
+/*   Updated: 2023/10/19 18:25:40 by zedr0            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	ft_print_str(t_format parsed, va_list ap)
 		len += ft_putnchar_fd('0', 1, (parsed.width - parsed.precision));
 	else if (!parsed.minus && ((parsed.width - parsed.precision) > 0))
 		len += ft_putnchar_fd(' ', 1, (parsed.width - parsed.precision));
-	len += ft_putstrn_fd(str, 1);
+	len += ft_putstrn_fd(str, 1, parsed.precision);
 	if (parsed.minus && (parsed.width - parsed.precision > 0))
 		len += ft_putnchar_fd(' ', 1, (parsed.width - parsed.precision));
 	return (len);
