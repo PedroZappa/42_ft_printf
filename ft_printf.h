@@ -6,7 +6,7 @@
 /*   By: zedr0 <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 10:37:28 by zedr0             #+#    #+#             */
-/*   Updated: 2023/10/19 12:05:01 by zedr0            ###   ########.fr       */
+/*   Updated: 2023/10/19 12:11:40 by zedr0            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,13 @@
 
 # include "libft/libft.h"
 # include <stdarg.h>
+
+/* Constants */
+# define SPECIFIERS "cspdiuxX%"
+# define HEX_LOWER	"0123456789abcdef"
+# define HEX_UPPER	"0123456789ABCDEF"
+# define INT_MIN	-2147483648
+# define UINT_MAX	4294967295
 
 /* Struct to track format parameters */
 typedef struct s_format
