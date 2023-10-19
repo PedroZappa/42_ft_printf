@@ -6,7 +6,7 @@
 /*   By: zedr0 <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 10:37:28 by zedr0             #+#    #+#             */
-/*   Updated: 2023/10/19 15:11:07 by zedr0            ###   ########.fr       */
+/*   Updated: 2023/10/19 16:05:00 by zedr0            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,7 @@ int			ft_printf(const char *format, ...);
 t_format	ft_newformat(void);
 /* Parsing */
 int			ft_parse(const char *format, va_list ap);
+/* Printing */
+int			ft_print_specifier(t_format formatted, va_list ap);
 
 #endif

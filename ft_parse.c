@@ -6,7 +6,7 @@
 /*   By: zedr0 <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 13:56:53 by zedr0             #+#    #+#             */
-/*   Updated: 2023/10/19 15:57:20 by zedr0            ###   ########.fr       */
+/*   Updated: 2023/10/19 16:01:56 by zedr0            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	ft_parse(const char *format, va_list ap)
 	}
 	formatted.specifier = *format;
 	formatted.neg_precision = formatted.precision < 0;
-	return (ft_print_format(formatted, ap));
+	return (ft_print_specifier(formatted, ap));
 }
 
 static t_format	ft_parse_width(const char *format, t_format fmtd)
