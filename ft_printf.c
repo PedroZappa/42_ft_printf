@@ -6,7 +6,7 @@
 /*   By: zedr0 <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 12:54:04 by zedr0             #+#    #+#             */
-/*   Updated: 2023/10/19 13:26:25 by zedr0            ###   ########.fr       */
+/*   Updated: 2023/10/19 13:55:34 by zedr0            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	ft_printf(const char *format, ...)
 			if (*(++format))
 				len += ft_parse(format, ap);
 			while (*format && !ft_strchr(SPECIFIERS, *format))
-				format++;
+				++format;
 			if (*format)
 				len += ft_parse(format_start, ap);
 		}
