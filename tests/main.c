@@ -12,20 +12,27 @@ static MunitResult ft_printf_char_tests(const MunitParameter params[], void* use
 
 	assert_int(ft_printf("z"), ==, printf("z"));
 
+	assert_char(ft_printf("z"), ==, printf("Z"));
+	// assert_char('z', ==, 'a');
+
 	return MUNIT_OK;
 }
 
 /* Array of tests for ft_printf() Test Suite */
 static MunitTest ft_printf_tests[] = {
 	{ 
-		(char*) "/ft_printf",		// Name
+		(char*) "/ft_printf char tests",		// Name
 		ft_printf_char_tests,	// Tests 
 		NULL,					// Setup function
 		NULL,					// Teardown function
 		MUNIT_TEST_OPTION_NONE, // Options
 		NULL					// Parameters
-	}
+	},
 	/* Add More tests here */
+
+	/* Mark the end of the array with an entry where the test
+	* function is NULL */
+	{ NULL, NULL, NULL, NULL, MUNIT_TEST_OPTION_NONE, NULL }
 };
 
 /* ft_printf() Test Suite */
