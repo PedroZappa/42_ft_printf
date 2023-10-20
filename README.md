@@ -90,6 +90,12 @@ void	ft_printf(const char *format, ...);
     | `%X` | Prints a number in hexadecimal (base 16) uppercase format;
     | `%%` | Prints a `%` character;
 
+- Format specifiers obey the following prototype:
+
+    ```c
+    %[flags][width][.precision]specifier
+    ```
+
 - The function must behave like `printf()`;
 
 - The library has to be built using the command `ar`;
@@ -125,7 +131,7 @@ void	ft_printf(const char *format, ...);
 
 ### Files & Folders
 
-`ft_printf()`s library code base is split into the following file/folder structure:
+`ft_printf()`s library code base is split into the following file structure:
 
 ```mermaid
 ---
@@ -133,13 +139,15 @@ title ft_printf Structure
 ---
 classDiagram
     class Makefile
-    Makefile --> File0
+    Makefile <-- File0
     class File0["ft_printf.h"]
-    File0 --> File1
-    File0 --> File2
-    File0 --> File3
-    File0 --> File4
-    File0 --> File5
+    class libft["libft.h"]
+    File0 <-- File1
+    File0 <-- File2
+    File0 <-- File3
+    File0 <-- File4
+    File0 <-- File5
+    libft --> File0
     class File1["ft_printf.c"]
     File1 : ft_printf()
     File1 : ft_print_specifier()
@@ -157,8 +165,8 @@ classDiagram
     File4 : ft_print_nbr()
     class File5["ft_print_hex.c"]
     File5 : ft_print_hex()
-    File5 : ft_print_ptr()
     File5 : ft_recur_hex()
+    File5 : ft_print_ptr()
     File5 : ft_sharp()
 ```
 
