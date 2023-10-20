@@ -1,7 +1,7 @@
 #define MUNIT_ENABLE_ASSERT_ALIASES	// Define alias without 'munit_' prefix
-#include "../munit/munit.h"
+#include "munit/munit.h"
 #include <stdlib.h>					// EXIT_SUCCESS & EXIT_FAILURE
-// #include "libftprintf.h"
+#include "../ft_printf.h"
 
 
 /* ft_printf() Assertions */
