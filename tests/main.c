@@ -6,7 +6,7 @@
 /*   By: zedr0 <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 19:12:41 by zedr0             #+#    #+#             */
-/*   Updated: 2023/10/20 19:33:31 by zedr0            ###   ########.fr       */
+/*   Updated: 2023/10/20 19:48:02 by zedr0            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static MunitResult ft_printf_edge(const MunitParameter params[], void* user_data
 
 	return MUNIT_OK;
 }
-static MunitResult ft_printf_c(const MunitParameter params[], void* user_data)
+static MunitResult ft_printf_percent(const MunitParameter params[], void* user_data)
 {
 	(void) params;
 	(void) user_data;
@@ -45,10 +45,23 @@ static MunitResult ft_printf_c(const MunitParameter params[], void* user_data)
 
 	return MUNIT_OK;
 }
+static MunitResult ft_printf_c(const MunitParameter params[], void* user_data)
+{
+	(void) params;
+	(void) user_data;
 
+	test_ft_printf(ft_printf("%c", 'z'), printf("%c", 'z'));
+	test_ft_printf(ft_printf(" %c", 'z'), printf(" %c", 'z'));
+	test_ft_printf(ft_printf("%c ", 'z'), printf("%c ", 'z'));
+	test_ft_printf(ft_printf("%c%c%c", '\t', 'Z'), printf("%c%c%c", 'z', '\t', 'Z'));
+	test_ft_printf(ft_printf("%cc%cc%c", '\t', 'Z'), printf("%cc%cc%c", 'z', '\t', 'Z'));
+	test_ft_printf(ft_printf("%c%c%c", 'B', 'Z'), printf("%cs%cs%c", 'z', 'B', 'Z'));
+
+	return MUNIT_OK;
+}
 
 /* Array of tests for ft_printf() Test Suite */
-static MunitTest ft_printf_edge_tests[] = {
+static MunitTest ft_printf_chars_tests[] = {
 	{ 
 		(char*) "/ft_printf edge tests",
 		ft_printf_edge,			// Test			
@@ -59,11 +72,19 @@ static MunitTest ft_printf_edge_tests[] = {
 	},
 	{ 
 		(char*) "/ft_printf % tests",
-		ft_printf_c,			// Test			
-		NULL,					// Setup function
-		NULL,					// Teardown function
-		MUNIT_TEST_OPTION_NONE, // Options
-		NULL					// Parameters
+		ft_printf_percent,		
+		NULL,			
+		NULL,				
+		MUNIT_TEST_OPTION_NONE,
+		NULL				
+	},
+	{ 
+		(char*) "/ft_printf %c tests",
+		ft_printf_c,
+		NULL,	
+		NULL,
+		MUNIT_TEST_OPTION_NONE,
+		NULL
 	},
 	/* Add More tests here */
 
@@ -75,7 +96,7 @@ static MunitTest ft_printf_edge_tests[] = {
 /* ft_printf() Test Suite */
 static const MunitSuite ft_printf_suite = {
 	(char*) "",					// Str to prepend to all test names
-	ft_printf_edge_tests,			// Test cases
+	ft_printf_chars_tests,		// Test cases
 	NULL,						// No sub-suites
 	1,							// Iteration number
 	MUNIT_SUITE_OPTION_NONE		// Options
