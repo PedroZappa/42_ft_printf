@@ -21,6 +21,7 @@ ___
     <a href="#about-pushpin">About</a> ~
     <a href="#usage-scroll">Usage</a> ~
     <a href="#implementation-exclamation">Implementation</a> ~
+    <a href="#structure-bar_chart">Structure</a> ~
     <a href="#license">License</a> ~
 </p>
 <div/>
@@ -127,7 +128,7 @@ void	ft_printf(const char *format, ...);
     | ` ` | If no sign is going to be written, print a space before the value |
     | `+` | Forces a plus or minus sign before printing the result |
 
-## Structure:bar_chart:
+## 
 
 ### Files & Folders
 
@@ -183,7 +184,7 @@ title ft_printf Processing Flow
 ---
 graph LR;
     ft_printf-->ft_parse;
-    ft_parse-->ft_parse_newformat;
+    ft_parse-->ft_newformat;
     ft_parse-->ft_parse_width;
     ft_parse-->ft_parse_prec;
     ft_parse-->ft_parse_bonus;
