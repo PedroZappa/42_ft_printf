@@ -195,6 +195,7 @@ graph LR;
     ft_print_specifier-->ft_print_hex;
     ft_print_specifier-->ft_print_ptr;
     ft_print_diu-->ft_print_nbr;
+    ft_print_nbr-->ft_plus;
     ft_print_hex-->ft_print_recur_hex;
     ft_print_hex-->ft_print_sharp;
 ```
