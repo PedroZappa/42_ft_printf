@@ -6,7 +6,7 @@
 /*   By: zedr0 <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 19:12:41 by zedr0             #+#    #+#             */
-/*   Updated: 2023/10/20 19:48:02 by zedr0            ###   ########.fr       */
+/*   Updated: 2023/10/20 20:04:35 by zedr0            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,28 @@ static MunitResult ft_printf_c(const MunitParameter params[], void* user_data)
 	test_ft_printf(ft_printf("%c", 'z'), printf("%c", 'z'));
 	test_ft_printf(ft_printf(" %c", 'z'), printf(" %c", 'z'));
 	test_ft_printf(ft_printf("%c ", 'z'), printf("%c ", 'z'));
-	test_ft_printf(ft_printf("%c%c%c", '\t', 'Z'), printf("%c%c%c", 'z', '\t', 'Z'));
-	test_ft_printf(ft_printf("%cc%cc%c", '\t', 'Z'), printf("%cc%cc%c", 'z', '\t', 'Z'));
-	test_ft_printf(ft_printf("%c%c%c", 'B', 'Z'), printf("%cs%cs%c", 'z', 'B', 'Z'));
+	test_ft_printf(ft_printf("%c%c%c", 'z', '\t', 'Z'), printf("%c%c%c", 'z', '\t', 'Z'));
+	test_ft_printf(ft_printf("%cc%cc%c", 'z', '\t', 'Z'), printf("%cc%cc%c", 'z', '\t', 'Z'));
+	test_ft_printf(ft_printf("%c%c%c", 'z', 'B', 'Z'), printf("%cs%cs%c", 'z', 'B', 'Z'));
+
+	return MUNIT_OK;
+}
+static MunitResult ft_printf_s(const MunitParameter params[], void* user_data)
+{
+	(void) params;
+	(void) user_data;
+
+	test_ft_printf(ft_printf("%s", ""), printf("%s", ""));
+	char *str0 = "a rogue str with %s in it";
+	test_ft_printf(ft_printf("%s ", str0), printf("%s ", str0));
+	char *str1 = "but can it handle \t & \n?";
+	test_ft_printf(ft_printf(" %s", str1), printf(" %s", str1));
+	char *str2 = "{} al$#@@@^&$$^#^@@^$*((&";
+	test_ft_printf(ft_printf("%sx", str2), printf("%sx", str2));
+	char *str3 = "So ";
+	char *str4 = "we";
+	char *str5 = " joined";
+	test_ft_printf(ft_printf("%s%s%s", str3, str4, str5), printf("%s%s%s", str3, str4, str5));
 
 	return MUNIT_OK;
 }
@@ -81,6 +100,14 @@ static MunitTest ft_printf_chars_tests[] = {
 	{ 
 		(char*) "/ft_printf %c tests",
 		ft_printf_c,
+		NULL,	
+		NULL,
+		MUNIT_TEST_OPTION_NONE,
+		NULL
+	},
+	{ 
+		(char*) "/ft_printf %s tests",
+		ft_printf_s,
 		NULL,	
 		NULL,
 		MUNIT_TEST_OPTION_NONE,
