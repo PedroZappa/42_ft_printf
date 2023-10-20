@@ -150,8 +150,8 @@ classDiagram
     libft --> File0
     class File1["ft_printf.c"]
     File1 : ft_printf()
-    File1 : ft_print_specifier()
     File1 : ft_newformat()
+    File1 : ft_print_specifier()
     class File2["ft_parse.c"]
     File2 : ft_parse()
     File2 : ft_parse_width()
@@ -163,6 +163,7 @@ classDiagram
     class File4["ft_print_nbrs.c"]
     File4 : ft_print_diu()
     File4 : ft_print_nbr()
+    File4 : ft_plus()
     class File5["ft_print_hex.c"]
     File5 : ft_print_hex()
     File5 : ft_recur_hex()
