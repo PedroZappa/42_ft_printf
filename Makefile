@@ -6,7 +6,7 @@
 #    By: zedr0 <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/19 12:13:19 by zedr0             #+#    #+#              #
-#    Updated: 2023/10/20 15:46:51 by zedr0            ###   ########.fr        #
+#    Updated: 2023/10/20 16:24:05 by zedr0            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,15 +18,16 @@ LIBFT		= $(LIBFT_PATH)/libft.a
 TESTS_PATH	= tests
 TESTS		= $(TESTS_PATH)/ftprintf.znet
 
-SRC		= ft_printf.c ft_parse.c ft_print_chars.c
-OBJS	= $(SRC:.c=.o)
+SRC			= ft_printf.c ft_parse.c ft_print_chars.c
+OBJS		= $(SRC:.c=.o)
 
-MAKE	= make -C 
-CFLAGS	= -Wall -Wextra -Werror
-INC		= -I .
-CC		= cc
-RM		= rm -f
-AR		= ar rcs
+MAKE		= make -C 
+CFLAGS		= -Wall -Wextra -Werror
+INC			= -I .
+CC			= cc
+RM			= rm -f
+AR			= ar rcs
+
 
 all: $(NAME)
 
@@ -48,7 +49,7 @@ znet: $(NAME)
 	cp $(TESTS) $(NAME) 
 	@echo "\nBuilding archive..."
 	$(AR) $(NAME) $(OBJS)
-	@echo "\nSUCCESS!"
+	@echo "\n\t\tSUCCESS!"
 
 clean:
 	$(MAKE) $(LIBFT_PATH) clean
