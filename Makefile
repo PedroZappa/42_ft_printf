@@ -6,7 +6,7 @@
 #    By: zedr0 <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/19 12:13:19 by zedr0             #+#    #+#              #
-#    Updated: 2023/10/20 17:10:38 by zedr0            ###   ########.fr        #
+#    Updated: 2023/10/20 17:43:43 by zedr0            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ TESTS		= $(TESTS_PATH)/ftprintf.znet
 
 SRC			= ft_printf.c ft_parse.c ft_print_chars.c
 OBJS		= $(SRC:.c=.o)
-LIBFT_OBJS	= $(LIBFT_PATH):%.c=%.o)
+LIBFT_OBJS	= $(LIBFT_PATH)/*.o
+TESTS_OBJS	= $(TESTS_PATH)/*.o tests/munit/*.o
 
 MAKE		= make -C 
 CFLAGS		= -Wall -Wextra -Werror
@@ -47,9 +48,8 @@ $(NAME): $(OBJS)
 znet: $(NAME) 
 	@echo "\nCompiling znet..."
 	$(MAKE) $(TESTS_PATH) all
-	cp $(TESTS) $(NAME) 
 	@echo "\nBuilding archive..."
-	$(AR) $(NAME) $(OBJS) 
+	$(AR) $(NAME) $(OBJS) $(LIBFT_OBJS) $(TESTS_OBJS) 
 	@echo "\n\t\tSUCCESS!"
 
 clean:
