@@ -1,3 +1,6 @@
 [submodule "libft"]
 	path = libft
 	url = git@github.com:PedroZappa/libft.git
+[submodule "munit"]
+	path = munit
+	url = git@github.com:nemequ/munit.git
