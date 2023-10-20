@@ -10,7 +10,7 @@ static MunitResult ft_printf_char_tests(const MunitParameter params[], void* use
 	(void) params;
 	(void) user_data;
 
-	assert_char('z', ==, 'z');
+	assert_int(ft_printf("z"), ==, printf("z"));
 
 	return MUNIT_OK;
 }
@@ -18,7 +18,7 @@ static MunitResult ft_printf_char_tests(const MunitParameter params[], void* use
 /* Array of tests for ft_printf() Test Suite */
 static MunitTest ft_printf_tests[] = {
 	{ 
-		(char*) "/printf",		// Name
+		(char*) "/ft_printf",		// Name
 		ft_printf_char_tests,	// Tests 
 		NULL,					// Setup function
 		NULL,					// Teardown function
