@@ -1,28 +1,65 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zedr0 <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/20 19:12:41 by zedr0             #+#    #+#             */
+/*   Updated: 2023/10/20 19:33:31 by zedr0            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
 #define MUNIT_ENABLE_ASSERT_ALIASES	// Define alias without 'munit_' prefix
 #include "munit/munit.h"
 #include <stdlib.h>					// EXIT_SUCCESS & EXIT_FAILURE
 #include "../ft_printf.h"
 #include "../libft/libft.h"
 
-/* ft_printf() Assertions */
-static MunitResult ft_printf_char_tests(const MunitParameter params[], void* user_data)
+/* ft_printf() Test Assertions */
+void test_ft_printf(int ft, int og)
+{
+	assert_int(ft, ==, og);
+}
+
+static MunitResult ft_printf_edge(const MunitParameter params[], void* user_data)
 {
 	(void) params;
 	(void) user_data;
 
-	assert_int(ft_printf("z"), ==, printf("z"));
+	test_ft_printf(ft_printf("\x07\x03\a\v\b\f\r\n"), printf("\x01\x02\a\v\b\f\r\n"));
 
-	assert_char(ft_printf("z"), ==, printf("Z"));
-	// assert_char('z', ==, 'a');
+	return MUNIT_OK;
+}
+static MunitResult ft_printf_c(const MunitParameter params[], void* user_data)
+{
+	(void) params;
+	(void) user_data;
+
+	test_ft_printf(ft_printf("%%"), printf("%%"));
+	test_ft_printf(ft_printf(" %%"), printf(" %%"));
+	test_ft_printf(ft_printf("%%c"), printf("%%c"));
+	test_ft_printf(ft_printf("%%%%%%"), printf("%%%%%%"));
+	test_ft_printf(ft_printf("%%%c", 'z'), printf("%%%c", 'z'));
 
 	return MUNIT_OK;
 }
 
+
 /* Array of tests for ft_printf() Test Suite */
-static MunitTest ft_printf_tests[] = {
+static MunitTest ft_printf_edge_tests[] = {
 	{ 
-		(char*) "/ft_printf char tests",		// Name
-		ft_printf_char_tests,	// Tests 
+		(char*) "/ft_printf edge tests",
+		ft_printf_edge,			// Test			
+		NULL,					// Setup function
+		NULL,					// Teardown function
+		MUNIT_TEST_OPTION_NONE, // Options
+		NULL					// Parameters
+	},
+	{ 
+		(char*) "/ft_printf % tests",
+		ft_printf_c,			// Test			
 		NULL,					// Setup function
 		NULL,					// Teardown function
 		MUNIT_TEST_OPTION_NONE, // Options
@@ -38,7 +75,7 @@ static MunitTest ft_printf_tests[] = {
 /* ft_printf() Test Suite */
 static const MunitSuite ft_printf_suite = {
 	(char*) "",					// Str to prepend to all test names
-	ft_printf_tests,			// Test cases
+	ft_printf_edge_tests,			// Test cases
 	NULL,						// No sub-suites
 	1,							// Iteration number
 	MUNIT_SUITE_OPTION_NONE		// Options
