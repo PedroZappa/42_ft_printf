@@ -2,7 +2,7 @@
 #include "munit/munit.h"
 #include <stdlib.h>					// EXIT_SUCCESS & EXIT_FAILURE
 #include "../ft_printf.h"
-
+#include "../libft/libft.h"
 
 /* ft_printf() Assertions */
 static MunitResult ft_printf_char_tests(const MunitParameter params[], void* user_data)

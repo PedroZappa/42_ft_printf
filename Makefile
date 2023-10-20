@@ -6,7 +6,7 @@
 #    By: zedr0 <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/19 12:13:19 by zedr0             #+#    #+#              #
-#    Updated: 2023/10/20 16:24:05 by zedr0            ###   ########.fr        #
+#    Updated: 2023/10/20 17:10:38 by zedr0            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ TESTS		= $(TESTS_PATH)/ftprintf.znet
 
 SRC			= ft_printf.c ft_parse.c ft_print_chars.c
 OBJS		= $(SRC:.c=.o)
+LIBFT_OBJS	= $(LIBFT_PATH):%.c=%.o)
 
 MAKE		= make -C 
 CFLAGS		= -Wall -Wextra -Werror
@@ -36,19 +37,19 @@ all: $(NAME)
 	$(CC) $(CFLAGS) $(INC) -c $<
 
 $(NAME): $(OBJS)
-	$(MAKE) $(LIBFT_PATH) extra
-	cp $(LIBFT) $(NAME)
-	$(AR) $(NAME) $(OBJS)
-
-znet: $(NAME) 
 	@echo "\nCompiling libft..."
 	$(MAKE) $(LIBFT_PATH) extra
 	cp $(LIBFT) $(NAME)
+	@echo "\nBuilding archive..."
+	$(AR) $(NAME) $(OBJS)
+	@echo "\n\t\tSUCCESS!"
+
+znet: $(NAME) 
 	@echo "\nCompiling znet..."
 	$(MAKE) $(TESTS_PATH) all
 	cp $(TESTS) $(NAME) 
 	@echo "\nBuilding archive..."
-	$(AR) $(NAME) $(OBJS)
+	$(AR) $(NAME) $(OBJS) 
 	@echo "\n\t\tSUCCESS!"
 
 clean:
