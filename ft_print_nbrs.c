@@ -6,7 +6,7 @@
 /*   By: zedr0 <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 20:10:55 by zedr0             #+#    #+#             */
-/*   Updated: 2023/10/20 20:54:11 by zedr0            ###   ########.fr       */
+/*   Updated: 2023/10/21 16:21:57 by zedro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static int	ft_print_nbr(t_format parsed, char *nbr, int len, int neg)
 		count += ft_putnchar_fd(' ', 1, (!parsed.zero || parsed.dot));
 	count += ft_putnchar_fd('0', 1, (parsed.precision - len));
 	count += write(1, nbr, len); 
-	return (0);
+	return (count);
 }
 
 static char plus(t_format parsed)
