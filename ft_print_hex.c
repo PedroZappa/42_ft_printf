@@ -6,7 +6,7 @@
 /*   By: zedr0 <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 10:32:05 by zedr0             #+#    #+#             */
-/*   Updated: 2023/10/21 11:22:05 by zedr0            ###   ########.fr       */
+/*   Updated: 2023/10/21 11:28:48 by zedr0            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,34 @@ int ft_print_x(t_format parsed, va_list ap)
 	return (count);
 }
 
+int ft_print_ptr(t_format parsed, va_list ap)
+{
+	int		count;
+	size_t	n;
+	int		len;
+
+	count = 0;
+	n = va_arg(ap, size_t);
+	len = ft_numlen(n, 16);
+	len *= !(!n && !parsed.precision && parsed.dot);
+	if ((parsed.precision < len) || !parsed.dot)
+		parsed.precision = len;
+	count += write(1, "0x",(2 * parsed.zero));
+	parsed.width -= 2;
+	if (!parsed.minus && (parsed.width > parsed.precision) && !parsed.dot && parsed.zero)
+		count += ft_putnchar_fd('0', 1, (parsed.width - parsed.precision));
+	else if (!parsed.minus && (parsed.width > parsed.precision))
+		count += ft_putnchar_fd('0', 1, (parsed.width - parsed.precision));
+	count += write(1, "0x", (2 * !parsed.zero));
+	count += ft_putnchar_fd('0', 1, ((parsed.precision - len) * (n != 0)));
+	count += ft_putnchar_fd('0', 1, (parsed.precision * (parsed.dot && !n)));
+	if (len)
+		count += ft_recur_hex(parsed, n, n);
+	if (parsed.minus && (parsed.width > parsed.precision))
+		count += ft_putnchar_fd(' ', 1, (parsed.width - parsed.precision));
+	return (count);
+}
+
 static int	ft_recur_hex(t_format parsed, size_t n, size_t iter)
 {
 	int count;
@@ -73,32 +101,4 @@ static char *ft_sharp(t_format parsed)
 	if (parsed.specifier == 'X')
 		return ("0X");
 	return ("0x");
-}
-
-int ft_print_p(t_format parsed, va_list ap)
-{
-	int		count;
-	size_t	n;
-	int		len;
-
-	count = 0;
-	n = va_arg(ap, size_t);
-	len = ft_numlen(n, 16);
-	len *= !(!n && !parsed.precision && parsed.dot);
-	if ((parsed.precision < len) || !parsed.dot)
-		parsed.precision = len;
-	count += write(1, "0x",(2 * parsed.zero));
-	parsed.width -= 2;
-	if (!parsed.minus && (parsed.width > parsed.precision) && !parsed.dot && parsed.zero)
-		count += ft_putnchar_fd('0', 1, (parsed.width - parsed.precision));
-	else if (!parsed.minus && (parsed.width > parsed.precision))
-		count += ft_putnchar_fd('0', 1, (parsed.width - parsed.precision));
-	count += write(1, "0x", (2 * !parsed.zero));
-	count += ft_putnchar_fd('0', 1, ((parsed.precision - len) * (n != 0)));
-	count += ft_putnchar_fd('0', 1, (parsed.precision * (parsed.dot && !n)));
-	if (len)
-		count += ft_recur_hex(parsed, n, n);
-	if (parsed.minus && (parsed.width > parsed.precision))
-		count += ft_putnchar_fd(' ', 1, (parsed.width - parsed.precision));
-	return (count);
 }
