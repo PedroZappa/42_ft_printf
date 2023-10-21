@@ -6,7 +6,7 @@
 /*   By: zedr0 <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 10:32:05 by zedr0             #+#    #+#             */
-/*   Updated: 2023/10/21 12:09:57 by zedr0            ###   ########.fr       */
+/*   Updated: 2023/10/21 12:12:33 by zedr0            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,17 +78,17 @@ int ft_print_ptr(t_format p, va_list ap)
 static int	ft_recur_hex(t_format p, size_t n, size_t iter)
 {
 	int count;
-	int remainder;
+	int rem;
 	char c;
 
 	count = 0;
 	if ((n > 0) || (!iter && ((p.specifier != 'p') || !p.dot)))
 	{
-		remainder = n % 16;
+		rem = n % 16;
 		if (p.specifier != 'X')
-			c = HEX_LOWER[remainder];
+			c = HEX_LOWER[rem];
 		else
-			c = HEX_UPPER[remainder];
+			c = HEX_UPPER[rem];
 		n /= 16;
 		iter = 1;
 		count += ft_recur_hex(p, n, iter);
