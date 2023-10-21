@@ -6,7 +6,7 @@
 /*   By: zedr0 <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 12:54:04 by zedr0             #+#    #+#             */
-/*   Updated: 2023/10/21 16:42:16 by zedro            ###   ########.fr       */
+/*   Updated: 2023/10/21 16:47:20 by zedro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,11 @@ int	ft_print_specifier(t_format parsed, va_list ap)
 	else if (parsed.specifier == 's')
 		len = ft_print_str(parsed, ap);
 	else if (parsed.specifier == 'd' || parsed.specifier == 'i'
-	 	|| parsed.specifier == 'u')
-	 	len = ft_print_diu(parsed, ap);
+		|| parsed.specifier == 'u')
+		len = ft_print_diu(parsed, ap);
 	else if (parsed.specifier == 'x' || parsed.specifier == 'X')
 		len = ft_print_x(parsed, ap);
 	else if (parsed.specifier == 'p')
 		len = ft_print_ptr(parsed, ap);
-
 	return (len);
 }
