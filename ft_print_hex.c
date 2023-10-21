@@ -6,7 +6,7 @@
 /*   By: zedr0 <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 10:32:05 by zedr0             #+#    #+#             */
-/*   Updated: 2023/10/21 11:45:32 by zedr0            ###   ########.fr       */
+/*   Updated: 2023/10/21 12:09:57 by zedr0            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,20 +79,20 @@ static int	ft_recur_hex(t_format p, size_t n, size_t iter)
 {
 	int count;
 	int remainder;
-	char character;
+	char c;
 
 	count = 0;
 	if ((n > 0) || (!iter && ((p.specifier != 'p') || !p.dot)))
 	{
 		remainder = n % 16;
 		if (p.specifier != 'X')
-			character = HEX_LOWER[remainder];
+			c = HEX_LOWER[remainder];
 		else
-			character = HEX_UPPER[remainder];
+			c = HEX_UPPER[remainder];
 		n /= 16;
 		iter = 1;
 		count += ft_recur_hex(p, n, iter);
-		count += ft_putchar_fd(character, 1);
+		count += ft_putchar_fd(c, 1);
 	}
 	return (count);
 }
