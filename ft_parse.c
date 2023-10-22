@@ -6,7 +6,7 @@
 /*   By: zedr0 <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 13:56:53 by zedr0             #+#    #+#             */
-/*   Updated: 2023/10/19 21:01:05 by zedr0            ###   ########.fr       */
+/*   Updated: 2023/10/22 10:50:46 by zedr0            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,27 +18,27 @@ static t_format	ft_parse_bonus(const char *format, t_format fmtd);
 
 int	ft_parse(const char *format, va_list ap)
 {
-	t_format	formatted;
+	t_format	fmtd;
 
-	formatted = ft_parse_width(format, ft_newformat());
-	formatted = ft_parse_bonus(format, formatted);
+	fmtd = ft_parse_width(format, ft_newformat());
+	fmtd = ft_parse_bonus(format, fmtd);
 	while (*format != '.' && !ft_strchr(SPECIFIERS, *format))
 		++format;
-	if (*format == '.' && !formatted.specifier)
+	if (*format == '.' && !fmtd.specifier)
 	{
-		formatted.dot = 1;
-		formatted = ft_parse_prec(format++, formatted);
+		fmtd.dot = 1;
+		fmtd = ft_parse_prec(format++, fmtd);
 		while (!ft_strchr(SPECIFIERS, *format))
 			++format;
 	}
-	if (formatted.width < 0)
+	if (fmtd.width < 0)
 	{
-		formatted.minus = 1;
-		formatted.width *= -1;
+		fmtd.minus = 1;
+		fmtd.width *= -1;
 	}
-	formatted.specifier = *format;
-	formatted.neg_precision = formatted.precision < 0;
-	return (ft_print_specifier(formatted, ap));
+	fmtd.specifier = *format;
+	fmtd.neg_precision = fmtd.precision < 0;
+	return (ft_print_specifier(fmtd, ap));
 }
 
 static t_format	ft_parse_width(const char *format, t_format fmtd)
