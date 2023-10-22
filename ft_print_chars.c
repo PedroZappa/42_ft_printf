@@ -6,7 +6,7 @@
 /*   By: zedr0 <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 17:16:29 by zedr0             #+#    #+#             */
-/*   Updated: 2023/10/22 16:40:49 by zedr0            ###   ########.fr       */
+/*   Updated: 2023/10/22 17:12:05 by zedr0            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,10 @@ int	ft_print_str(t_format prsd, va_list ap)
 	if (!prsd.minus && (prsd.width > prsd.precision) && prsd.zero
 		&& (!prsd.dot || prsd.neg_precision))
 		len += ft_putnchar_fd('0', 1, n);
-	else if (!prsd.minus && ((prsd.width - prsd.precision) > 0))
+	else if (!prsd.minus && (n > 0))
 		len += ft_putnchar_fd(' ', 1, n);
 	len += ft_putstrn_fd(str, 1, prsd.precision);
-	if (prsd.minus && (prsd.width - prsd.precision > 0))
+	if (prsd.minus && (n > 0))
 		len += ft_putnchar_fd(' ', 1, n);
 	return (len);
 }
