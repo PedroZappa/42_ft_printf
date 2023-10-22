@@ -6,42 +6,42 @@
 /*   By: zedr0 <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 13:56:53 by zedr0             #+#    #+#             */
-/*   Updated: 2023/10/22 10:50:46 by zedr0            ###   ########.fr       */
+/*   Updated: 2023/10/22 10:52:37 by zedr0            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static t_format	ft_parse_width(const char *format, t_format fmtd);
-static t_format	ft_parse_prec(const char *format, t_format fmtd);
-static t_format	ft_parse_bonus(const char *format, t_format fmtd);
+static t_format	ft_parse_width(const char *format, t_format parsed);
+static t_format	ft_parse_prec(const char *format, t_format parsed);
+static t_format	ft_parse_bonus(const char *format, t_format parsed);
 
 int	ft_parse(const char *format, va_list ap)
 {
-	t_format	fmtd;
+	t_format	parsed;
 
-	fmtd = ft_parse_width(format, ft_newformat());
-	fmtd = ft_parse_bonus(format, fmtd);
+	parsed = ft_parse_width(format, ft_newformat());
+	parsed = ft_parse_bonus(format, parsed);
 	while (*format != '.' && !ft_strchr(SPECIFIERS, *format))
 		++format;
-	if (*format == '.' && !fmtd.specifier)
+	if (*format == '.' && !parsed.specifier)
 	{
-		fmtd.dot = 1;
-		fmtd = ft_parse_prec(format++, fmtd);
+		parsed.dot = 1;
+		parsed = ft_parse_prec(format++, parsed);
 		while (!ft_strchr(SPECIFIERS, *format))
 			++format;
 	}
-	if (fmtd.width < 0)
+	if (parsed.width < 0)
 	{
-		fmtd.minus = 1;
-		fmtd.width *= -1;
+		parsed.minus = 1;
+		parsed.width *= -1;
 	}
-	fmtd.specifier = *format;
-	fmtd.neg_precision = fmtd.precision < 0;
-	return (ft_print_specifier(fmtd, ap));
+	parsed.specifier = *format;
+	parsed.neg_precision = parsed.precision < 0;
+	return (ft_print_specifier(parsed, ap));
 }
 
-static t_format	ft_parse_width(const char *format, t_format fmtd)
+static t_format	ft_parse_width(const char *format, t_format parsed)
 {
 	int		width_set;
 
@@ -49,20 +49,20 @@ static t_format	ft_parse_width(const char *format, t_format fmtd)
 	while (*format != '.' && !ft_strchr(SPECIFIERS, *format))
 	{
 		if (*format == '-')
-			fmtd.minus = 1;
+			parsed.minus = 1;
 		if (*format == '0' && !ft_isdigit(*(format + 1)))
-			fmtd.zero = 1;
+			parsed.zero = 1;
 		else if (ft_isdigit(*format) && !width_set)
 		{
-			fmtd.width = ft_atoi(format);
+			parsed.width = ft_atoi(format);
 			width_set = 1;
 		}
 		++format;
 	}
-	return (fmtd);
+	return (parsed);
 }
 
-static t_format	ft_parse_prec(const char *format, t_format fmtd)
+static t_format	ft_parse_prec(const char *format, t_format parsed)
 {
 	int		precision_set;
 
@@ -71,25 +71,25 @@ static t_format	ft_parse_prec(const char *format, t_format fmtd)
 	{
 		if (ft_isdigit(*format) && !precision_set)
 		{
-			fmtd.precision = ft_atoi(format);
+			parsed.precision = ft_atoi(format);
 			precision_set = 1;
 		}
 		++format;
 	}
-	return (fmtd);
+	return (parsed);
 }
 
-static t_format	ft_parse_bonus(const char *format, t_format fmtd)
+static t_format	ft_parse_bonus(const char *format, t_format parsed)
 {
 	while (*format != '.' && !ft_strchr(SPECIFIERS, *format))
 	{
 		if (*format == '#')
-			fmtd.sharp = 1;
+			parsed.sharp = 1;
 		if (*format == ' ')
-			fmtd.space = 1;
+			parsed.space = 1;
 		if (*format == '+')
-			fmtd.plus = 1;
+			parsed.plus = 1;
 		++format;
 	}
-	return (fmtd);
+	return (parsed);
 }
