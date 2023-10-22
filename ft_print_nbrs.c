@@ -6,7 +6,7 @@
 /*   By: zedr0 <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 20:10:55 by zedr0             #+#    #+#             */
-/*   Updated: 2023/10/22 17:21:54 by zedr0            ###   ########.fr       */
+/*   Updated: 2023/10/22 17:41:50 by zedr0            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	ft_print_diu(t_format prsd, va_list ap)
 	else 
 		nbr = ft_itoa(n);
 	len = ft_strlen(nbr);
-	if (*nbr == '0' && !prsd.precision && prsd.dot)
+	if (*nbr == '0' && prsd.dot && !prsd.precision) 
 		len = 0;
 	if (prsd.precision < len || !prsd.dot)
 		prsd.precision = len;
