@@ -6,16 +6,16 @@
 /*   By: zedr0 <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 20:10:55 by zedr0             #+#    #+#             */
-/*   Updated: 2023/10/21 16:21:57 by zedro            ###   ########.fr       */
+/*   Updated: 2023/10/22 17:21:54 by zedr0            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	ft_print_nbr(t_format parsed, char *nbr, int len, int neg);
-static char plus(t_format parsed);
+static int	ft_print_nbr(t_format prsd, char *nbr, int len, int neg);
+static char plus(t_format prsd);
 
-int	ft_print_diu(t_format parsed, va_list ap)
+int	ft_print_diu(t_format prsd, va_list ap)
 {
 	char	*nbr;
 	int	n;
@@ -25,56 +25,56 @@ int	ft_print_diu(t_format parsed, va_list ap)
 	
 	numlen = 0;
 	n = va_arg(ap, int);
-	neg = ((n < 0) && (n != INT_MIN) && (parsed.specifier != 'u'));
+	neg = ((n < 0) && (n != INT_MIN) && (prsd.specifier != 'u'));
 	if (neg)
-		parsed.plus  = 0;
-	if (n < 0 && parsed.specifier != 'u')
+		prsd.plus  = 0;
+	if (n < 0 && prsd.specifier != 'u')
 		n *= -1;
-	if (n < 0 && parsed.specifier == 'u')
+	if (n < 0 && prsd.specifier == 'u')
 		nbr = ft_uitoa((unsigned)n);
 	else 
 		nbr = ft_itoa(n);
 	len = ft_strlen(nbr);
-	if (*nbr == '0' && !parsed.precision && parsed.dot)
+	if (*nbr == '0' && !prsd.precision && prsd.dot)
 		len = 0;
-	if (parsed.precision < len || !parsed.dot)
-		parsed.precision = len;
-	numlen += ft_print_nbr(parsed, nbr, len, neg);
+	if (prsd.precision < len || !prsd.dot)
+		prsd.precision = len;
+	numlen += ft_print_nbr(prsd, nbr, len, neg);
 	free(nbr);
 	return (numlen);
 }
 
-static int	ft_print_nbr(t_format parsed, char *nbr, int len, int neg)
+static int	ft_print_nbr(t_format prsd, char *nbr, int len, int neg)
 {
 	int count;
 	int n;
 
 	count = 0;
-	n = (parsed.width - parsed.precision - neg - parsed.plus);
-	parsed.width -= (parsed.space && !neg && !parsed.plus && parsed.width);
-	if (neg || parsed.plus)
-		count += ft_putnchar_fd(plus(parsed), 1, 
-			(parsed.zero && (parsed.dot && !parsed.neg_precision)));
-	else if (parsed.space)
-		count += ft_putnchar_fd(' ', 1, (parsed.zero && !parsed.dot));
-	if (!parsed.minus && (parsed.width > parsed.precision) 
-		&& (!parsed.dot || parsed.neg_precision) && parsed.zero)
+	n = (prsd.width - prsd.precision - neg - prsd.plus);
+	prsd.width -= (prsd.space && !neg && !prsd.plus && prsd.width);
+	if (neg || prsd.plus)
+		count += ft_putnchar_fd(plus(prsd), 1, 
+			(prsd.zero && (prsd.dot && !prsd.neg_precision)));
+	else if (prsd.space)
+		count += ft_putnchar_fd(' ', 1, (prsd.zero && !prsd.dot));
+	if (!prsd.minus && (prsd.width > prsd.precision) 
+		&& (!prsd.dot || prsd.neg_precision) && prsd.zero)
 		count += ft_putnchar_fd('0', 1, n);
-	else if (!parsed.minus && (parsed.width > parsed.precision))
+	else if (!prsd.minus && (prsd.width > prsd.precision))
 		count += ft_putnchar_fd(' ', 1, n);
-	if (neg || parsed.plus)
-		count += ft_putnchar_fd(plus(parsed), 1, 
-			(!parsed.zero || (parsed.dot && !parsed.neg_precision)));
-	else if (parsed.space)
-		count += ft_putnchar_fd(' ', 1, (!parsed.zero || parsed.dot));
-	count += ft_putnchar_fd('0', 1, (parsed.precision - len));
+	if (neg || prsd.plus)
+		count += ft_putnchar_fd(plus(prsd), 1, 
+			(!prsd.zero || (prsd.dot && !prsd.neg_precision)));
+	else if (prsd.space)
+		count += ft_putnchar_fd(' ', 1, (!prsd.zero || prsd.dot));
+	count += ft_putnchar_fd('0', 1, (prsd.precision - len));
 	count += write(1, nbr, len); 
 	return (count);
 }
 
-static char plus(t_format parsed)
+static char plus(t_format prsd)
 {
-	if (parsed.plus)
+	if (prsd.plus)
 		return ('+');
 	return ('-');
 }
