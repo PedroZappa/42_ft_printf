@@ -6,7 +6,7 @@
 /*   By: zedr0 <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 20:10:55 by zedr0             #+#    #+#             */
-/*   Updated: 2023/10/22 17:49:48 by zedr0            ###   ########.fr       */
+/*   Updated: 2023/10/22 17:53:28 by zedr0            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ static int	ft_print_nbr(t_format prsd, char *nbr, int len, int neg)
 	int n;
 
 	count = 0;
-	n = (prsd.width - prsd.precision - neg - prsd.plus);
 	prsd.width -= (prsd.space && !neg && !prsd.plus && prsd.width);
+	n = (prsd.width - prsd.precision - neg - prsd.plus);
 	if (neg || prsd.plus)
 		count += ft_putnchar_fd(ft_plus(prsd), 1, 
 			(prsd.zero && (prsd.dot && !prsd.neg_precision)));
