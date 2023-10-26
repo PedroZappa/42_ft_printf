@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:33:30 by passunca          #+#    #+#             */
-/*   Updated: 2023/10/26 20:20:42 by passunca         ###   ########.fr       */
+/*   Updated: 2023/10/26 20:28:53 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_print_diu(t_format prsd, va_list ap)
 	
 	numlen = 0;
 	n = va_arg(ap, int);
-	neg = ((n < 0) && (n != INT_MIN) && (prsd.specifier != 'u'));
+	neg = ((n < 0) && (n <= INT_MIN) && (prsd.specifier != 'u'));
 	if (neg)
 		prsd.plus  = 0;
 	if (n < 0 && prsd.specifier != 'u')
