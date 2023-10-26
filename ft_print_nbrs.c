@@ -6,14 +6,14 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:33:30 by passunca          #+#    #+#             */
-/*   Updated: 2023/10/26 19:33:33 by passunca         ###   ########.fr       */
+/*   Updated: 2023/10/26 20:20:42 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
 static int	ft_print_nbr(t_format prsd, char *nbr, int len, int neg);
-static char ft_plus(t_format prsd);
+static char ft_sign(t_format prsd);
 
 int	ft_print_diu(t_format prsd, va_list ap)
 {
@@ -53,7 +53,7 @@ static int	ft_print_nbr(t_format prsd, char *nbr, int len, int neg)
 	prsd.width -= (prsd.space && !neg && !prsd.plus && prsd.width);
 	n = (prsd.width - prsd.precision - neg - prsd.plus);
 	if (neg || prsd.plus)
-		count += ft_putnchar_fd(ft_plus(prsd), 1, 
+		count += ft_putnchar_fd(ft_sign(prsd), 1, 
 			(prsd.zero && (prsd.dot && !prsd.neg_precision)));
 	else if (prsd.space)
 		count += ft_putnchar_fd(' ', 1, (prsd.zero && !prsd.dot));
@@ -63,7 +63,7 @@ static int	ft_print_nbr(t_format prsd, char *nbr, int len, int neg)
 	else if (!prsd.minus && (prsd.width > prsd.precision))
 		count += ft_putnchar_fd(' ', 1, n);
 	if (neg || prsd.plus)
-		count += ft_putnchar_fd(ft_plus(prsd), 1, 
+		count += ft_putnchar_fd(ft_sign(prsd), 1, 
 						  (!prsd.zero || (prsd.dot && !prsd.neg_precision)));
 	else if (prsd.space)
 		count += ft_putnchar_fd(' ', 1, (!prsd.zero || prsd.dot));
@@ -72,7 +72,7 @@ static int	ft_print_nbr(t_format prsd, char *nbr, int len, int neg)
 	return (count);
 }
 
-static char ft_plus(t_format prsd)
+static char ft_sign(t_format prsd)
 {
 	if (prsd.plus)
 		return ('+');

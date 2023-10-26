@@ -188,7 +188,7 @@ classDiagram
     class File4["ft_print_nbrs.c"]
     File4 : ft_print_diu()
     File4 : ft_print_nbr()
-    File4 : ft_plus()
+    File4 : ft_sign()
     class File5["ft_print_hex.c"]
     File5 : ft_print_x()
     File5 : ft_print_p()
@@ -217,7 +217,7 @@ graph LR;
     ft_print_specifier-->ft_print_x;
     ft_print_specifier-->ft_print_ptr;
     ft_print_diu-->ft_print_nbr;
-    ft_print_nbr-->ft_plus;
+    ft_print_nbr-->ft_sign;
     ft_print_hex-->ft_print_recur_hex;
     ft_print_hex-->ft_sharp;
     ft_print_ptr-->ft_print_recur_hex;
