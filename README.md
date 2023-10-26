@@ -192,7 +192,7 @@ classDiagram
     class File5["ft_print_hex.c"]
     File5 : ft_print_x()
     File5 : ft_print_p()
-    File5 : ft_recur_hex()
+    File5 : ft_recurhex()
     File5 : ft_sharp()
 ```
 
