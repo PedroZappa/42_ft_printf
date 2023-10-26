@@ -150,11 +150,9 @@ void	ft_printf(const char *format, ...);
 
     | Flag | Description |
     |------|---------|
-    | `#` | When used with `o`, `x` or `X` specifiers the value is prefixed with `0`, `0x` or `0X` respectively for values different than zero |
+    | `#` | When used with `x` or `X` specifiers the value is prefixed with `0`, `0x` or `0X` respectively for values different than zero |
     | ` ` | If no sign is going to be written, print a space before the value |
     | `+` | Forces a plus or minus sign before printing the result |
-
-## 
 
 ### Files & Folders
 
@@ -197,8 +195,6 @@ classDiagram
     File5 : ft_recur_hex()
     File5 : ft_sharp()
 ```
-
-
 
 ### Processing Flow
 
