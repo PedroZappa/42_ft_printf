@@ -48,6 +48,21 @@ ___
 
 # Usage :checkered_flag:
 
+1. Clone the repo:
+```shell
+git clone git@github.com:PedroZappa/ft_printf.git 
+```
+
+2. Initialize local submodules configuration:
+```shell
+git submodule init
+```
+
+3. Update submodules:
+```shell
+git submodule update
+```
+
 </div>
 
 ____
@@ -170,7 +185,6 @@ classDiagram
     File5 : ft_print_p()
     File5 : ft_recur_hex()
     File5 : ft_sharp()
-    click File0 href "./ft_printf.h" "ft_printf.h link" _blank
 ```
 
 

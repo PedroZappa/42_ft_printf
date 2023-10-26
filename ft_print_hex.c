@@ -6,7 +6,7 @@
 /*   By: zedr0 <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 10:32:05 by zedr0             #+#    #+#             */
-/*   Updated: 2023/10/21 12:12:33 by zedr0            ###   ########.fr       */
+/*   Updated: 2023/10/26 15:48:49 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int ft_print_x(t_format p, va_list ap)
 	len = ft_numlen(n, 16);
 	if (!n && !p.precision && p.dot)
 		len = 0;
-	if ((p.precision < 0) || (p.precision < len) && !p.dot)
+	if ((p.precision < 0) || ((p.precision < len) && !p.dot))
 		p.precision = len;
 	if (p.sharp && n)
 		p.width -= 2;
