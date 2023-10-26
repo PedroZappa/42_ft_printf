@@ -6,7 +6,7 @@
 /*   By: zedr0 <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 16:34:14 by zedr0             #+#    #+#             */
-/*   Updated: 2023/10/20 21:11:25 by zedr0            ###   ########.fr       */
+/*   Updated: 2023/10/26 16:01:36 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,18 @@
 
 #define SEP "~~~~~~~~~~~~~~~~~~~~\n"
 
+void test_c(void);
+void test_s(void);
+
 int main(int argc, char *argv[])
 {
 	(void) argv;
 	(void) argc;
 
-	ft_putstr_fd(SEP, 1);
-	printf("Test %c\n", 'z');
-	ft_printf("Test %c\n", 'z');
-	ft_putstr_fd(SEP, 1);
+	test_c();
+	test_s();
+
+
 
 	char *str0 = "Zedr0";
 	printf("Test %s\n", str0);
@@ -37,3 +40,19 @@ int main(int argc, char *argv[])
 
 	return (0);
 }
+
+void test_c(void)
+{
+	ft_putstr_fd(SEP, 1);
+	printf("Test %c\n", 'z');
+	ft_printf("Test %c\n", 'z');
+	ft_putstr_fd(SEP, 1);
+}
+
+void test_s(void)
+{
+	ft_putstr_fd(SEP, 1);
+	printf("TESTING %%s\n");
+
+}
+

@@ -63,6 +63,17 @@ git submodule init
 git submodule update
 ```
 
+4. Build the project:
+```shell
+make
+```
+
+5. Build project with tests:
+```shell
+make znet
+```
+
+
 </div>
 
 ____
