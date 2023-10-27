@@ -6,14 +6,14 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:33:00 by passunca          #+#    #+#             */
-/*   Updated: 2023/10/27 10:44:51 by passunca         ###   ########.fr       */
+/*   Updated: 2023/10/27 11:40:27 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int ft_woutminus(t_format prsd, char *str);
-static int ft_wminus(t_format prsd, char *str);
+static int ft_wominus(t_format prsd, char *str, int len);
+static int ft_wminus(t_format prsd, char *str, int len);
 
 int	ft_print_char(t_format prsd, va_list ap)
 {
@@ -47,23 +47,23 @@ int	ft_print_str(t_format prsd, va_list ap)
 	if (!str)
 		str = "(null)";
 	len = ft_strlen(str);
-	if ((prsd.precision < 0) && (prsd.precision > len))
-		prsd.precision = len;
+	if ((prsd.precision > 0) && (prsd.precision < len))
+		len = prsd.precision;
 	if (prsd.minus)
-		len += ft_wminus(prsd, str);
-	else if (prsd.precision == 0 && prsd.width) 
-		len += ft_putstrn_fd(str, 1, len);
+		len += ft_wminus(prsd, str, len);
 	else 
-		len += ft_woutminus(prsd, str);
+		len += ft_wominus(prsd, str, len);
 
 	return (len);
 }
 
-static int ft_wminus(t_format prsd, char *str)
+static int ft_wminus(t_format prsd, char *str, int len)
 {
-	int	len;
-
-	len = 0;
+	if (prsd.width == 0)
+	{
+		len += ft_putstrn_fd(str, 1, len);
+		return (len);
+	}
 	while (prsd.precision > 0 && *str)
 	{
 		len += ft_putnchar_fd(*str++, 1, 1);
@@ -77,11 +77,13 @@ static int ft_wminus(t_format prsd, char *str)
 	return (len);
 }
 
-static int ft_woutminus(t_format prsd, char *str)
+static int ft_wominus(t_format prsd, char *str, int len)
 {
-	int	len;
-	
-	len = 0;
+	if (prsd.width == 0)
+	{
+		len += ft_putstrn_fd(str, 1, len);
+		return (len);
+	}
 	while (prsd.precision > 0 && *str)
 	{
 		len += ft_putnchar_fd(*str++, 1, 1);
