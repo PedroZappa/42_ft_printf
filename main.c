@@ -6,7 +6,7 @@
 /*   By: zedr0 <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 16:34:14 by zedr0             #+#    #+#             */
-/*   Updated: 2023/10/27 09:42:17 by passunca         ###   ########.fr       */
+/*   Updated: 2023/10/27 10:57:23 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,9 @@ int main(int argc, char *argv[])
 void test_c(void)
 {
 	ft_putstr_fd(SEP, 1);
+	printf("TESTING %%c\n");
+
+	ft_putstr_fd(SEP, 1);
 	printf("Test %c\n", 'z');
 	ft_printf("Test %c\n", 'z');
 	ft_putstr_fd(SEP, 1);
@@ -51,7 +54,7 @@ void test_s(void)
 	ft_putstr_fd(SEP, 1);
 	printf("TESTING %%s\n");
 
-	ft_test(1, "%s", "iii");
+	ft_test(1, "%s", "-");
 	// char *str0 = "Zedr0";
 	// printf("Test0: '%s'\n", str0);
 	// ft_printf("Test0: '%s'\n", str0);
