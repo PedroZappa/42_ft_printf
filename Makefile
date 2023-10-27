@@ -6,7 +6,7 @@
 #    By: zedr0 <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/19 12:13:19 by zedr0             #+#    #+#              #
-#    Updated: 2023/10/27 13:58:02 by passunca         ###   ########.fr        #
+#    Updated: 2023/10/27 15:26:18 by passunca         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,7 @@ $(NAME): $(OBJS)
 	$(AR) $(NAME) $(OBJS)
 	@echo "\n\t\tSUCCESS!"
 
-bonus: $(NAME)
+# bonus: $(NAME)
 
 clean:
 	$(MAKE) $(LIBFT_PATH) clean
