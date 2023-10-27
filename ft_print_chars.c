@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:33:00 by passunca          #+#    #+#             */
-/*   Updated: 2023/10/27 20:11:38 by passunca         ###   ########.fr       */
+/*   Updated: 2023/10/27 20:37:34 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ int	ft_print_str(t_format prsd, va_list ap)
 {
 	char	*str;
 	int		len;
-
+	
+	(void) prsd;
 	str = va_arg(ap, char *);
 	if (!str)
 		str = "(null)";
