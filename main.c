@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+	/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
@@ -6,7 +6,7 @@
 /*   By: zedr0 <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 16:34:14 by zedr0             #+#    #+#             */
-/*   Updated: 2023/10/26 16:01:36 by passunca         ###   ########.fr       */
+/*   Updated: 2023/10/27 09:42:17 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #include "libft/libft.h"
 
 #define SEP "~~~~~~~~~~~~~~~~~~~~\n"
+
+static void ft_test(int n, char *frmt, char *specif);
 
 void test_c(void);
 void test_s(void);
@@ -27,11 +29,6 @@ int main(int argc, char *argv[])
 	test_s();
 
 
-
-	char *str0 = "Zedr0";
-	printf("Test %s\n", str0);
-	ft_printf("Test %s\n", str0);
-	ft_putstr_fd(SEP, 1);
 
 	unsigned int nbr0 = 42;
 	printf("Test %u\n", nbr0);
@@ -54,5 +51,31 @@ void test_s(void)
 	ft_putstr_fd(SEP, 1);
 	printf("TESTING %%s\n");
 
+	ft_test(1, "%s", "iii");
+	// char *str0 = "Zedr0";
+	// printf("Test0: '%s'\n", str0);
+	// ft_printf("Test0: '%s'\n", str0);
+	// ft_putstr_fd(SEP, 1);
 }
 
+static void ft_test(int n, char *frmt, char *specif)
+{
+	printf("Test%d:\n", n);
+	printf(frmt, specif);
+	printf("\n");
+	ft_printf(frmt, specif);
+	printf("\n");
+	ft_putstr_fd(SEP, 1);
+		
+}
+
+	// TEST(1, print("%s", ""));
+	// TEST(2, print(" %s", ""));
+	// TEST(3, print("%s ", ""));
+	// TEST(4, print(" %s ", ""));
+	// TEST(5, print(" %s ", "-"));
+	// TEST(6, print(" %s %s ", "", "-"));
+	// TEST(7, print(" %s %s ", " - ", ""));
+	// TEST(8, print(" %s %s %s %s %s", " - ", "", "4", "", s2));
+	// TEST(9, print(" %s %s %s %s %s ", " - ", "", "4", "", "2 "));
+	// TEST(10, print(" NULL %s NULL ", NULL));
