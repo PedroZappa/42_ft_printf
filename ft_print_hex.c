@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:33:44 by passunca          #+#    #+#             */
-/*   Updated: 2023/10/26 21:14:19 by passunca         ###   ########.fr       */
+/*   Updated: 2023/10/27 12:45:24 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 static int	ft_recurhex(t_format p, size_t n, size_t i);
 static char	*ft_sharp(t_format p);
 
-int ft_print_x(t_format p, va_list ap)
+int	ft_print_x(t_format p, va_list ap)
 {
 	int				count;
 	unsigned int	n;
@@ -47,7 +47,7 @@ int ft_print_x(t_format p, va_list ap)
 	return (count);
 }
 
-int ft_print_ptr(t_format p, va_list ap)
+int	ft_print_ptr(t_format p, va_list ap)
 {
 	int		count;
 	size_t	n;
@@ -59,7 +59,7 @@ int ft_print_ptr(t_format p, va_list ap)
 	len *= !(!n && !p.precision && p.dot);
 	if (p.precision < len)
 		p.precision = len;
-	count += write(1, "0x",(2 * p.zero));
+	count += write(1, "0x", (2 * p.zero));
 	p.width -= 2;
 	if (!p.minus && (p.width > p.precision) && !p.dot && p.zero)
 		count += ft_putnchar_fd('0', 1, (p.width - p.precision));
@@ -77,9 +77,9 @@ int ft_print_ptr(t_format p, va_list ap)
 
 static int	ft_recurhex(t_format p, size_t n, size_t i)
 {
-	int count;
-	int rem;
-	char c;
+	int		count;
+	int		rem;
+	char	c;
 
 	count = 0;
 	if ((n > 0) || (!i && ((p.specifier != 'p') || !p.dot)))
@@ -97,7 +97,7 @@ static int	ft_recurhex(t_format p, size_t n, size_t i)
 	return (count);
 }
 
-static char *ft_sharp(t_format p)
+static char	*ft_sharp(t_format p)
 {
 	if (p.specifier == 'X')
 		return ("0X");
