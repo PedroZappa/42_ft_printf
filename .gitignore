@@ -1,5 +1,6 @@
 # Test files
 */*.znet
+.nfs*
 
 # Prerequisites
 *.d

@@ -6,7 +6,7 @@
 #    By: zedr0 <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/19 12:13:19 by zedr0             #+#    #+#              #
-#    Updated: 2023/10/27 12:40:16 by passunca         ###   ########.fr        #
+#    Updated: 2023/10/27 13:58:02 by passunca         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,13 +15,9 @@ NAME		= libftprintf.a
 LIBFT_PATH	= libft
 LIBFT		= $(LIBFT_PATH)/libft.a
 
-TESTS_PATH	= tests
-TESTS		= $(TESTS_PATH)/ftprintf.znet
-
 SRC			= ft_printf.c ft_parse.c ft_print_chars.c ft_print_nbrs.c ft_print_hex.c
 OBJS		= $(SRC:.c=.o)
 LIBFT_OBJS	= $(LIBFT_PATH)/*.o
-# TESTS_OBJS	= $(TESTS_PATH)/*.o tests/munit/*.o
 
 MAKE		= make -C 
 CFLAGS		= -Wall -Wextra -Werror
@@ -45,21 +41,14 @@ $(NAME): $(OBJS)
 	$(AR) $(NAME) $(OBJS)
 	@echo "\n\t\tSUCCESS!"
 
-# znet: $(NAME) 
-# 	@echo "\nCompiling znet..."
-# 	$(MAKE) $(TESTS_PATH) all
-# 	@echo "\nBuilding archive..."
-# 	$(AR) $(NAME) $(OBJS) $(LIBFT_OBJS) $(TESTS_OBJS) 
-# 	@echo "\n\t\tSUCCESS!"
+bonus: $(NAME)
 
 clean:
 	$(MAKE) $(LIBFT_PATH) clean
-	# $(MAKE) $(TESTS_PATH) clean
 	$(RM) $(OBJS)
 
 fclean: clean
 	$(MAKE) $(LIBFT_PATH) fclean
-	# $(MAKE) $(TESTS_PATH) fclean
 	$(RM) $(NAME)
 
 re: fclean all
