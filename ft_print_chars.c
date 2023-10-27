@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:33:00 by passunca          #+#    #+#             */
-/*   Updated: 2023/10/27 10:27:50 by passunca         ###   ########.fr       */
+/*   Updated: 2023/10/27 10:44:51 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,15 +47,33 @@ int	ft_print_str(t_format prsd, va_list ap)
 	if (!str)
 		str = "(null)";
 	len = ft_strlen(str);
-	if ((prsd.precision < 0) && prsd.precision > len)
+	if ((prsd.precision < 0) && (prsd.precision > len))
 		prsd.precision = len;
 	if (prsd.minus)
 		len += ft_wminus(prsd, str);
-	else if (prsd.precision == 0) 
+	else if (prsd.precision == 0 && prsd.width) 
 		len += ft_putstrn_fd(str, 1, len);
 	else 
 		len += ft_woutminus(prsd, str);
 
+	return (len);
+}
+
+static int ft_wminus(t_format prsd, char *str)
+{
+	int	len;
+
+	len = 0;
+	while (prsd.precision > 0 && *str)
+	{
+		len += ft_putnchar_fd(*str++, 1, 1);
+		prsd.precision--;
+	}
+	while (prsd.width > prsd.precision)
+	{
+		len += ft_putnchar_fd(' ', 1, 1);
+		prsd.width--;
+	}
 	return (len);
 }
 
@@ -77,22 +95,3 @@ static int ft_woutminus(t_format prsd, char *str)
 	}
 	return (len);
 }
-
-static int ft_wminus(t_format prsd, char *str)
-{
-	int	len;
-
-	len = 0;
-	while (prsd.width > prsd.precision)
-	{
-		len += ft_putnchar_fd(' ', 1, 1);
-		prsd.width--;
-	}
-	while (prsd.precision > 0 && *str)
-	{
-		len += ft_putnchar_fd(*str++, 1, 1);
-		prsd.precision--;
-	}
-	return (len);
-}
-
