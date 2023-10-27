@@ -60,7 +60,7 @@ git submodule init
 
 3. Update submodules:
 ```shell
-git submodule update
+git submodule update --recursive --remote
 ```
 
 4. Build the project:
