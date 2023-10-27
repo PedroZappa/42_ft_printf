@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:33:44 by passunca          #+#    #+#             */
-/*   Updated: 2023/10/27 12:45:24 by passunca         ###   ########.fr       */
+/*   Updated: 2023/10/27 15:55:14 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int	ft_print_x(t_format p, va_list ap)
 	return (count);
 }
 
+// print '(nil)' if pointer is 0
 int	ft_print_ptr(t_format p, va_list ap)
 {
 	int		count;
@@ -57,6 +58,11 @@ int	ft_print_ptr(t_format p, va_list ap)
 	n = va_arg(ap, size_t);
 	len = ft_numlen(n, 16);
 	len *= !(!n && !p.precision && p.dot);
+	if (n == 0)
+	{
+		count += ft_putstrn_fd("(nil)", 1, 5);
+		return (count);
+	}
 	if (p.precision < len)
 		p.precision = len;
 	count += write(1, "0x", (2 * p.zero));
