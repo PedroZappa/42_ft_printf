@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:33:44 by passunca          #+#    #+#             */
-/*   Updated: 2023/10/27 15:55:14 by passunca         ###   ########.fr       */
+/*   Updated: 2023/10/27 16:02:21 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ int	ft_print_x(t_format p, va_list ap)
 	return (count);
 }
 
-// print '(nil)' if pointer is 0
 int	ft_print_ptr(t_format p, va_list ap)
 {
 	int		count;
