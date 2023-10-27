@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:33:00 by passunca          #+#    #+#             */
-/*   Updated: 2023/10/27 08:51:34 by passunca         ###   ########.fr       */
+/*   Updated: 2023/10/27 09:15:06 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static int ft_woutminus(t_format prsd, char *str);
 static int ft_wminus(t_format prsd, char *str);
-
 
 int	ft_print_char(t_format prsd, va_list ap)
 {
@@ -62,3 +61,41 @@ int	ft_print_str(t_format prsd, va_list ap)
 
 	return (len);
 }
+
+static int ft_woutminus(t_format prsd, char *str)
+{
+	int	len;
+	
+	len = 0;
+	while (prsd.precision > 0 && *str)
+	{
+		len += ft_putnchar_fd(*str++, 1, 1);
+		prsd.width--;
+		prsd.precision--;
+	}
+	while (prsd.width > 0)
+	{
+		len += ft_putnchar_fd(' ', 1, 1);
+		prsd.width--;
+	}
+	return (len);
+}
+
+static int ft_wminus(t_format prsd, char *str)
+{
+	int	len;
+
+	len = 0;
+	while (prsd.width > prsd.precision)
+	{
+		len += ft_putnchar_fd(' ', 1, 1);
+		prsd.width--;
+	}
+	while (prsd.precision > 0 && *str)
+	{
+		len += ft_putnchar_fd(*str++, 1, 1);
+		prsd.precision--;
+	}
+	return (len);
+}
+
