@@ -68,11 +68,6 @@ git submodule update --recursive --remote
 make
 ```
 
-5. Build project with tests:
-```shell
-make znet
-```
-
 
 </div>
 
