@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:33:18 by passunca          #+#    #+#             */
-/*   Updated: 2023/10/29 20:13:15 by passunca         ###   ########.fr       */
+/*   Updated: 2023/10/29 20:46:46 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,9 @@ int	ft_print_specifier(t_format parsed, va_list ap)
 		len = ft_print_char(parsed, ap);
 	else if (parsed.specifier == 's')
 		len = ft_print_str(parsed, ap);
-	// else if (parsed.specifier == 'd' || parsed.specifier == 'i'
-	// 	|| parsed.specifier == 'u')
-	// 	len = ft_print_diu(parsed, ap);
+	else if (parsed.specifier == 'd' || parsed.specifier == 'i'
+		|| parsed.specifier == 'u')
+		len = ft_print_diu(parsed, ap);
 	// else if (parsed.specifier == 'x' || parsed.specifier == 'X')
 	// 	len = ft_print_x(parsed, ap);
 	// else if (parsed.specifier == 'p')
