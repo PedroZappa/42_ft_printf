@@ -6,14 +6,12 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:33:30 by passunca          #+#    #+#             */
-/*   Updated: 2023/10/30 15:26:09 by passunca         ###   ########.fr       */
+/*   Updated: 2023/10/30 16:01:22 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft/libft.h"
-
-// static char	ft_sign(t_format prsd);
 
 int	ft_print_diu(t_format prsd, va_list ap)
 {
@@ -30,15 +28,8 @@ int	ft_print_diu(t_format prsd, va_list ap)
 	}
 	else
 	{
-		u_nbr = va_arg(ap, unsigned int);
-		ft_uputnbr(u_nbr, &len);
+		u_nbr = va_arg(ap, size_t);
+		len += ft_uputnbr(u_nbr);
 	}
 	return ((int)len);
 }
-
-// static char	ft_sign(t_format prsd)
-// {
-// 	if (prsd.plus)
-// 		return ('+');
-// 	return ('-');
-// }
