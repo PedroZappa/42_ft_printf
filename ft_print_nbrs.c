@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:33:30 by passunca          #+#    #+#             */
-/*   Updated: 2023/10/30 12:46:39 by passunca         ###   ########.fr       */
+/*   Updated: 2023/10/30 13:06:55 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ int	ft_print_diu(t_format prsd, va_list ap)
 	else
 	{
 		u_nbr = va_arg(ap, unsigned int);
-		ft_uputnbr(n);
 		len = ft_numlen(u_nbr, 10);
+		ft_uputnbr(u_nbr, &len);
 	}
 	if (nbr != NULL)
 		free(nbr);

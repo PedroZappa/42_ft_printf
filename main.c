@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 12:50:37 by passunca          #+#    #+#             */
-/*   Updated: 2023/10/30 12:41:03 by passunca         ###   ########.fr       */
+/*   Updated: 2023/10/30 12:59:54 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,22 +63,29 @@ void test_u(void)
 	ft_putstr_fd(SEP, 1);
 	printf("TESTING %%u\n");
 
+	int len;
 	ft_putstr_fd(SEP, 1);
-	printf(" %u ", 42);
+	len = printf(" %u ", 42);
+	printf("\nlen: %d", len);
 	printf("\n");
-	ft_printf(" %u ", 42);
+	len = ft_printf(" %u ", 42);
+	printf("\nlen: %d", len);
 	printf("\n");
 
 	ft_putstr_fd(SEP, 1);
-	printf(" %u ", -1);
+	len = printf(" %u ", -1);
+	printf("\nlen: %d", len);
 	printf("\n");
-	ft_printf(" %u ", -1);
+	len = ft_printf(" %u ", -1);
+	printf("\nlen: %d", len);
 	printf("\n");
 
 	ft_putstr_fd(SEP, 1);
-	printf(" %u ", -99);
+	len = printf(" %u ", -99);
+	printf("\nlen: %d", len);
 	printf("\n");
-	ft_printf(" %u ", -99);
+	len = ft_printf(" %u ", -99);
+	printf("\nlen: %d", len);
 	printf("\n");
 }
 
