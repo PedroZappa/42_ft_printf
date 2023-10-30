@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 12:50:37 by passunca          #+#    #+#             */
-/*   Updated: 2023/10/27 20:10:21 by passunca         ###   ########.fr       */
+/*   Updated: 2023/10/30 09:00:56 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,16 @@ static void ft_test(int n, char *frmt, char *specif);
 
 void test_c(void);
 void test_s(void);
+void test_u(void);
 
 int main(int argc, char *argv[])
 {
 	(void) argv;
 	(void) argc;
 
-	test_c();
-	test_s();
-
-
-
-	unsigned int nbr0 = 42;
-	printf("Test %u\n", nbr0);
-	ft_printf("Test %u\n", nbr0);
-	ft_putstr_fd(SEP, 1);
+	// test_c();
+	// test_s();
+	test_u();
 
 	return (0);
 }
@@ -63,6 +58,24 @@ void test_s(void)
 	ft_test(2, " %s ", "Z");
 }
 
+void test_u(void)
+{
+	ft_putstr_fd(SEP, 1);
+	printf("TESTING %%u\n");
+
+	ft_putstr_fd(SEP, 1);
+	printf(" %u ", -1);
+	printf("\n");
+	ft_printf(" %u ", -1);
+	printf("\n");
+
+	ft_putstr_fd(SEP, 1);
+	printf(" %u ", -99);
+	printf("\n");
+	ft_printf(" %u ", -99);
+	printf("\n");
+}
+
 static void ft_test(int n, char *frmt, char *specif)
 {
 	printf("Test%d:\n", n);
@@ -73,14 +86,3 @@ static void ft_test(int n, char *frmt, char *specif)
 	ft_putstr_fd(SEP, 1);
 		
 }
-
-	// TEST(1, print("%s", ""));
-	// TEST(2, print(" %s", ""));
-	// TEST(3, print("%s ", ""));
-	// TEST(4, print(" %s ", ""));
-	// TEST(5, print(" %s ", "-"));
-	// TEST(6, print(" %s %s ", "", "-"));
-	// TEST(7, print(" %s %s ", " - ", ""));
-	// TEST(8, print(" %s %s %s %s %s", " - ", "", "4", "", s2));
-	// TEST(9, print(" %s %s %s %s %s ", " - ", "", "4", "", "2 "));
-	// TEST(10, print(" NULL %s NULL ", NULL));
