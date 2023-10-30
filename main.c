@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 12:50:37 by passunca          #+#    #+#             */
-/*   Updated: 2023/10/30 12:59:54 by passunca         ###   ########.fr       */
+/*   Updated: 2023/10/30 14:15:52 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,12 +71,12 @@ void test_u(void)
 	len = ft_printf(" %u ", 42);
 	printf("\nlen: %d", len);
 	printf("\n");
-
+	
 	ft_putstr_fd(SEP, 1);
-	len = printf(" %u ", -1);
+	len = printf(" %u ", -7);
 	printf("\nlen: %d", len);
 	printf("\n");
-	len = ft_printf(" %u ", -1);
+	len = ft_printf(" %u ", -7);
 	printf("\nlen: %d", len);
 	printf("\n");
 
