@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 12:50:37 by passunca          #+#    #+#             */
-/*   Updated: 2023/10/30 09:00:56 by passunca         ###   ########.fr       */
+/*   Updated: 2023/10/30 12:41:03 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,12 @@ void test_u(void)
 {
 	ft_putstr_fd(SEP, 1);
 	printf("TESTING %%u\n");
+
+	ft_putstr_fd(SEP, 1);
+	printf(" %u ", 42);
+	printf("\n");
+	ft_printf(" %u ", 42);
+	printf("\n");
 
 	ft_putstr_fd(SEP, 1);
 	printf(" %u ", -1);
