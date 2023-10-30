@@ -6,30 +6,21 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:33:30 by passunca          #+#    #+#             */
-/*   Updated: 2023/10/30 16:09:52 by passunca         ###   ########.fr       */
+/*   Updated: 2023/10/30 19:39:51 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft/libft.h"
 
-int	ft_print_diu(t_format prsd, va_list ap)
+int	ft_print_di(t_format prsd, va_list ap)
 {
-	unsigned int	u_nbr;
+	char			*nbr;
 	int				len;
-	int				n;
-
-	n = 0;
-	len = 0;
-	if (prsd.specifier == 'd' || prsd.specifier == 'i')
-	{
-		n = va_arg(ap, int);
-		len = ft_putnbr(n);
-	}
-	else
-	{
-		u_nbr = va_arg(ap, size_t);
-		len = ft_uputnbr(u_nbr);
-	}
+	
+	(void) prsd;
+	nbr = ft_itoa(va_arg(ap, int));
+	len = ft_putstrn_fd(nbr, 1, ft_strlen(nbr));
+	free(nbr);
 	return (len);
 }
