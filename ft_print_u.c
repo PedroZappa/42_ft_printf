@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 19:48:32 by passunca          #+#    #+#             */
-/*   Updated: 2023/10/30 20:50:10 by passunca         ###   ########.fr       */
+/*   Updated: 2023/10/30 20:55:45 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int ft_putunbr(unsigned int n)
 	
 	len = 0;
 	if (n == 0)
-		return (1);
+		len += write(1, "0", 1);
 	else
 	{
 		str = ft_uitoa((unsigned int)n);
