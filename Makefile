@@ -6,7 +6,7 @@
 #    By: zedr0 <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/19 12:13:19 by zedr0             #+#    #+#              #
-#    Updated: 2023/10/31 18:23:05 by passunca         ###   ########.fr        #
+#    Updated: 2023/10/31 20:28:10 by passunca         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,10 @@ NAME		= libftprintf.a
 LIBFT_PATH	= libft
 LIBFT		= $(LIBFT_PATH)/libft.a
 
-SRC			= ft_printf.c ft_parse.c ft_print_chars.c ft_print_diu.c ft_print_hex.c \
-			  ft_print_ptr.c
+SRC			= src/ft_printf.c src/ft_parse.c src/ft_print_chars.c \
+				src/ft_print_diu.c src/ft_print_hex.c \
+			  src/ft_print_ptr.c
+
 OBJS		= $(SRC:.c=.o)
 LIBFT_OBJS	= $(LIBFT_PATH)/*.o
 

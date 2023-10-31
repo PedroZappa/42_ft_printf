@@ -6,12 +6,12 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:33:00 by passunca          #+#    #+#             */
-/*   Updated: 2023/10/31 09:23:11 by passunca         ###   ########.fr       */
+/*   Updated: 2023/10/31 20:16:15 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft/libft.h"
+#include "../libft/libft.h"
 
 // static int ft_wominus(t_format prsd, char *str, int len);
 // static int ft_wminus(t_format prsd, char *str, int len);
