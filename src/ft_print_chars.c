@@ -6,33 +6,24 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:33:00 by passunca          #+#    #+#             */
-/*   Updated: 2023/10/31 21:00:21 by passunca         ###   ########.fr       */
+/*   Updated: 2023/10/31 22:31:57 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "../libft/libft.h"
 
-int	ft_print_char(t_format prsd, va_list ap)
+int	ft_print_char(t_format p, va_list ap)
 {
 	char	c;
 	int		len;
-	int		n;
 
 	len = 0;
-	n = (prsd.width - prsd.precision);
-	if (prsd.specifier == 'c')
+	if (p.specifier == 'c')
 		c = va_arg(ap, int);
 	else
 		c = '%';
-	prsd.precision = 0;
-	if (!prsd.minus && prsd.zero)
-		len += ft_putnchar_fd('0', 1, n);
-	else if (!prsd.minus && (prsd.width > prsd.precision))
-		len += ft_putnchar_fd(' ', 1, n);
 	len += ft_putchar_fd(c, 1);
-	if (prsd.minus && (n > 0))
-		len += ft_putnchar_fd(' ', 1, n);
 	return (len);
 }
 
