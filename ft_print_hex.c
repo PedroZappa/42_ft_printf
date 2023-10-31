@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:33:44 by passunca          #+#    #+#             */
-/*   Updated: 2023/10/31 10:11:43 by passunca         ###   ########.fr       */
+/*   Updated: 2023/10/31 10:22:33 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 
 // p = parsed
 // static char	*ft_sharp(t_format p);
-static void	ft_puthex(long hex);
-static int 	ft_hexlen(long nb);
+static void	ft_puthex(unsigned long hex);
+static int 	ft_hexlen(unsigned long nb);
 
 int	ft_print_ptr(t_format p, va_list ap)
 {
@@ -34,7 +34,7 @@ int	ft_print_ptr(t_format p, va_list ap)
 	return (len);
 }
 
-static void	ft_puthex(long nb)
+static void	ft_puthex(unsigned long nb)
 {
 	if (nb < 0)
 		nb *= -1;
@@ -47,7 +47,7 @@ static void	ft_puthex(long nb)
 	}
 }
 
-static int 	ft_hexlen(long nb)
+static int 	ft_hexlen(unsigned long nb)
 {
 	int	len;
 
