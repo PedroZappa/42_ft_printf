@@ -6,7 +6,7 @@
 #    By: zedr0 <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/19 12:13:19 by zedr0             #+#    #+#              #
-#    Updated: 2023/10/31 20:49:15 by passunca         ###   ########.fr        #
+#    Updated: 2023/10/31 21:32:57 by passunca         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,14 +20,15 @@ SRC			= src/ft_printf.c src/ft_parse.c src/ft_print_chars.c \
 			  src/ft_print_ptr.c
 
 SRCB		= srcb/ft_printf_bonus.c srcb/ft_parse_bonus.c \
-			  srcb/ft_print_chars_bonus.c srcb/ft_print_diu_bonus.c \
-			  srcb/ft_print_hex_bonus.c srcb/ft_print_ptr_bonus.c
+			  srcb/ft_print_c_bonus.c srcb/ft_print_s_bonus.c \
+			  srcb/ft_print_diu_bonus.c srcb/ft_print_hex_bonus.c \
+			  srcb/ft_print_ptr_bonus.c
 
 LIBFT_OBJS	= $(LIBFT_PATH)/*.o
 OBJS		= $(SRC:.c=.o)
 OBJSB		= $(SRCB:.c=.o)
 
-MAKE		= make -C 
+MAKE		= make -C
 CFLAGS		= -Wall -Wextra -Werror
 INC			= -I .
 CC			= cc
@@ -53,7 +54,7 @@ bonus: $(OBJSB)
 	@echo "\nCompiling libft..."
 	$(MAKE) $(LIBFT_PATH) extra
 	cp $(LIBFT) $(NAME)
-	@echo "\nBuilding archive..."
+	@echo "\nBuilding archive with bonus..."
 	$(AR) $(NAME) $(OBJSB)
 	@echo "\n\tSUCCESS!"
 

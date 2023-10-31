@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 20:41:49 by passunca          #+#    #+#             */
-/*   Updated: 2023/10/31 20:41:52 by passunca         ###   ########.fr       */
+/*   Updated: 2023/10/31 21:44:31 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 
 /* Constants */
 # define SPECIFIERS "cspdiuxX%"
+# define FLAGS		"0# +-"
 # define HEX_LOWER	"0123456789abcdef"
 # define HEX_UPPER	"0123456789ABCDEF"
 # define INT_MIN	-2147483648
