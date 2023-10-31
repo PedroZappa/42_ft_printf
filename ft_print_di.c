@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:33:30 by passunca          #+#    #+#             */
-/*   Updated: 2023/10/30 19:39:51 by passunca         ###   ########.fr       */
+/*   Updated: 2023/10/31 08:07:23 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_print_di(t_format prsd, va_list ap)
 {
 	char			*nbr;
 	int				len;
-	
+
 	(void) prsd;
 	nbr = ft_itoa(va_arg(ap, int));
 	len = ft_putstrn_fd(nbr, 1, ft_strlen(nbr));
