@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:33:44 by passunca          #+#    #+#             */
-/*   Updated: 2023/10/31 11:37:58 by passunca         ###   ########.fr       */
+/*   Updated: 2023/10/31 11:52:19 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 #include "libft/libft.h"
 #include <stdarg.h>
 
-// p = parsed
-static char	*ft_sharp(t_format p);
 static void	ft_puthex(unsigned long hex);
-static int 	ft_hexlen(unsigned long nb);
+static int	ft_hexlen(unsigned long nb);
+static char	*ft_x(t_format p);
 
+// p = parsed
 int	ft_print_ptr(t_format p, va_list ap)
 {
 	long	nb;
@@ -29,22 +29,22 @@ int	ft_print_ptr(t_format p, va_list ap)
 	if (!nb)
 		return (ft_putstrn_fd("(nil)", 1, 5));
 	len = (ft_hexlen(nb) + 2);
-	ft_putstr_fd("0x", 1);
+	ft_putstr_fd(ft_x(p), 1);
 	ft_puthex(nb);
 	return (len);
 }
 
 int	ft_print_x(t_format p, va_list ap)
 {
-	long	nb;
+	unsigned int	nb;
 	int		len;
 
 	(void)p;
-	nb = (unsigned long)va_arg(ap, void *);
+	nb = va_arg(ap, unsigned int);
 	if (!nb)
 		return (ft_putstrn_fd("(nil)", 1, 5));
 	len = (ft_hexlen(nb) + 2);
-	ft_putstr_fd(ft_sharp(p), 1);
+	ft_putstr_fd(ft_x(p), 1);
 	ft_puthex(nb);
 	return (len);
 }
@@ -62,7 +62,7 @@ static void	ft_puthex(unsigned long nb)
 	}
 }
 
-static int 	ft_hexlen(unsigned long nb)
+static int	ft_hexlen(unsigned long nb)
 {
 	int	len;
 
@@ -77,8 +77,7 @@ static int 	ft_hexlen(unsigned long nb)
 	return (len);
 }
 
-
-static char	*ft_sharp(t_format p)
+static char	*ft_x(t_format p)
 {
 	if (p.specifier == 'X')
 		return ("0X");
