@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:33:44 by passunca          #+#    #+#             */
-/*   Updated: 2023/10/31 11:26:07 by passunca         ###   ########.fr       */
+/*   Updated: 2023/10/31 11:37:58 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <stdarg.h>
 
 // p = parsed
-// static char	*ft_sharp(t_format p);
+static char	*ft_sharp(t_format p);
 static void	ft_puthex(unsigned long hex);
 static int 	ft_hexlen(unsigned long nb);
 
@@ -30,6 +30,21 @@ int	ft_print_ptr(t_format p, va_list ap)
 		return (ft_putstrn_fd("(nil)", 1, 5));
 	len = (ft_hexlen(nb) + 2);
 	ft_putstr_fd("0x", 1);
+	ft_puthex(nb);
+	return (len);
+}
+
+int	ft_print_x(t_format p, va_list ap)
+{
+	long	nb;
+	int		len;
+
+	(void)p;
+	nb = (unsigned long)va_arg(ap, void *);
+	if (!nb)
+		return (ft_putstrn_fd("(nil)", 1, 5));
+	len = (ft_hexlen(nb) + 2);
+	ft_putstr_fd(ft_sharp(p), 1);
 	ft_puthex(nb);
 	return (len);
 }
@@ -52,6 +67,8 @@ static int 	ft_hexlen(unsigned long nb)
 	int	len;
 
 	len = 0;
+	if (!nb)
+		return (1);
 	while (nb)
 	{
 		nb /= 16;
@@ -60,15 +77,10 @@ static int 	ft_hexlen(unsigned long nb)
 	return (len);
 }
 
-// int	ft_print_x(t_format p, va_list ap)
-// {
-//
-// }
-//
 
-// static char	*ft_sharp(t_format p)
-// {
-// 	if (p.specifier == 'X')
-// 		return ("0X");
-// 	return ("0x");
-// }
+static char	*ft_sharp(t_format p)
+{
+	if (p.specifier == 'X')
+		return ("0X");
+	return ("0x");
+}
