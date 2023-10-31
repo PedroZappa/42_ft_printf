@@ -6,14 +6,14 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:33:44 by passunca          #+#    #+#             */
-/*   Updated: 2023/10/31 12:38:59 by passunca         ###   ########.fr       */
+/*   Updated: 2023/10/31 12:56:04 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft/libft.h"
 
-static void	ft_puthex(unsigned long nb, t_format p);
+static int	ft_puthex(unsigned long nb, t_format p);
 static int	ft_hexlen(unsigned long nb);
 static char	*ft_hexseq(t_format p);
 
@@ -33,20 +33,23 @@ int	ft_print_x(t_format p, va_list ap)
 	return (len);
 }
 
-static void	ft_puthex(unsigned long nb, t_format p)
+static int	ft_puthex(unsigned long nb, t_format p)
 {
 	char	*hexseq;
+	int count;
 
+	count = 0;
 	hexseq = ft_hexseq(p);
 	if (nb < 0)
 		nb *= -1;
 	if (nb < 16)
-		ft_putchar(HEX_LOWER[nb]);
+		ft_putchar(hexseq[nb]);
 	if (nb >= 16)
 	{
 		ft_puthex((nb / 16), p);
-		ft_putchar(HEX_LOWER[nb % 16]);
+		count += ft_putchar(hexseq[nb % 16]);
 	}
+	return (count);
 }
 
 static int	ft_hexlen(unsigned long nb)
