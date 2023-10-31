@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:33:44 by passunca          #+#    #+#             */
-/*   Updated: 2023/10/31 12:56:04 by passunca         ###   ########.fr       */
+/*   Updated: 2023/10/31 13:16:12 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,15 @@ static int	ft_puthex(unsigned long nb, t_format p);
 static int	ft_hexlen(unsigned long nb);
 static char	*ft_hexseq(t_format p);
 
-// p = parsed
-
 int	ft_print_x(t_format p, va_list ap)
 {
 	unsigned int	nb;
-	int		len;
+	int				len;
 
 	(void)p;
 	nb = va_arg(ap, unsigned int);
-	if (nb == 0)
-		return (ft_putstrn_fd("(nil)", 1, 5));
+	// if (nb == 0)
+	// 	return (ft_putstrn_fd("(nil)", 1, 5));
 	len = ft_hexlen(nb);
 	ft_puthex(nb, p);
 	return (len);
@@ -36,7 +34,7 @@ int	ft_print_x(t_format p, va_list ap)
 static int	ft_puthex(unsigned long nb, t_format p)
 {
 	char	*hexseq;
-	int count;
+	int		count;
 
 	count = 0;
 	hexseq = ft_hexseq(p);
