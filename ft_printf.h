@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:34:01 by passunca          #+#    #+#             */
-/*   Updated: 2023/10/30 19:34:26 by passunca         ###   ########.fr       */
+/*   Updated: 2023/10/31 08:27:22 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ int			ft_parse(const char *format, va_list ap);
 int			ft_print_specifier(t_format parsed, va_list ap);
 int			ft_print_char(t_format parsed, va_list ap);
 int			ft_print_str(t_format parsed, va_list ap);
-int			ft_print_di(t_format parsed, va_list ap);
-int			ft_print_u(t_format parsed, va_list ap);
+int			ft_print_diu(t_format parsed, va_list ap);
+// int			ft_print_u(t_format parsed, va_list ap);
 int			ft_print_x(t_format parsed, va_list ap);
 int			ft_print_ptr(t_format parsed, va_list ap);
 
