@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:33:44 by passunca          #+#    #+#             */
-/*   Updated: 2023/10/31 10:01:27 by passunca         ###   ########.fr       */
+/*   Updated: 2023/10/31 10:03:41 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int	ft_print_ptr(t_format p, va_list ap)
 
 	(void)p;
 	nb = (unsigned long)va_arg(ap, void *);
+	if (!nb)
+		return (ft_putstrn_fd("(nil)", 1, 5));
 	len = ft_puthex(nb, &len);
 	return (len);
 }
