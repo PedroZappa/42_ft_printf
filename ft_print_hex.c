@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:33:44 by passunca          #+#    #+#             */
-/*   Updated: 2023/10/31 11:52:19 by passunca         ###   ########.fr       */
+/*   Updated: 2023/10/31 12:10:58 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 #include "libft/libft.h"
 #include <stdarg.h>
 
-static void	ft_puthex(unsigned long hex);
+static void	ft_puthex(unsigned long nb);
 static int	ft_hexlen(unsigned long nb);
+// static int	ft_hexseq(unsigned long nb);
 static char	*ft_x(t_format p);
 
 // p = parsed
@@ -43,8 +44,7 @@ int	ft_print_x(t_format p, va_list ap)
 	nb = va_arg(ap, unsigned int);
 	if (!nb)
 		return (ft_putstrn_fd("(nil)", 1, 5));
-	len = (ft_hexlen(nb) + 2);
-	ft_putstr_fd(ft_x(p), 1);
+	len = ft_hexlen(nb);
 	ft_puthex(nb);
 	return (len);
 }
