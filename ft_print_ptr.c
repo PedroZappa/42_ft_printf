@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 12:35:25 by passunca          #+#    #+#             */
-/*   Updated: 2023/10/31 12:38:19 by passunca         ###   ########.fr       */
+/*   Updated: 2023/10/31 18:33:52 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,6 @@ int	ft_print_ptr(t_format p, va_list ap)
 
 static void	ft_putptr(unsigned long nb, t_format p)
 {
-	if (nb < 0)
-		nb *= -1;
 	if (nb < 16)
 		ft_putchar(HEX_LOWER[nb]);
 	if (nb >= 16)

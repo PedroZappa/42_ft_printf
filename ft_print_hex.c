@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:33:44 by passunca          #+#    #+#             */
-/*   Updated: 2023/10/31 13:16:12 by passunca         ###   ########.fr       */
+/*   Updated: 2023/10/31 18:34:48 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ int	ft_print_x(t_format p, va_list ap)
 
 	(void)p;
 	nb = va_arg(ap, unsigned int);
-	// if (nb == 0)
-	// 	return (ft_putstrn_fd("(nil)", 1, 5));
 	len = ft_hexlen(nb);
 	ft_puthex(nb, p);
 	return (len);
@@ -38,8 +36,6 @@ static int	ft_puthex(unsigned long nb, t_format p)
 
 	count = 0;
 	hexseq = ft_hexseq(p);
-	if (nb < 0)
-		nb *= -1;
 	if (nb < 16)
 		ft_putchar(hexseq[nb]);
 	if (nb >= 16)
