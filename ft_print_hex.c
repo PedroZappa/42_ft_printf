@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:33:44 by passunca          #+#    #+#             */
-/*   Updated: 2023/10/31 10:03:41 by passunca         ###   ########.fr       */
+/*   Updated: 2023/10/31 10:11:43 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 
 // p = parsed
 // static char	*ft_sharp(t_format p);
-static int	ft_puthex(long hex, int *len);
+static void	ft_puthex(long hex);
+static int 	ft_hexlen(long nb);
 
 int	ft_print_ptr(t_format p, va_list ap)
 {
@@ -27,22 +28,36 @@ int	ft_print_ptr(t_format p, va_list ap)
 	nb = (unsigned long)va_arg(ap, void *);
 	if (!nb)
 		return (ft_putstrn_fd("(nil)", 1, 5));
-	len = ft_puthex(nb, &len);
+	len = ft_hexlen(nb);
+	ft_putstr_fd("0x", 1);
+	ft_puthex(nb);
 	return (len);
 }
 
-static int	ft_puthex(long nb, int *len)
+static void	ft_puthex(long nb)
 {
 	if (nb < 0)
 		nb *= -1;
 	if (nb < 16)
-		len += ft_putchar(HEX_LOWER[nb]);
+		ft_putchar(HEX_LOWER[nb]);
 	if (nb >= 16)
 	{
-		ft_puthex(nb / 16, len);
-		ft_puthex(nb % 16, len);
+		ft_puthex(nb / 16);
+		ft_puthex(nb % 16);
 	}
-	return (*(len));
+}
+
+static int 	ft_hexlen(long nb)
+{
+	int	len;
+
+	len = 0;
+	while (nb)
+	{
+		nb /= 16;
+		++len;
+	}
+	return (len + 2);
 }
 
 // int	ft_print_x(t_format p, va_list ap)
