@@ -6,14 +6,14 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:33:00 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/01 09:49:29 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/01 10:31:56 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 #include "../libft/libft.h"
 
-int ft_putwidth(t_format p, int *len);
+static int ft_putwidth(t_format p, int *len);
 
 int	ft_print_char(t_format p, va_list ap)
 {
@@ -33,12 +33,12 @@ int	ft_print_char(t_format p, va_list ap)
 	return (len);
 }
 
-int ft_putwidth(t_format p, int *len)
+static int ft_putwidth(t_format p, int *len)
 {
 	int i;
 
 	i = 0;
-	if (p.width > 1)
+	if (p.width > p.precision)
 	{
 		while (p.width > 1)
 		{

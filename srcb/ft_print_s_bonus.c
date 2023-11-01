@@ -6,23 +6,47 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:33:00 by passunca          #+#    #+#             */
-/*   Updated: 2023/10/31 21:28:38 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/01 10:38:45 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 #include "../libft/libft.h"
 
-int	ft_print_str(t_format prsd, va_list ap)
+static int ft_putwidth(t_format p, int *len);
+
+int	ft_print_str(t_format p, va_list ap)
 {
 	char	*str;
 	int		len;
 
-	(void) prsd;
 	str = va_arg(ap, char *);
 	if (!str)
 		str = "(null)";
 	len = ft_strlen(str);
+	if ((p.precision > len) || !p.dot)
+		p.precision = len;
+	if (!p.minus)
+		p.width -= ft_putwidth(p, &len);
 	ft_putstr_fd(str, 1);
+	if (p.minus)
+		ft_putwidth(p, &len);
 	return (len);
+}
+
+static int ft_putwidth(t_format p, int *len)
+{
+	int i;
+
+	i = 0;
+	if (p.width > p.precision)
+	{
+		while (p.width > 1)
+		{
+			len += ft_putchar_fd(' ', 1);
+			--p.width;
+			++i;
+		}
+	}
+	return (i);
 }
