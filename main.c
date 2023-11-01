@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 13:01:44 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/01 18:15:56 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/01 19:34:20 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ int main(int argc, char *argv[])
 	(void) argv;
 	(void) argc;
 
-	test_c();
-	// test_s();
+	// test_c();
+	test_s();
 	// test_di();
 	// test_u();
-	test_x();
+	// test_x();
 
 	return (0);
 }
@@ -62,9 +62,9 @@ void test_s(void)
 	ft_printf("TESTING %%s\n");
 
 	ft_putstr_fd(SEP, 1);
-	ft_test(1, " %s ", "-");
+	ft_test(1, "'%-10s'", "Zedr0");
 	ft_putstr_fd(SEP, 1);
-	ft_test(2, " %s ", "Z");
+	ft_test(2, "'% 10s'", "Zedr0");
 }
 
 void test_di(void)
