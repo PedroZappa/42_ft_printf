@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:33:18 by passunca          #+#    #+#             */
-/*   Updated: 2023/10/31 22:21:02 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/01 12:10:40 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ int	ft_printf(const char *format, ...)
 t_format	ft_newformat(void)
 {
 	t_format	new_format;
-
+	
+	new_format.str = 0;
 	new_format.specifier = 0;
 	new_format.minus = 0;
 	new_format.plus = 0;
@@ -55,23 +56,4 @@ t_format	ft_newformat(void)
 	new_format.space = 0;
 	new_format.sharp = 0;
 	return (new_format);
-}
-
-int	ft_print_specifier(t_format parsed, va_list ap)
-{
-	int	len;
-
-	len = 0;
-	if (parsed.specifier == 'c' || parsed.specifier == '%')
-		len = ft_print_char(parsed, ap);
-	else if (parsed.specifier == 's')
-		len = ft_print_str(parsed, ap);
-	else if (parsed.specifier == 'd' || parsed.specifier == 'i'
-		|| parsed.specifier == 'u')
-		len = ft_print_diu(parsed, ap);
-	else if (parsed.specifier == 'x' || parsed.specifier == 'X')
-		len = ft_print_x(parsed, ap);
-	else if (parsed.specifier == 'p')
-		len = ft_print_ptr(parsed, ap);
-	return (len);
 }

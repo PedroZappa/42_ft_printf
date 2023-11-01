@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 12:35:25 by passunca          #+#    #+#             */
-/*   Updated: 2023/10/31 20:41:14 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/01 11:43:35 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	ft_putptr(unsigned long nb, t_format p);
 static int	ft_hexlen(unsigned long nb);
 static char	*ft_x(t_format p);
 
-int	ft_print_ptr(t_format p, va_list ap)
+int	ft_print_p(t_format p, va_list ap)
 {
 	long	nb;
 	int		len;

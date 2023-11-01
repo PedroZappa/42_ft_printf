@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 20:41:49 by passunca          #+#    #+#             */
-/*   Updated: 2023/10/31 21:44:31 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/01 12:04:25 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 /* Struct to track format parameters */
 typedef struct s_format
 {
+	char	*str;
 	char	specifier;
 	int		minus;
 	int		plus;
@@ -45,12 +46,17 @@ int			ft_printf(const char *format, ...);
 t_format	ft_newformat(void);
 /* Parsing */
 int			ft_parse(const char *format, va_list ap);
+/* Check & Convert */
+int ft_check_spec(char c, char *spec);
+int ft_num_specs(const char *format, t_format parsed, va_list ap);
+int ft_other_specs(const char *format, t_format parsed, va_list ap);
 /* Printing */
-int			ft_print_specifier(t_format parsed, va_list ap);
-int			ft_print_char(t_format parsed, va_list ap);
-int			ft_print_str(t_format parsed, va_list ap);
-int			ft_print_diu(t_format parsed, va_list ap);
-int			ft_print_ptr(t_format parsed, va_list ap);
+int			ft_print_specifier(const char *format, t_format parsed, va_list ap);
+int			ft_print_c(t_format parsed, va_list ap);
+int			ft_print_s(t_format parsed, va_list ap);
+int			ft_print_di(t_format parsed, va_list ap);
+int			ft_print_u(t_format parsed, va_list ap);
+int			ft_print_p(t_format parsed, va_list ap);
 int			ft_print_hex(t_format parsed, va_list ap);
 int			ft_print_x(t_format parsed, va_list ap);
 

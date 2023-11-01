@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:33:00 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/01 10:38:45 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/01 11:58:48 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 static int ft_putwidth(t_format p, int *len);
 
-int	ft_print_str(t_format p, va_list ap)
+int	ft_print_s(t_format p, va_list ap)
 {
 	char	*str;
 	int		len;
