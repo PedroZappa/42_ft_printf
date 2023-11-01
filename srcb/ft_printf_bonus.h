@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 20:41:49 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/01 18:58:22 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/01 20:05:51 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 /* Struct to track format parameters */
 typedef struct s_format
 {
+	int		c;
 	char	*str;
 	char	specifier;
 	char	flag;
@@ -33,7 +34,6 @@ typedef struct s_format
 	int		plus;
 	int		width;
 	int		precision;
-	int		neg_precision;
 	int		zero;
 	int		dot;
 	int		space;

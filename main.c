@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 13:01:44 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/01 19:34:20 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/01 20:24:56 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,8 @@ void test_di(void);
 void test_u(void);
 void test_x(void);
 
-int main(int argc, char *argv[])
+int main(void)
 {
-	(void) argv;
-	(void) argc;
-
 	// test_c();
 	test_s();
 	// test_di();
@@ -44,16 +41,12 @@ void test_c(void)
 	ft_putstr_fd(SEP, 1);
 
 	ft_putstr_fd(SEP, 1);
-	printf("'%10c'\n", 'z');
-	ft_printf("'%#10.7c'\n", 'z');
+	printf("'%-3c'\n", 'z');
+	ft_printf("'%-3c'\n", 'z');
 
-	// ft_putstr_fd(SEP, 1);
-	// printf("'%-3c'\n", 'z');
-	// ft_printf("'%-3c'\n", 'z');
-
-	// ft_putstr_fd(SEP, 1);
-	// printf("%-05%\n");
-	// ft_printf("%-05%\n");
+	ft_putstr_fd(SEP, 1);
+	printf("'%3c'\n", 'z');
+	ft_printf("'%3c'\n", 'z');
 }
 
 void test_s(void)
@@ -62,9 +55,13 @@ void test_s(void)
 	ft_printf("TESTING %%s\n");
 
 	ft_putstr_fd(SEP, 1);
-	ft_test(1, "'%-10s'", "Zedr0");
+	ft_test(1, "'%.s'", NULL);
 	ft_putstr_fd(SEP, 1);
-	ft_test(2, "'% 10s'", "Zedr0");
+	ft_test(2, "'%.s'", "Zedr0");
+	ft_putstr_fd(SEP, 1);
+	ft_test(3, "'%.3s'", "Zedr0");
+	ft_putstr_fd(SEP, 1);
+	ft_test(4, "'%.0s'", "Zedr0");
 }
 
 void test_di(void)

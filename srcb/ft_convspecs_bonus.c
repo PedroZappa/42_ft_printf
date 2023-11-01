@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 10:59:41 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/01 18:11:01 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/01 20:14:05 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ int	ft_print_specifier(const char *format, t_format parsed, va_list ap)
 		len += ft_num_specs(format, parsed, ap);
 	else
 		len += ft_char_specs(format, parsed, ap);
-	// if (ft_check_flag_spec(*format, "+ #"))
-	// 	++format;	
+	if (ft_check_flag_spec(*format, "+ #"))
+		++format;	
 	return (len);
 }
 

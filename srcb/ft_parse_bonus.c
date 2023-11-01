@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:24:58 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/01 16:50:52 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/01 20:03:47 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,17 +96,17 @@ static t_format	ft_parse_bonus(const char *format, t_format parsed)
 
 // static void	ft_print_format(t_format p)
 // {
-// 	printf("\nparsed from format :\n");	
+// 	printf("\nparsed from format :\n");
+// 	printf("char\t*c\t: %c\n", p.c);
 // 	printf("char\t*str\t: %s\n", p.str);
-// 	printf("char\tspecifier\t: %d\n", p.specifier);
+// 	printf("char\tspecifier\t: %c\n", p.specifier);
+// 	printf("char\tflag\t: %c\n", p.flag);
 // 	printf("int\tminus\t: %d\n", p.minus);
 // 	printf("int\tplus\t: %d\n", p.plus);
 // 	printf("int\twidth\t: %d\n", p.width);
-// 	printf("int\tprecision\t: %d\n", p.width);
+// 	printf("int\tprecision\t: %d\n", p.precision);
 // 	printf("int\tzero\t: %d\n", p.zero);
 // 	printf("int\tdot\t: %d\n", p.dot);
 // 	printf("int\tspace\t: %d\n", p.space);
 // 	printf("int\tsharp\t: %d\n", p.sharp);
-// 	
-//
 // }

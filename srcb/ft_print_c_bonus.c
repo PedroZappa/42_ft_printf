@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:33:00 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/01 17:05:12 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/01 20:21:08 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,17 @@ static int	ft_putwidth(t_format p, int *len);
 
 int	ft_print_c(t_format p, va_list ap)
 {
-	char	c;
 	int		len;
 
 	len = 0;
 	if (p.specifier == 'c')
-		c = va_arg(ap, int);
+		p.c = va_arg(ap, int);
 	else
-		c = '%';
-	if (!p.minus)
+		p.c = '%';
+	if (!p.minus && p.c != '%')
 		p.width -= ft_putwidth(p, &len);
-	len += ft_putchar_fd(c, 1);
-	if (p.minus)
+	len += ft_putchar_fd(p.c, 1);
+	if (p.minus && p.c != '%')
 		ft_putwidth(p, &len);
 	return (len);
 }
