@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 13:01:44 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/01 10:13:02 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/01 16:50:21 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,20 +38,20 @@ int main(int argc, char *argv[])
 void test_c(void)
 {
 	ft_putstr_fd(SEP, 1);
-	ft_printf("TESTING %%c\n");
+	printf("TESTING %%c\n");
 	ft_putstr_fd(SEP, 1);
 
 	ft_putstr_fd(SEP, 1);
-	printf("'%3c'\n", 'z');
-	ft_printf("'%3c'\n", 'z');
+	printf("'%10c'\n", 'z');
+	ft_printf("'%#10.7c'\n", 'z');
 
-	ft_putstr_fd(SEP, 1);
-	printf("'%-3c'\n", 'z');
-	ft_printf("'%-3c'\n", 'z');
+	// ft_putstr_fd(SEP, 1);
+	// printf("'%-3c'\n", 'z');
+	// ft_printf("'%-3c'\n", 'z');
 
-	ft_putstr_fd(SEP, 1);
-	printf("%-05%\n");
-	ft_printf("%-05%\n");
+	// ft_putstr_fd(SEP, 1);
+	// printf("%-05%\n");
+	// ft_printf("%-05%\n");
 }
 
 void test_s(void)

@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:33:18 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/01 12:10:40 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/01 17:02:16 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	ft_printf(const char *format, ...)
 t_format	ft_newformat(void)
 {
 	t_format	new_format;
-	
+
 	new_format.str = 0;
 	new_format.specifier = 0;
 	new_format.minus = 0;
