@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:33:00 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/01 20:33:53 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/01 20:42:53 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ static int	ft_putwidth(t_format p, int *len)
 
 	i = 0;
 	strlen = ft_strlen(p.str);
+	if (p.precision < strlen)
+		strlen = p.precision;
 	if (p.width > p.precision)
 	{
 		while (p.width > strlen)
