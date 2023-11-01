@@ -6,16 +6,15 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:33:30 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/01 18:18:50 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/01 19:21:37 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 #include "../libft/libft.h"
 
-int		ft_putunbr(unsigned int n);
-char	*ft_uitoa(unsigned int nb);
-int	ft_flags(t_format prsd, int nbr);
+int			ft_putunbr(unsigned int n);
+static int	ft_putprefix(t_format p);
 
 int	ft_print_di(t_format prsd, va_list ap)
 {
@@ -28,7 +27,7 @@ int	ft_print_di(t_format prsd, va_list ap)
 	n = va_arg(ap, int);
 	nbr = ft_itoa(n);
 	if (prsd.plus || prsd.space)
-		len += ft_flags(prsd, n);
+		len += ft_putprefix(prsd);
 	len = ft_putstrn_fd(nbr, 1, ft_strlen(nbr));
 	free(nbr);
 	return (len);
@@ -62,21 +61,14 @@ int	ft_putunbr(unsigned int n)
 	return (len);
 }
 
-int	ft_flags(t_format prsd, int nbr)
+static int	ft_putprefix(t_format p)
 {
-	if (prsd.flag == '#' && nbr)
-	{
-		if (prsd.specifier == 'x')
-			return (write(1, "0x", 2));
-		else if (prsd.specifier == 'X')
-			return (write(1, "0X", 2));
-		else
-			return (write(1, "0", 1));
-	}
+	if (p.specifier == ' ')
+		return (write(1, " ", 1));
+	else if (p.specifier == '0')
+		return (write(1, "0", 1));
+	else if (p.plus)
+		return (write(1, "+", 1));
 	else
-	{
-		if (nbr >= 0)
-			return (write(1, &prsd.flag, 1));
-	}
-	return (1);
+		return (write(1, "-", 1));
 }

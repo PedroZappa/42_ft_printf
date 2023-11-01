@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 20:41:49 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/01 18:03:23 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/01 18:58:22 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct s_format
 {
 	char	*str;
 	char	specifier;
-	char 	flag;
+	char	flag;
 	int		minus;
 	int		plus;
 	int		width;
