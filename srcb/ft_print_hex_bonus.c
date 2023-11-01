@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:33:44 by passunca          #+#    #+#             */
-/*   Updated: 2023/10/31 20:40:57 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/01 18:25:49 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 static int	ft_puthex(unsigned long nb, t_format p);
 static int	ft_hexlen(unsigned long nb);
 static char	*ft_hexseq(t_format p);
+static int	ft_putx(t_format p);
 
 int	ft_print_x(t_format p, va_list ap)
 {
@@ -25,6 +26,8 @@ int	ft_print_x(t_format p, va_list ap)
 	(void)p;
 	nb = va_arg(ap, unsigned int);
 	len = ft_hexlen(nb);
+	if (p.sharp && nb)
+		len += ft_putx(p);
 	ft_puthex(nb, p);
 	return (len);
 }
@@ -66,4 +69,11 @@ static char	*ft_hexseq(t_format p)
 	if (p.specifier == 'x')
 		return ("0123456789abcdef");
 	return ("0123456789ABCDEF");
+}
+
+static int	ft_putx(t_format p)
+{
+	if (p.specifier == 'X')
+		return (write(1, "0X", 2));
+	return (write(1, "0x", 2));
 }

@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 20:41:49 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/01 17:01:00 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/01 18:03:23 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct s_format
 {
 	char	*str;
 	char	specifier;
+	char 	flag;
 	int		minus;
 	int		plus;
 	int		width;
@@ -47,9 +48,9 @@ t_format	ft_newformat(void);
 /* Parsing */
 int			ft_parse(const char *format, va_list ap);
 /* Check & Convert */
-int			ft_check_spec(char c, char *spec);
+int			ft_check_flag_spec(char c, char *spec);
 int			ft_num_specs(const char *format, t_format parsed, va_list ap);
-int			ft_other_specs(const char *format, t_format parsed, va_list ap);
+int			ft_char_specs(const char *format, t_format parsed, va_list ap);
 /* Printing */
 int			ft_print_specifier(const char *format, t_format parsed, va_list ap);
 int			ft_print_c(t_format parsed, va_list ap);
@@ -59,5 +60,6 @@ int			ft_print_u(t_format parsed, va_list ap);
 int			ft_print_p(t_format parsed, va_list ap);
 int			ft_print_hex(t_format parsed, va_list ap);
 int			ft_print_x(t_format parsed, va_list ap);
+int			ft_flags(t_format prsd, int nbr);
 
 #endif

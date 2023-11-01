@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 13:01:44 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/01 16:50:21 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/01 18:15:56 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void test_c(void);
 void test_s(void);
 void test_di(void);
 void test_u(void);
+void test_x(void);
 
 int main(int argc, char *argv[])
 {
@@ -31,6 +32,7 @@ int main(int argc, char *argv[])
 	// test_s();
 	// test_di();
 	// test_u();
+	test_x();
 
 	return (0);
 }
@@ -107,6 +109,17 @@ void test_u(void)
 	len = ft_printf(" %u ", -99);
 	printf("\nlen: %d", len);
 	printf("\n");
+}
+
+void test_x(void)
+{
+	ft_putstr_fd(SEP, 1);
+	ft_printf("TESTING %%x\n");
+	
+	char *ptr = "Zedr0";
+	ft_putstr_fd(SEP, 1);
+	ft_test(1, "%#x", ptr);
+	ft_test(2, "%#X", ptr);
 }
 
 static void ft_test(int n, char *frmt, char *specif)
