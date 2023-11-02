@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:33:00 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/01 21:40:45 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/02 11:13:28 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,13 @@ int	ft_print_s(t_format p, va_list ap)
 	int		len;
 
 	p.str = va_arg(ap, char *);
-	if (!p.str && !p.precision)
-		p.str = "(null)";
-	else if (!p.str) 
-		p.str = "";
+	if (!p.str)
+	{
+		if (p.dot && (p.precision < 6))
+			p.str = "";
+		else
+			p.str = "(null)";
+	}
 	len = ft_strlen(p.str);
 	if ((p.precision > len) || !p.dot)
 		p.precision = len;
