@@ -6,14 +6,14 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:33:00 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/02 16:08:47 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/02 16:10:52 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 
 static int	ft_putstr(const char *str, t_format p);
-int			ft_print_s_precision(const char *str, int precision);
+static int	ft_print_s_precision(const char *str, int precision);
 
 int	ft_print_s(const char *str, t_format p)
 {
@@ -54,7 +54,7 @@ static int	ft_putstr(const char *str, t_format p)
 	return (count);
 }
 
-int	ft_print_s_pre(const char *str, int precision)
+static int	ft_print_s_pre(const char *str, int precision)
 {
 	int count;
 
