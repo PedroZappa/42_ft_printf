@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 13:01:44 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/02 12:27:30 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/02 19:42:07 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ void test_c(void)
 	ft_putstr_fd(SEP, 1);
 
 	ft_putstr_fd(SEP, 1);
-	printf("'%-3c'\n", 'z');
-	ft_printf("'%-3c'\n", 'z');
+	printf("'%3c'\n", 'z');
+	ft_printf("'%3c'\n", 'z');
 
 	ft_putstr_fd(SEP, 1);
 	printf("'%3c'\n", 'z');
