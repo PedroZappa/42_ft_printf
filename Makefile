@@ -6,7 +6,7 @@
 #    By: zedr0 <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/19 12:13:19 by zedr0             #+#    #+#              #
-#    Updated: 2023/11/02 17:13:19 by passunca         ###   ########.fr        #
+#    Updated: 2023/11/02 19:32:08 by passunca         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ SRCB		= srcb/ft_printf_bonus.c srcb/ft_parse_bonus.c \
 			  srcb/ft_print_c_bonus.c srcb/ft_print_s_bonus.c \
 			  srcb/ft_print_di_bonus.c srcb/ft_print_u_bonus.c \
 			  srcb/ft_print_hex_bonus.c srcb/ft_print_p_bonus.c \
-			  srcb/ft_convspecs_bonus.c
+			  srcb/ft_convspecs_bonus.c srcb/ft_flags_bonus.c \
+			  srcb/ft_flag_utils_bonus.c srcb/ft_xtoa.c
 
 LIBFT_OBJS	= $(LIBFT_PATH)/*.o
 OBJS		= $(SRC:.c=.o)

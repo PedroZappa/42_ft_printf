@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:24:58 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/02 14:58:11 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/02 19:26:32 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,10 @@ int	ft_print_arg(t_format p, char type, va_list ap)
 		count += ft_print_di(va_arg(ap, int), p);
 	else if (type == 'u')
 		count += ft_print_u(va_arg(ap, unsigned int), p);
-	else if (type == 'x' || type == 'X')
-		count += ft_print_x(va_arg(ap, unsigned int), p);
+	else if (type == 'x')
+		count += ft_print_x(va_arg(ap, unsigned int), 0, p);
+	else if (type == 'X')
+		count += ft_print_x(va_arg(ap, unsigned int), 1, p);
 	else if (type == 'p')
 		count += ft_print_p((unsigned long int)va_arg(ap, void *), p);
 	return (count);

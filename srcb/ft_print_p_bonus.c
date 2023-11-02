@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 12:35:25 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/02 17:12:34 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/02 19:11:27 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	ft_print_p(unsigned long int n, t_format p)
 	count += ft_pad_width(p.width, ft_ptrlen(n), 0);
 	if (!p.minus)
 		count += ft_print_ptr(n);
+	return (count);
 }
 
 int ft_print_ptr(unsigned long int n)
