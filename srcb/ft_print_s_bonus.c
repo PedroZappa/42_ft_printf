@@ -6,65 +6,70 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:33:00 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/02 11:53:05 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/02 16:08:47 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
-#include "../libft/libft.h"
 
-static void	ft_putwithminus(t_format p, int *len);
-static void	ft_putwoutminus(t_format p, int *len);
+static int	ft_putstr(const char *str, t_format p);
+int			ft_print_s_precision(const char *str, int precision);
 
-int	ft_print_s(t_format p, va_list ap)
+int	ft_print_s(const char *str, t_format p)
 {
-	int		len;
+	int		count;
 
-	p.str = va_arg(ap, char *);
-	if (!p.str)
+	count = 0;
+	if ((str == NULL) && (p.precision >= 0) && (p.precision < 6))
 	{
-		if (p.dot && (p.precision < 6))
-			p.str = "";
-		else
-			p.str = "(null)";
+		count += ft_pad_width(p.precision, 0, 0);
 	}
-	len = ft_strlen(p.str);
-	if ((p.precision > len) || !p.dot)
-		p.precision = len;
-	if (!p.precision || (p.dot && !p.precision))
-		return (0);
+	if (!str)
+		str = "(null)";
+	if ((p.precision >= 0) && ((size_t)p.precision > ft_strlen(str)))
+		p.precision = ft_strlen(str);
 	if (p.minus)
-		ft_putwithminus(p, &len);
+		count += ft_putstr(str, p);
+	if (p.precision >= 0)
+		count += ft_pad_width(p.width, p.precision, 0);
 	else
-		ft_putwoutminus(p, &len);
-	return (len);
+		count += ft_pad_width(p.width, ft_strlen(str), 0);
+	if (!p.minus)
+		count += ft_putstr(str, p);
+	return (count);
 }
 
-static void ft_putwithminus(t_format p, int *len)
+static int	ft_putstr(const char *str, t_format p)
 {
-	while ((p.precision > 0) && *p.str)
+	int		count;
+
+	count = 0;
+	if (p.precision >= 0)
 	{
-		len += ft_putchar_fd(*p.str++, 1);
-		--p.precision;
-		--p.width;
+		count += ft_pad_width(p.precision, ft_strlen(str), 0);
+		count += ft_print_s_precision(str, p.precision);
 	}
-	while (p.width > 0)
-	{
-		len += ft_putchar_fd(' ', 1);
-		--p.width;
-	}
+	else
+		count += ft_print_s_precision(str, ft_strlen(str));
+	return (count);
 }
 
-static void ft_putwoutminus(t_format p, int *len)
+int	ft_print_s_pre(const char *str, int precision)
 {
-	while (p.width > p.precision)
-	{
-		len += ft_putchar_fd(' ', 1);
-		--p.width;
-	}
-	while ((p.precision > 0) && *p.str)
-	{
-		len += ft_putchar_fd(*p.str++, 1);
-		--p.precision;
-	}
+	int count;
+
+	count = 0;
+	while (str[count] && count < precision)
+		ft_putchar_fd(str[count++], 1);
+	return (count);
+}
+
+int	ft_print_str(const char *str)
+{
+	int len;
+
+	if (!str)
+		return (ft_putstrn_fd("(null)", 1, 6));
+	len = ft_strlen(str);
+	return (ft_putstrn_fd((char *)str, 1, len));
 }
