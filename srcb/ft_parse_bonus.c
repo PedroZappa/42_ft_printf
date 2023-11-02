@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:24:58 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/02 12:29:33 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/02 13:04:53 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,10 @@ int	ft_parse(const char *format, va_list ap)
 	{
 		parsed.dot = 1;
 		parsed.precision = 0;
+		parsed.zero = 0;
 		parsed = ft_parse_prec(format++, parsed);
 		while (!ft_strchr(SPECIFIERS, *format))
 			++format;
-	}
-	if (parsed.width < 0)
-	{
-		parsed.minus = 1;
-		parsed.width *= -1;
 	}
 	parsed.specifier = *format;
 	return (ft_print_specifier(format, parsed, ap));
