@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 20:41:49 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/02 12:47:29 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/02 13:34:54 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,9 @@ t_format	ft_newformat(void);
 /* Parsing */
 int			ft_parse(const char *format, va_list ap);
 /* Check & Convert */
+int			ft_isflag(int c);
+int			ft_isspecif(int c);
+int			ft_isflag(int c);
 int			ft_check_flag_spec(char c, char *spec);
 int			ft_num_specs(const char *format, t_format parsed, va_list ap);
 int			ft_char_specs(const char *format, t_format parsed, va_list ap);
