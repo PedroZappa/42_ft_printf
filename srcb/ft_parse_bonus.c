@@ -6,108 +6,91 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:24:58 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/02 13:11:32 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/02 14:58:11 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
+#include <stdarg.h>
 
-static t_format	ft_parse_width(const char *format, t_format parsed);
-static t_format	ft_parse_prec(const char *format, t_format parsed);
-static t_format	ft_parse_bonus(const char *format, t_format parsed);
-// static void		ft_print_format(t_format p);
+int	ft_print_arg(t_format p, char type, va_list ap);
+int ft_parse_flags(t_format *p, int i, const char *str, va_list ap);
 
-int	ft_parse(const char *format, va_list ap)
+int	ft_parse(char *str, va_list ap)
 {
-	t_format	parsed;
+	int			i;
+	int			flag;
+	int			len;
+	t_format	p;
 
-	parsed = ft_parse_width(format, ft_newformat());
-	parsed = ft_parse_bonus(format, parsed);
-	while (*format != '.' && !ft_strchr(SPECIFIERS, *format))
-		++format;
-	if (*format == '.' && !parsed.specifier)
+	i = -1;
+	len = 0;
+	while (str[++i])
 	{
-		parsed.dot = 1;
-		parsed.precision = 0;
-		parsed.zero = 0;
-		parsed = ft_parse_prec(format++, parsed);
-		while (!ft_strchr(SPECIFIERS, *format))
-			++format;
-	}
-	parsed.specifier = *format;
-	return (ft_print_specifier(format, parsed, ap));
-}
-
-static t_format	ft_parse_width(const char *format, t_format parsed)
-{
-	int		width_set;
-
-	width_set = 0;
-	while (*format != '.' && !ft_strchr(SPECIFIERS, *format))
-	{
-		if (*format == '-')
-			parsed.minus = 1;
-		if (*format == '0' && !ft_isdigit(*(format + 1)))
-			parsed.zero = 1;
-		else if (ft_isdigit(*format) && !width_set)
+		p = ft_newformat();
+		if (str[i] == '%' && str[i + 1] == '\0')
 		{
-			parsed.width = ft_atoi(format);
-			width_set = 1;
+			flag = ft_parse_flags(&p, i, str, ap);
+			if (p.specifier > 0)
+				i = flag;
+			if (str[i] != '\0' && p.specifier > 0)
+				len += ft_print_arg(p, str[i], ap);
+			else if (str[i] != '\0')
+				len += ft_putchar_fd(str[i], 1);
 		}
-		++format;
+		else
+			len += ft_putchar_fd(str[i], 1);
 	}
-	return (parsed);
+	return (len);
 }
 
-static t_format	ft_parse_prec(const char *format, t_format parsed)
+int ft_parse_flags(t_format *p, int i, const char *str, va_list ap)
 {
-	int		precision_set;
-
-	precision_set = 0;
-	while (!ft_strchr(SPECIFIERS, *format))
+	while (str[++i] && ft_isflag(str[i]))
 	{
-		if (ft_isdigit(*format) && !precision_set)
+		if (str[i] == '-')
+			*p = ft_flag_left(*p);
+		else if (str[i] == '#')
+			p->sharp = 1;
+		else if (str[i] == ' ')
+			p->space = 1;
+		else if (str[i] == '+')
+			p->plus = 1;
+		else if (str[i] == '0' && p->minus == 0 && p->width == 0)
+			p->zero = 1;
+		// else if (ft_isdigit(str[i]))
+		// 	*p = ft_flag_width(*p, ap);
+		else if (str[i] == '.')
+			i = ft_flag_prec(i, p, ap);
+		else if (ft_isdigit(str[i]))
+			*p = ft_flag_digit(str[i], *p);
+		if (ft_isspecif(str[i]))
 		{
-			parsed.precision = ft_atoi(format);
-			precision_set = 1;
+			p->specifier = str[i];
+			break ;
 		}
-		++format;
 	}
-	return (parsed);
+	return (i);
 }
 
-static t_format	ft_parse_bonus(const char *format, t_format parsed)
+int	ft_print_arg(t_format p, char type, va_list ap)
 {
-	while (*format != '.' && !ft_strchr(SPECIFIERS, *format))
-	{
-		if (*format == '#')
-			parsed.sharp = 1;
-		else if (*format == ' ')
-			parsed.space = 1;
-		else if (*format == '+')
-			parsed.plus = 1;
-		++format;
-	}
-	if (parsed.plus)
-		parsed.space = 0;
-	if (parsed.minus)
-		parsed.zero = 0;
-	return (parsed);
-}
+	int count;
 
-// static void	ft_print_format(t_format p)
-// {
-// 	printf("\nparsed from format :\n");
-// 	printf("char\t*c\t: %c\n", p.c);
-// 	printf("char\t*str\t: %s\n", p.str);
-// 	printf("char\tspecifier\t: %c\n", p.specifier);
-// 	printf("char\tflag\t: %c\n", p.flag);
-// 	printf("int\tminus\t: %d\n", p.minus);
-// 	printf("int\tplus\t: %d\n", p.plus);
-// 	printf("int\twidth\t: %d\n", p.width);
-// 	printf("int\tprecision\t: %d\n", p.precision);
-// 	printf("int\tzero\t: %d\n", p.zero);
-// 	printf("int\tdot\t: %d\n", p.dot);
-// 	printf("int\tspace\t: %d\n", p.space);
-// 	printf("int\tsharp\t: %d\n", p.sharp);
-// }
+	count = 0;
+	if (type == '%')
+		count += ft_print_c('%', p);
+	else if (type == 'c')
+		count += ft_print_c(va_arg(ap, int), p);
+	else if (type == 's')
+		count += ft_print_s(va_arg(ap, const char *), p);
+	else if (type == 'd' || type == 'i')
+		count += ft_print_di(va_arg(ap, int), p);
+	else if (type == 'u')
+		count += ft_print_u(va_arg(ap, unsigned int), p);
+	else if (type == 'x' || type == 'X')
+		count += ft_print_x(va_arg(ap, unsigned int), p);
+	else if (type == 'p')
+		count += ft_print_p((unsigned long int)va_arg(ap, void *), p);
+	return (count);
+}

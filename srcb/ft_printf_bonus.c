@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:33:18 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/02 13:08:02 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/02 14:01:31 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,47 +15,18 @@
 int	ft_printf(const char *format, ...)
 {
 	va_list	ap;
-	int		len;
-	char	*specifier_start;
+	int		fmt_len;
+	char	*str;
 
-	len = 0;
+	if (!format || *format == '\0')
+		return (0);
+	str = ft_strdup(format);
+	if (!str || *str == '\0')
+		return (0);
+	fmt_len = 0;
 	va_start(ap, format);
-	while (*format)
-	{
-		if (*format == '%')
-		{
-			specifier_start = (char *)format;
-			if (*(++format))
-				len += ft_parse((char *)format, ap);
-			while (*format && !ft_strchr(SPECIFIERS, *format))
-				++format;
-			if (!(*format))
-				format = specifier_start;
-		}
-		else
-			len += ft_putchar_fd(*format, 1);
-		if (*format)
-			++format;
-	}
+	fmt_len = ft_parse(str, ap);
 	va_end(ap);
-	return (len);
-}
-
-t_format	ft_newformat(void)
-{
-	t_format	new_format;
-
-	new_format.c = 0;
-	new_format.str = 0;
-	new_format.len = 0;
-	new_format.specifier = 0;
-	new_format.minus = 0;
-	new_format.plus = 0;
-	new_format.width = -1;
-	new_format.precision = -1;
-	new_format.zero = 0;
-	new_format.dot = 0;
-	new_format.space = 0;
-	new_format.sharp = 0;
-	return (new_format);
+	free(str);
+	return (fmt_len);
 }

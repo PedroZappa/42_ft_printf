@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 20:41:49 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/02 13:34:54 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/02 15:36:30 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,17 +47,23 @@ int			ft_printf(const char *format, ...);
 /* Initializes a t_format struct with all members set to 0 */
 t_format	ft_newformat(void);
 /* Parsing */
-int			ft_parse(const char *format, va_list ap);
+int			ft_parse(char *str, va_list ap);
 /* Check & Convert */
 int			ft_isflag(int c);
 int			ft_isspecif(int c);
 int			ft_isflag(int c);
+t_format	ft_flag_left(t_format prsd);
+t_format	ft_flag_digit(char c, t_format prsd);
+t_format	ft_flag_width(t_format prsd, va_list ap);
+int			ft_flag_prec(int pos, t_format *prsd, va_list ap);
+int			ft_pad_width(int total_width, int size, int zero);
+
 int			ft_check_flag_spec(char c, char *spec);
 int			ft_num_specs(const char *format, t_format parsed, va_list ap);
 int			ft_char_specs(const char *format, t_format parsed, va_list ap);
 /* Printing */
 int			ft_print_specifier(const char *format, t_format parsed, va_list ap);
-int			ft_print_c(t_format parsed, va_list ap);
+int			ft_print_c(char c, t_format parsed);
 int			ft_print_s(t_format parsed, va_list ap);
 int			ft_print_di(t_format parsed, va_list ap);
 int			ft_print_u(t_format parsed, va_list ap);
