@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:24:58 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/02 13:04:53 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/02 13:11:32 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,9 @@ static t_format	ft_parse_bonus(const char *format, t_format parsed)
 	{
 		if (*format == '#')
 			parsed.sharp = 1;
-		if (*format == ' ')
+		else if (*format == ' ')
 			parsed.space = 1;
-		if (*format == '+')
+		else if (*format == '+')
 			parsed.plus = 1;
 		++format;
 	}
