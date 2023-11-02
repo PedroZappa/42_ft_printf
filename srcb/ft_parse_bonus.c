@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:24:58 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/01 20:03:47 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/02 12:29:33 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	ft_parse(const char *format, va_list ap)
 	if (*format == '.' && !parsed.specifier)
 	{
 		parsed.dot = 1;
+		parsed.precision = 0;
 		parsed = ft_parse_prec(format++, parsed);
 		while (!ft_strchr(SPECIFIERS, *format))
 			++format;
@@ -91,6 +92,10 @@ static t_format	ft_parse_bonus(const char *format, t_format parsed)
 			parsed.plus = 1;
 		++format;
 	}
+	if (parsed.plus)
+		parsed.space = 0;
+	if (parsed.minus)
+		parsed.zero = 0;
 	return (parsed);
 }
 
