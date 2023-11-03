@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:24:58 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/03 20:59:57 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/03 21:13:27 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,14 @@ static int		ft_parse_prec(t_format *parsed, int i);
 void	ft_parse_bonus(va_list ap, t_format *p)
 {
 	int			i;
-	int			j;
 
 	i = -1;
-	j = 0;
 	while (p->str[++i])
 	{
 		if (p->str[i] == '%' && p->str[i + 1] != '\0')
 		{
-			while (p->str[i + j] && ft_isflag(p->str[i + j]))
-				++j;
-			p->substr = ft_substr(p->str, (i), j);
 			i = ft_parse_specif(p, i);
-			if ((p->str[++i] != '\0') && (p->specifier > 0))
+			if ((p->str[i] != '\0') && (p->specifier > 0))
 				ft_print_arg(p, p->str[i], ap);
 			else if (p->str[i])
 				p->len += ft_putchar_fd(p->str[i], 1);
@@ -56,9 +51,9 @@ static int	ft_parse_specif(t_format *p, int i)
 			p->plus = 1;
 		else if (p->str[i] == '0' && p->minus == 0 && p->width == 0)
 			p->zero = 1;
-		if (p->str[i] == '.')
+		else if (p->str[i] == '.')
 			i += ft_parse_prec(p, i);
-		if (ft_isdigit(p->str[i]))
+		else if (ft_isdigit(p->str[i]))
 			i += ft_parse_width(p, i);
 		// else if (ft_isdigit(str[i]))
 		// 	*p = ft_flag_digit(*p);
@@ -116,11 +111,12 @@ static int	ft_parse_prec(t_format *p, int i)
 
 	j = 0;
 	p->dot = 1;
-	if (p->str[i++] == '.')
+	if (p->str[i] == '.')
 	{
 		while (ft_isdigit(p->str[i + j]))
 			++j;
 		p->precision = ft_atoi(&p->str[i]);
+
 	}
-	return (j);
+	;return (j);
 }
