@@ -6,16 +6,16 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:24:58 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/03 18:44:17 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/03 20:11:58 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 
 static void		ft_print_arg(t_format *p, char type, va_list ap);
-static int		ft_parse_flags(t_format *p, int i, const char *str);
-static void		ft_parse_width(t_format *parsed, int i);
-static void		ft_parse_prec(t_format *parsed, int i);
+static int		ft_parse_specif(t_format *p, int i);
+static int		ft_parse_width(t_format *parsed, int i);
+static int		ft_parse_prec(t_format *parsed, int i);
 
 void	ft_parse_bonus(va_list ap, t_format *p)
 {
@@ -27,10 +27,10 @@ void	ft_parse_bonus(va_list ap, t_format *p)
 	{
 		if (p->str[i] == '%' && p->str[i + 1] != '\0')
 		{
-			// spec_end = ft_parse_flags(p, i, p->str);
+			// spec_end = ft_parse_specif(p, i, p->str);
 			// if (p->specifier)
 			// 	i = spec_end;
-			i = ft_parse_flags(p, i, p->str);
+			i = ft_parse_specif(p, i);
 			if ((p->str[++i] != '\0') && (p->specifier > 0))
 				ft_print_arg(p, p->str[i], ap);
 			else if (p->str[i])
@@ -41,29 +41,29 @@ void	ft_parse_bonus(va_list ap, t_format *p)
 	}
 }
 
-static int	ft_parse_flags(t_format *p, int i, const char *str)
+static int	ft_parse_specif(t_format *p, int i)
 {
-	while (str[++i] && ft_isflag(str[i]))
+	while (p->str[++i] && ft_isflag(p->str[i]))
 	{
-		if (str[i] == '-')
+		if (p->str[i] == '-')
 			*p = ft_flag_left(*p);
-		else if (str[i] == '#')
+		else if (p->str[i] == '#')
 			p->sharp = 1;
-		else if (str[i] == ' ')
+		else if (p->str[i] == ' ')
 			p->space = 1;
-		else if (str[i] == '+')
+		else if (p->str[i] == '+')
 			p->plus = 1;
-		else if (str[i] == '0' && p->minus == 0 && p->width == 0)
+		else if (p->str[i] == '0' && p->minus == 0 && p->width == 0)
 			p->zero = 1;
-		else if (ft_isdigit(str[i]) && !p->width && !p->dot)
-			ft_parse_width(p, i);
-		else if (str[i] == '.')
-			ft_parse_prec(p, i);
-		if (ft_isdigit(str[i]))
-			*p = ft_flag_digit(*p);
-		if (ft_isspecif(str[i]))
+		if (p->str[i] == '.')
+			i += ft_parse_prec(p, i);
+		if (ft_isdigit(p->str[i]))
+			i += ft_parse_width(p, i);
+		// else if (ft_isdigit(str[i]))
+		// 	*p = ft_flag_digit(*p);
+		else if (ft_isspecif(p->str[i]))
 		{
-			p->specifier = str[i];
+			p->specifier = p->str[i];
 			break ;
 		}
 	}
@@ -90,7 +90,7 @@ static void	ft_print_arg(t_format *p, char type, va_list ap)
 		p->len += ft_print_p((unsigned long int)va_arg(ap, void *), *p);
 }
 
-static void	ft_parse_width(t_format *p, int i)
+static int	ft_parse_width(t_format *p, int i)
 {
 	int		width_set;
 
@@ -106,20 +106,20 @@ static void	ft_parse_width(t_format *p, int i)
 		}
 		++i;
 	}
+	return (i);
 }
 
-static void	ft_parse_prec(t_format *p, int i)
+static int	ft_parse_prec(t_format *p, int i)
 {
-	int		precision_set;
+	int	j;
 
+	j = 0;
 	p->dot = 1;
-	precision_set = 0;
-	while (!ft_strchr(SPECIFIERS, p->str[++i]))
+	if (p->str[i++] == '.')
 	{
-		if (ft_isdigit(*p->str) && !precision_set)
-		{
-			p->precision = ft_atoi(p->str);
-			precision_set = 1;
-		}
+		while (ft_isdigit(p->str[i + j]))
+			++j;
+		p->precision = ft_atoi(&p->str[i]);
 	}
+	return (j);
 }
