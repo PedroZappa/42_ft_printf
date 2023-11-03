@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:33:18 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/03 17:58:22 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/03 20:52:08 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ static void	ft_print_format(t_format p)
 	printf("\nparsed from format :\n");	
 	printf("char\tc\t: %c\n", p.c);
 	printf("char\t*str\t: %s\n", p.str);
+	printf("char\t*substr\t: %s\n", p.substr);
 	printf("int\tlen\t: %d\n", p.len);
 	printf("char\tspcfr\t: %d\n", p.specifier);
 	printf("int\tminus\t: %d\n", p.minus);
