@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:24:58 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/03 17:13:37 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/03 17:44:30 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,20 @@ static int		ft_parse_prec(t_format parsed);
 void	ft_parse_bonus(va_list ap, t_format *p)
 {
 	int			i;
+	int			spec_end;
 
 	i = -1;
 	while (p->str[++i])
 	{
 		if (p->str[i] == '%' && p->str[i + 1] != '\0')
 		{
-			i = ft_parse_flags(p, i, p->str);
+			spec_end = ft_parse_flags(p, i, p->str);
+			if (p->specifier)
+				i = spec_end;
+			// i = ft_parse_flags(p, i, p->str);
 			if ((p->str[++i] != '\0') && (p->specifier > 0))
 				ft_print_arg(p, p->str[i], ap);
-			else if (!p->str[i])
+			else if (p->str[i])
 				p->len += ft_putchar_fd(p->str[i], 1);
 		}
 		else
@@ -39,7 +43,7 @@ void	ft_parse_bonus(va_list ap, t_format *p)
 
 static int	ft_parse_flags(t_format *p, int i, const char *str)
 {
-	while (str[i] && ft_isflag(str[i]))
+	while (str[++i] && ft_isflag(str[i]))
 	{
 		if (str[i] == '-')
 			*p = ft_flag_left(*p);
