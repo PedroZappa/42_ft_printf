@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:24:58 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/03 18:27:04 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/03 18:44:17 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void		ft_print_arg(t_format *p, char type, va_list ap);
 static int		ft_parse_flags(t_format *p, int i, const char *str);
 static void		ft_parse_width(t_format *parsed, int i);
-static int		ft_parse_prec(t_format parsed);
+static void		ft_parse_prec(t_format *parsed, int i);
 
 void	ft_parse_bonus(va_list ap, t_format *p)
 {
@@ -47,18 +47,18 @@ static int	ft_parse_flags(t_format *p, int i, const char *str)
 	{
 		if (str[i] == '-')
 			*p = ft_flag_left(*p);
-		if (str[i] == '#')
+		else if (str[i] == '#')
 			p->sharp = 1;
-		if (str[i] == ' ')
+		else if (str[i] == ' ')
 			p->space = 1;
-		if (str[i] == '+')
+		else if (str[i] == '+')
 			p->plus = 1;
-		if (str[i] == '0' && p->minus == 0 && p->width == 0)
+		else if (str[i] == '0' && p->minus == 0 && p->width == 0)
 			p->zero = 1;
-		if (ft_isdigit(str[i]) && !p->width)
+		else if (ft_isdigit(str[i]) && !p->width && !p->dot)
 			ft_parse_width(p, i);
-		if (str[i++] == '.')
-			p->precision = ft_parse_prec(*p);
+		else if (str[i] == '.')
+			ft_parse_prec(p, i);
 		if (ft_isdigit(str[i]))
 			*p = ft_flag_digit(*p);
 		if (ft_isspecif(str[i]))
@@ -108,19 +108,18 @@ static void	ft_parse_width(t_format *p, int i)
 	}
 }
 
-static int	ft_parse_prec(t_format p)
+static void	ft_parse_prec(t_format *p, int i)
 {
 	int		precision_set;
 
+	p->dot = 1;
 	precision_set = 0;
-	while (!ft_strchr(SPECIFIERS, *p.str))
+	while (!ft_strchr(SPECIFIERS, p->str[++i]))
 	{
-		if (ft_isdigit(*p.str) && !precision_set)
+		if (ft_isdigit(*p->str) && !precision_set)
 		{
-			p.precision = ft_atoi(p.str);
+			p->precision = ft_atoi(p->str);
 			precision_set = 1;
 		}
-		++p.str;
 	}
-	return (*p.str);
 }
