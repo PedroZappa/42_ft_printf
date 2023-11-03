@@ -149,7 +149,9 @@ void	ft_printf(const char *format, ...);
     | ` ` | If no sign is going to be written, print a space before the value |
     | `+` | Forces a plus or minus sign before printing the result |
 
-### Files & Folders
+### Mandatory Requirements:exclamation:
+
+#### Files & Folders
 
 `ft_printf()`s library code base is split into the following file structure:
 
@@ -218,8 +220,133 @@ graph LR;
     ft_print_ptr-->ft_print_recur_hex;
 ```
 
-</div>
 
+### Bonus Requirements:exclamation:
+
+#### Files & Folders
+
+```mermaid
+---
+title ft_printf w/ Bonus Structure
+---
+classDiagram
+    class Makefile
+    class libft["libft.h"]
+    
+    class ft_printf_h["ft_printf_bonus.h"]
+    class ft_printf["ft_printf_bonus.c"]
+    class ft_flag_utils["ft_flag_utils_bonus.c"]
+    class ft_flags["ft_flags_bonus.c"]
+    class ft_parse["ft_parse_bonus.c"]
+    class ft_print_c["ft_print_c_bonus.c"]
+    class ft_print_di["ft_print_di_bonus.c"]
+    class ft_print_hex["ft_print_hex_bonus.c"]
+    class ft_print_p["ft_print_p_bonus.c"]
+    class ft_print_s["ft_print_s_bonus.c"]
+    class ft_print_u["ft_print_u_bonus.c"]
+   
+    Makefile <-- ft_printf_h
+    libft --> ft_printf_h
+    ft_printf_h --> ft_printf
+    ft_printf_h --> ft_flag_utils
+    ft_printf_h --> ft_flags
+    ft_printf_h --> ft_parse
+    ft_printf_h --> ft_print_c
+    ft_printf_h --> ft_print_di
+    ft_printf_h --> ft_print_hex
+    ft_printf_h --> ft_print_p
+    ft_printf_h --> ft_print_s
+    ft_printf_h --> ft_print_u
+    
+    ft_printf : ft_printf()
+    ft_flag_utils : ft_isflag()
+    ft_flag_utils : ft_isspecif()
+    ft_flag_utils : ft_isflagtype()
+    ft_flag_utils : ft_isflagtype()
+    ft_flag_utils : ft_pad_width()
+    ft_flags : ft_newformat()
+    ft_flags : ft_flag_left()
+    ft_flags : ft_flag_digit()
+    ft_flags : ft_flag_width()
+    ft_flags : ft_flag_prec()
+    ft_parse : ft_parse_bonus()
+    ft_parse : ft_parse_flags()
+    ft_parse : ft_parse_arg()
+    ft_parse : ft_parse_width()
+    ft_parse : ft_parse_prec()
+    ft_print_c : ft_print_c()
+    ft_print_di : ft_print_di()
+    ft_print_di : ft_print_integer()
+    ft_print_di : ft_print_precision()
+    ft_print_di : ft_print_i()
+    ft_print_hex : ft_print_x()
+    ft_print_hex : ft_print_hexa()
+    ft_print_hex : ft_print_puthex()
+    ft_print_hex : ft_print_putx_prefix()
+    ft_print_p : ft_print_p()
+    ft_print_p : ft_print_ptr()
+    ft_print_p : ft_print_address()
+    ft_print_p : ft_ptrlen()
+    ft_print_s : ft_print_s()
+    ft_print_s : ft_putstr()
+    ft_print_s : ft_print_s_precision()
+    ft_print_s : ft_print_str()
+    ft_print_u : ft_print_u()
+    ft_print_u : ft_print_uint()
+    ft_print_u : ft_print_uint()
+    ft_print_u : ft_print_unsigned()
+```
+
+### Processing Flow
+
+```mermaid
+---
+title ft_printf Bonus Processing Flow
+---
+graph LR;
+    ft_printf-->ft_newformat;
+    ft_printf-->ft_parse;
+    ft_parse-->ft_parse_flags;
+    ft_parse-->ft_parse_arg;
+    ft_parse_flags-->ft_flag_left;
+    ft_parse_flags-->ft_parse_width;
+    ft_parse_flags-->ft_parse_prec;
+    ft_parse_flags-->ft_parse_digit;
+    ft_parse_flags-->ft_isspecif;
+    ft_parse_arg-->ft_print_c;
+    ft_parse_arg-->ft_print_s;
+    ft_parse_arg-->ft_print_di;
+    ft_parse_arg-->ft_print_u;
+    ft_parse_arg-->ft_print_x;
+    ft_parse_arg-->ft_print_p;
+
+    ft_print_c-->ft_pad_width;
+    ft_print_s-->ft_pad_width;
+    ft_print_s-->ft_putstr;
+    ft_putstr-->ft_pad_width;
+    ft_putstr-->ft_print_s_precision;
+    ft_print_di-->ft_pad_width;
+    ft_print_di-->ft_print_integer;
+    ft_print_integer-->ft_print_sign_precision;
+    ft_print_integer-->ft_print_i;
+    ft_print_integer-->ft_pad_width;
+    ft_print_i-->ft_pad_width;
+    ft_print_i-->ft_print_str;
+    ft_print_x-->ft_pad_width;
+    ft_print_x-->ft_print_hexa;
+    ft_print_hexa-->ft_putx_prefix
+    ft_print_hexa-->ft_pad_width;
+    ft_puthex-->ft_putx_prefix;
+    ft_puthex-->ft_pad_width;
+    ft_puthex-->ft_print_str;
+    ft_print_p-->ft_print_ptr;
+    ft_print_p-->ft_pad_width;
+    ft_print_ptr-->ft_print_str;
+    ft_print_ptr-->ft_print_address;
+    ft_print_ptr-->ft_ptrlen;
+    ft_print_address-->ft_print_address;
+```
+</div>
 ___
 
 ### License
