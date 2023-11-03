@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:24:58 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/03 17:44:30 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/03 18:27:04 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,23 @@
 
 static void		ft_print_arg(t_format *p, char type, va_list ap);
 static int		ft_parse_flags(t_format *p, int i, const char *str);
-static int		ft_parse_width(t_format parsed);
+static void		ft_parse_width(t_format *parsed, int i);
 static int		ft_parse_prec(t_format parsed);
 
 void	ft_parse_bonus(va_list ap, t_format *p)
 {
 	int			i;
-	int			spec_end;
+	// int			spec_end;
 
 	i = -1;
 	while (p->str[++i])
 	{
 		if (p->str[i] == '%' && p->str[i + 1] != '\0')
 		{
-			spec_end = ft_parse_flags(p, i, p->str);
-			if (p->specifier)
-				i = spec_end;
-			// i = ft_parse_flags(p, i, p->str);
+			// spec_end = ft_parse_flags(p, i, p->str);
+			// if (p->specifier)
+			// 	i = spec_end;
+			i = ft_parse_flags(p, i, p->str);
 			if ((p->str[++i] != '\0') && (p->specifier > 0))
 				ft_print_arg(p, p->str[i], ap);
 			else if (p->str[i])
@@ -55,9 +55,9 @@ static int	ft_parse_flags(t_format *p, int i, const char *str)
 			p->plus = 1;
 		if (str[i] == '0' && p->minus == 0 && p->width == 0)
 			p->zero = 1;
-		if (ft_isdigit(str[i]))
-			p->width = ft_parse_width(*p);
-		if (str[i] == '.')
+		if (ft_isdigit(str[i]) && !p->width)
+			ft_parse_width(p, i);
+		if (str[i++] == '.')
 			p->precision = ft_parse_prec(*p);
 		if (ft_isdigit(str[i]))
 			*p = ft_flag_digit(*p);
@@ -90,25 +90,22 @@ static void	ft_print_arg(t_format *p, char type, va_list ap)
 		p->len += ft_print_p((unsigned long int)va_arg(ap, void *), *p);
 }
 
-static int	ft_parse_width(t_format p)
+static void	ft_parse_width(t_format *p, int i)
 {
 	int		width_set;
 
 	width_set = 0;
-	while (*p.str != '.' && !ft_strchr(SPECIFIERS, *p.str))
+	while (p->str[i] != '.' && !ft_strchr(SPECIFIERS, p->str[i]))
 	{
-		if (*p.str == '-')
-			p.minus = 1;
-		if (*p.str == '0' && !ft_isdigit(*(p.str + 1)))
-			p.zero = 1;
-		else if (ft_isdigit(*p.str) && !width_set)
+		if (p->str[i] == '0' && !ft_isdigit(p->str[i + 1]))
+			p->zero = 1;
+		else if (ft_isdigit(p->str[i]) && !width_set)
 		{
-			p.width = ft_atoi(p.str);
+			p->width = ft_atoi(p->str + i);
 			width_set = 1;
 		}
-		++p.str;
+		++i;
 	}
-	return (*p.str);
 }
 
 static int	ft_parse_prec(t_format p)
