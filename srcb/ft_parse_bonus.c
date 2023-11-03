@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:24:58 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/03 13:07:51 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/03 13:15:29 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static void		ft_print_arg(t_format *p, char type, va_list ap);
 static int		ft_parse_flags(t_format *p, int i, const char *str);
 static int		ft_parse_width(t_format parsed);
+static int		ft_parse_prec(t_format parsed);
 
 void	ft_parse_bonus(va_list ap, t_format *p)
 {
@@ -53,7 +54,7 @@ static int	ft_parse_flags(t_format *p, int i, const char *str)
 		if (ft_isdigit(str[i]))
 			p->width = ft_parse_width(*p);
 		if (str[i] == '.')
-			i = ft_flag_prec(i, p);
+			p->precision = ft_parse_prec(*p);
 		if (ft_isdigit(str[i]))
 			*p = ft_flag_digit(*p);
 		if (ft_isspecif(str[i]))
@@ -105,20 +106,20 @@ static int	ft_parse_width(t_format p)
 	}
 	return (*p.str);
 }
-//
-// static t_format	ft_parse_prec(const char *format, t_format parsed)
-// {
-// 	int		precision_set;
-//
-// 	precision_set = 0;
-// 	while (!ft_strchr(SPECIFIERS, *format))
-// 	{
-// 		if (ft_isdigit(*format) && !precision_set)
-// 		{
-// 			parsed.precision = ft_atoi(format);
-// 			precision_set = 1;
-// 		}
-// 		++format;
-// 	}
-// 	return (parsed);
-// }
+
+static int	ft_parse_prec(t_format p)
+{
+	int		precision_set;
+
+	precision_set = 0;
+	while (!ft_strchr(SPECIFIERS, *p.str))
+	{
+		if (ft_isdigit(*p.str) && !precision_set)
+		{
+			p.precision = ft_atoi(p.str);
+			precision_set = 1;
+		}
+		++p.str;
+	}
+	return (*p.str);
+}
