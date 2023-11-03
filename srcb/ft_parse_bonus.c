@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:24:58 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/03 10:29:55 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/03 12:38:11 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static int	ft_print_arg(t_format p, char type, va_list ap);
 static int	ft_parse_flags(t_format *p, int i, const char *str);
 
-void	ft_parse_bonus(char *str, va_list ap, int *fmt_len, t_format *p)
+void	ft_parse_bonus(char *str, va_list ap, t_format *p)
 {
 	int			i;
 
@@ -28,12 +28,12 @@ void	ft_parse_bonus(char *str, va_list ap, int *fmt_len, t_format *p)
 		{
 			i = ft_parse_flags(p, i, str);
 			if ((str[++i] != '\0') && (p->specifier > 0))
-				fmt_len += ft_print_arg(*p, str[i], ap);
+				p->len += ft_print_arg(*p, str[i], ap);
 			else if (!str[i])
-				fmt_len += ft_putchar_fd(str[i], 1);
+				p->len += ft_putchar_fd(str[i], 1);
 		}
 		else
-			fmt_len += ft_putchar_fd(str[i], 1);
+			p->len += ft_putchar_fd(str[i], 1);
 	}
 }
 

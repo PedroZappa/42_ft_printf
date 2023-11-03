@@ -6,7 +6,7 @@
 #    By: zedr0 <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/19 12:13:19 by zedr0             #+#    #+#              #
-#    Updated: 2023/11/03 09:27:08 by passunca         ###   ########.fr        #
+#    Updated: 2023/11/03 12:29:06 by passunca         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ OBJS		= $(SRC:.c=.o)
 OBJSB		= $(SRCB:.c=.o)
 
 MAKE		= make -C
-CFLAGS		= -Wall -Wextra -Werror
+CFLAGS		= -Wall -Wextra -Werror -g
 INC			= -I .
 CC			= cc
 RM			= rm -f

@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 13:01:44 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/03 09:24:21 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/03 12:41:04 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void test_c(void)
 void test_s(void)
 {
 	ft_putstr_fd(SEP, 1);
-	ft_printf("TESTING %%s\n");
+	printf("TESTING %%s\n");
 	char *s_hidden = "Zedr0\0asdasd";
 	ft_putstr_fd(SEP, 1);
 	ft_test(1, "'%3.s'", s_hidden);
