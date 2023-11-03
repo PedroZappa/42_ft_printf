@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 13:01:44 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/03 21:50:25 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/03 22:33:09 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void test_x(void);
 
 int main(void)
 {
-	// test_c();
+	test_c();
 	test_s();
 	// test_di();
 	// test_u();
@@ -44,9 +44,9 @@ void test_c(void)
 	printf("'%3c'\n", 'z');
 	ft_printf("'%3c'\n", 'z');
 
-	ft_putstr_fd(SEP, 1);
-	printf("'%3c'\n", 'z');
-	ft_printf("'%3c'\n", 'z');
+	// ft_putstr_fd(SEP, 1);
+	// printf("'%3c'\n", 'z');
+	// ft_printf("'%3c'\n", 'z');
 }
 
 void test_s(void)
@@ -55,7 +55,8 @@ void test_s(void)
 	printf("TESTING %%s\n");
 	// char *s_hidden = "Zedr0\0asdasd";
 	ft_putstr_fd(SEP, 1);
-	ft_test(1, "'%-7.3s'", "Zedro0");
+	ft_test(1, "'%-7.6s'", "Zedro0");
+	ft_printf("Hello, World!");
 	// ft_test(2, "'%10.s'", s_hidden);
 	// ft_test(3, "'%3.s'", NULL);
 	// ft_test(4, "'%10s'", NULL);

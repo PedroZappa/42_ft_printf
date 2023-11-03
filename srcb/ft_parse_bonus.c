@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:24:58 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/03 22:09:54 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/03 22:41:46 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ void	ft_parse_bonus(va_list ap, t_format *p)
 		if (p->str[i] == '%' && p->str[i + 1] != '\0')
 		{
 			i = ft_parse_flag(p, i);
-			if ((p->str[i] != '\0') && (p->specifier > 0))
+			if ((p->str[i] != '\0') && (p->specifier > 0)
+				&& ft_isspecif(p->str[i]))
 				ft_print_arg(p, p->str[i], ap);
 			else if (p->str[i])
 				p->len += ft_putchar_fd(p->str[i], 1);
