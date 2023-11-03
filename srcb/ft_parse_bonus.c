@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:24:58 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/03 21:56:06 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/03 22:09:54 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,9 @@ static void	ft_print_arg(t_format *p, char type, va_list ap)
 static int	ft_parse_widthprec(t_format *p, int i)
 {
 	int		width_set;
-
+	int		numlen;
+	
+	numlen = 0;
 	width_set = 0;
 	while (p->str[i] != '.' && !ft_strchr(SPECIFIERS, p->str[i]))
 	{
@@ -98,12 +100,13 @@ static int	ft_parse_widthprec(t_format *p, int i)
 			width_set = 1;
 		}
 		++i;
+		++numlen;
 	}
 	if (p->str[i] == '.')
 	{
 		p->dot = 1;
 		p->precision = ft_atoi(&p->str[i + 1]);
-		++i;
+		numlen += ft_numlen(p->precision, 10);
 	}
-	return (i);
+	return (numlen);
 }
