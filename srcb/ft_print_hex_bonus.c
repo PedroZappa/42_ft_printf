@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:33:44 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/02 19:06:56 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/03 10:30:20 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	ft_print_x(unsigned int n, int is_upper, t_format p)
 	return (count);
 }
 
-int ft_print_hexa(char *nbrstr, int n, int is_upper, t_format p)
+int	ft_print_hexa(char *nbrstr, int n, int is_upper, t_format p)
 {
 	int		count;
 

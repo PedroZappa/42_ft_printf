@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:33:30 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/02 16:38:26 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/03 10:33:17 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 #include "../libft/libft.h"
 
 int	ft_print_integer(char *numstr, int n, t_format p);
-int ft_print_sign_precision(int n, t_format *p);
-int ft_print_i(char *nbrstr, int n, t_format p);
+int	ft_print_sign_precision(int n, t_format *p);
+int	ft_print_i(char *nbrstr, int n, t_format p);
 
 int	ft_print_di(int n, t_format p)
 {
@@ -70,9 +70,9 @@ int	ft_print_integer(char *numstr, int n, t_format p)
 	return (count);
 }
 
-int ft_print_sign_precision(int n, t_format *p)
+int	ft_print_sign_precision(int n, t_format *p)
 {
-	int count;
+	int	count;
 
 	count = 0;
 	if ((n < 0) && p->precision == -1)
@@ -90,9 +90,9 @@ int ft_print_sign_precision(int n, t_format *p)
 	return (count);
 }
 
-int ft_print_i(char *nbrstr, int n, t_format p)
+int	ft_print_i(char *nbrstr, int n, t_format p)
 {
-	int count;
+	int	count;
 
 	count = 0;
 	if (n < 0)

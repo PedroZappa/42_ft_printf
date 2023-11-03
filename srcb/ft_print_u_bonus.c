@@ -6,15 +6,15 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 16:40:21 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/02 16:52:26 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/03 10:34:06 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 #include <stddef.h>
 
-int ft_print_uint(char *nbrstr, t_format p);
-int ft_print_unsigned(char *nbrstr, t_format p);
+int	ft_print_uint(char *nbrstr, t_format p);
+int	ft_print_unsigned(char *nbrstr, t_format p);
 
 int	ft_print_u(unsigned n, t_format p)
 {
@@ -35,7 +35,7 @@ int	ft_print_u(unsigned n, t_format p)
 	return (count);
 }
 
-int ft_print_uint(char *nbrstr, t_format p)
+int	ft_print_uint(char *nbrstr, t_format p)
 {
 	int		count;
 
@@ -56,9 +56,9 @@ int ft_print_uint(char *nbrstr, t_format p)
 	return (count);
 }
 
-int ft_print_unsigned(char *nbrstr, t_format p)
+int	ft_print_unsigned(char *nbrstr, t_format p)
 {
-	int count;
+	int	count;
 
 	count = 0;
 	if (p.precision >= 0)

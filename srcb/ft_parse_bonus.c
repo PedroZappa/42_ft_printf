@@ -6,31 +6,30 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:24:58 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/03 09:23:45 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/03 10:29:55 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
-#include <stdarg.h>
 
 static int	ft_print_arg(t_format p, char type, va_list ap);
 static int	ft_parse_flags(t_format *p, int i, const char *str);
 
-void	ft_parse_bonus(char *str, va_list ap, int *fmt_len)
+void	ft_parse_bonus(char *str, va_list ap, int *fmt_len, t_format *p)
 {
 	int			i;
-	t_format	p;
 
 	i = -1;
 	while (str[++i])
 	{
-		p = ft_newformat();
-		if (str[i] == '%' && str[i + 1] == '\0')
+		if (!p->str)
+			p->str = str;
+		if (str[i] == '%' && str[i + 1] != '\0')
 		{
-			i = ft_parse_flags(&p, i, str);
-			if ((str[i] != '\0') && (p.specifier > 0) && ft_isflagtype(str[i]))
-				fmt_len += ft_print_arg(p, str[i], ap);
-			else if (str[i] != '\0')
+			i = ft_parse_flags(p, i, str);
+			if ((str[++i] != '\0') && (p->specifier > 0))
+				fmt_len += ft_print_arg(*p, str[i], ap);
+			else if (!str[i])
 				fmt_len += ft_putchar_fd(str[i], 1);
 		}
 		else
@@ -40,7 +39,7 @@ void	ft_parse_bonus(char *str, va_list ap, int *fmt_len)
 
 static int	ft_parse_flags(t_format *p, int i, const char *str)
 {
-	while (str[++i] && ft_isflag(str[++i]))
+	while (str[i] && ft_isflag(str[i]))
 	{
 		if (str[i] == '-')
 			*p = ft_flag_left(*p);
@@ -58,7 +57,7 @@ static int	ft_parse_flags(t_format *p, int i, const char *str)
 			i = ft_flag_prec(i, p);
 		if (ft_isdigit(str[i]))
 			*p = ft_flag_digit(*p);
-		if (ft_isflagtype(str[i]))
+		if (ft_isspecif(str[i]))
 		{
 			p->specifier = str[i];
 			break ;
@@ -69,7 +68,7 @@ static int	ft_parse_flags(t_format *p, int i, const char *str)
 
 static int	ft_print_arg(t_format p, char type, va_list ap)
 {
-	int count;
+	int	count;
 
 	count = 0;
 	if (type == '%')

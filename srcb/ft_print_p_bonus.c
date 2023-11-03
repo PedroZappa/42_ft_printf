@@ -6,19 +6,19 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 12:35:25 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/02 19:11:27 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/03 10:35:14 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 
-int ft_print_ptr(unsigned long int n);
-void ft_print_address(unsigned long int n);
-int ft_ptrlen(unsigned long int n);
+int		ft_print_ptr(unsigned long int n);
+void	ft_print_address(unsigned long int n);
+int		ft_ptrlen(unsigned long int n);
 
 int	ft_print_p(unsigned long int n, t_format p)
 {
-	int count;
+	int	count;
 
 	count = 0;
 	if (n == 0)
@@ -33,9 +33,9 @@ int	ft_print_p(unsigned long int n, t_format p)
 	return (count);
 }
 
-int ft_print_ptr(unsigned long int n)
+int	ft_print_ptr(unsigned long int n)
 {
-	int count;
+	int	count;
 
 	count = 0;
 	if (n == 0)
@@ -49,7 +49,7 @@ int ft_print_ptr(unsigned long int n)
 	return (count);
 }
 
-void ft_print_address(unsigned long int n)
+void	ft_print_address(unsigned long int n)
 {
 	if (n >= 16)
 	{
@@ -65,9 +65,9 @@ void ft_print_address(unsigned long int n)
 	}
 }
 
-int ft_ptrlen(unsigned long int n)
+int	ft_ptrlen(unsigned long int n)
 {
-	int len;
+	int	len;
 
 	len = 0;
 	if (n == 0)

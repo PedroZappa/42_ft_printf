@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 13:28:29 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/02 20:11:56 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/03 10:36:50 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ int	ft_isspecif(int c)
 	return (0);
 }
 
-int ft_isflagtype(int c)
+int	ft_isflagtype(int c)
 {
 	if (c == '-' || c == '0' || c == '.' || c == '*'
 		|| c == '#' || c == ' ' || c == '+')
 		return (1);
-	return(0);
+	return (0);
 }
 
 int	ft_pad_width(int total_width, int size, int zero)

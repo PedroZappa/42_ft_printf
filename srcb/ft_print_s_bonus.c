@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:33:00 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/02 17:02:50 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/03 10:35:39 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static int	ft_putstr(const char *str, t_format p)
 
 static int	ft_print_s_precision(const char *str, int precision)
 {
-	int count;
+	int	count;
 
 	count = 0;
 	while (str[count] && count < precision)
@@ -66,7 +66,7 @@ static int	ft_print_s_precision(const char *str, int precision)
 
 int	ft_print_str(const char *str)
 {
-	int len;
+	int	len;
 
 	if (!str)
 		return (ft_putstrn_fd("(null)", 1, 6));
