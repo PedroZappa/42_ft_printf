@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:24:58 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/03 21:50:01 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/03 21:56:06 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 static void		ft_print_arg(t_format *p, char type, va_list ap);
 static int		ft_parse_flag(t_format *p, int i);
-static int		ft_parse_width(t_format *parsed, int i);
-static int		ft_parse_prec(t_format *parsed, int i);
+static int		ft_parse_widthprec(t_format *parsed, int i);
 
 void	ft_parse_bonus(va_list ap, t_format *p)
 {
@@ -51,10 +50,8 @@ static int	ft_parse_flag(t_format *p, int i)
 			p->plus = 1;
 		else if (p->str[i] == '0' && p->minus == 0 && p->width == 0)
 			p->zero = 1;
-		else if (p->str[i] == '.')
-			i += ft_parse_prec(p, i);
 		else if (ft_isdigit(p->str[i]))
-			i += ft_parse_width(p, i);
+			i += ft_parse_widthprec(p, i);
 		// else if (ft_isdigit(str[i]))
 		// 	*p = ft_flag_digit(*p);
 		else if (ft_isspecif(p->str[i]))
@@ -86,12 +83,10 @@ static void	ft_print_arg(t_format *p, char type, va_list ap)
 		p->len += ft_print_p((unsigned long int)va_arg(ap, void *), *p);
 }
 
-static int	ft_parse_width(t_format *p, int i)
+static int	ft_parse_widthprec(t_format *p, int i)
 {
 	int		width_set;
-	int		j;
 
-	j = 0;
 	width_set = 0;
 	while (p->str[i] != '.' && !ft_strchr(SPECIFIERS, p->str[i]))
 	{
@@ -107,26 +102,8 @@ static int	ft_parse_width(t_format *p, int i)
 	if (p->str[i] == '.')
 	{
 		p->dot = 1;
-		while (ft_isdigit(p->str[i + j]))
-			++j;
 		p->precision = ft_atoi(&p->str[i + 1]);
 		++i;
 	}
 	return (i);
-}
-
-static int	ft_parse_prec(t_format *p, int i)
-{
-	int	j;
-
-	j = 0;
-	p->dot = 1;
-	if (p->str[i] == '.')
-	{
-		while (ft_isdigit(p->str[i + j]))
-			++j;
-		p->precision = ft_atoi(&p->str[i]);
-		++i;
-	}
-	return (j);
 }
