@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:33:18 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/03 12:39:18 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/03 12:52:52 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,18 @@
 int	ft_printf(const char *format, ...)
 {
 	va_list		ap;
-	// int			fmt_len;
-	char		*str;
 	t_format	p;
 
 	if (!format || *format == '\0')
 		return (0);
-	str = ft_strdup(format);
-	if (!str || *str == '\0')
-		return (0);
-	va_start(ap, format);
 	p = ft_newformat();
 	p.len = -1;
-	ft_parse_bonus(str, ap, &p);
+	p.str = ft_strdup(format);
+	if (!p.str || *p.str == '\0')
+		return (0);
+	va_start(ap, format);
+	ft_parse_bonus(ap, &p);
 	va_end(ap);
-	free(str);
+	free(p.str);
 	return (p.len);
 }

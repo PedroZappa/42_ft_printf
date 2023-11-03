@@ -6,34 +6,33 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:24:58 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/03 12:38:11 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/03 13:07:51 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 
-static int	ft_print_arg(t_format p, char type, va_list ap);
-static int	ft_parse_flags(t_format *p, int i, const char *str);
+static void		ft_print_arg(t_format *p, char type, va_list ap);
+static int		ft_parse_flags(t_format *p, int i, const char *str);
+static int		ft_parse_width(t_format parsed);
 
-void	ft_parse_bonus(char *str, va_list ap, t_format *p)
+void	ft_parse_bonus(va_list ap, t_format *p)
 {
 	int			i;
 
 	i = -1;
-	while (str[++i])
+	while (p->str[++i])
 	{
-		if (!p->str)
-			p->str = str;
-		if (str[i] == '%' && str[i + 1] != '\0')
+		if (p->str[i] == '%' && p->str[i + 1] != '\0')
 		{
-			i = ft_parse_flags(p, i, str);
-			if ((str[++i] != '\0') && (p->specifier > 0))
-				p->len += ft_print_arg(*p, str[i], ap);
-			else if (!str[i])
-				p->len += ft_putchar_fd(str[i], 1);
+			i = ft_parse_flags(p, i, p->str);
+			if ((p->str[++i] != '\0') && (p->specifier > 0))
+				ft_print_arg(p, p->str[i], ap);
+			else if (!p->str[i])
+				p->len += ft_putchar_fd(p->str[i], 1);
 		}
 		else
-			p->len += ft_putchar_fd(str[i], 1);
+			p->len += ft_putchar_fd(p->str[i], 1);
 	}
 }
 
@@ -52,7 +51,7 @@ static int	ft_parse_flags(t_format *p, int i, const char *str)
 		if (str[i] == '0' && p->minus == 0 && p->width == 0)
 			p->zero = 1;
 		if (ft_isdigit(str[i]))
-			*p = ft_flag_width(*p);
+			p->width = ft_parse_width(*p);
 		if (str[i] == '.')
 			i = ft_flag_prec(i, p);
 		if (ft_isdigit(str[i]))
@@ -66,26 +65,60 @@ static int	ft_parse_flags(t_format *p, int i, const char *str)
 	return (i);
 }
 
-static int	ft_print_arg(t_format p, char type, va_list ap)
+static void	ft_print_arg(t_format *p, char type, va_list ap)
 {
-	int	count;
-
-	count = 0;
 	if (type == '%')
-		count += ft_print_c('%', p);
+		p->len += ft_print_c('%', *p);
 	else if (type == 'c')
-		count += ft_print_c(va_arg(ap, int), p);
+		p->len += ft_print_c(va_arg(ap, int), *p);
 	else if (type == 's')
-		count += ft_print_s(va_arg(ap, const char *), p);
+		p->len += ft_print_s(va_arg(ap, const char *), *p);
 	else if (type == 'd' || type == 'i')
-		count += ft_print_di(va_arg(ap, int), p);
+		p->len += ft_print_di(va_arg(ap, int), *p);
 	else if (type == 'u')
-		count += ft_print_u(va_arg(ap, unsigned int), p);
+		p->len += ft_print_u(va_arg(ap, unsigned int), *p);
 	else if (type == 'x')
-		count += ft_print_x(va_arg(ap, unsigned int), 0, p);
+		p->len += ft_print_x(va_arg(ap, unsigned int), 0, *p);
 	else if (type == 'X')
-		count += ft_print_x(va_arg(ap, unsigned int), 1, p);
+		p->len += ft_print_x(va_arg(ap, unsigned int), 1, *p);
 	else if (type == 'p')
-		count += ft_print_p((unsigned long int)va_arg(ap, void *), p);
-	return (count);
+		p->len += ft_print_p((unsigned long int)va_arg(ap, void *), *p);
 }
+
+static int	ft_parse_width(t_format p)
+{
+	int		width_set;
+
+	width_set = 0;
+	while (*p.str != '.' && !ft_strchr(SPECIFIERS, *p.str))
+	{
+		if (*p.str == '-')
+			p.minus = 1;
+		if (*p.str == '0' && !ft_isdigit(*(p.str + 1)))
+			p.zero = 1;
+		else if (ft_isdigit(*p.str) && !width_set)
+		{
+			p.width = ft_atoi(p.str);
+			width_set = 1;
+		}
+		++p.str;
+	}
+	return (*p.str);
+}
+//
+// static t_format	ft_parse_prec(const char *format, t_format parsed)
+// {
+// 	int		precision_set;
+//
+// 	precision_set = 0;
+// 	while (!ft_strchr(SPECIFIERS, *format))
+// 	{
+// 		if (ft_isdigit(*format) && !precision_set)
+// 		{
+// 			parsed.precision = ft_atoi(format);
+// 			precision_set = 1;
+// 		}
+// 		++format;
+// 	}
+// 	return (parsed);
+// }
