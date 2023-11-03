@@ -6,14 +6,14 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:24:58 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/03 21:13:27 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/03 21:50:01 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 
 static void		ft_print_arg(t_format *p, char type, va_list ap);
-static int		ft_parse_specif(t_format *p, int i);
+static int		ft_parse_flag(t_format *p, int i);
 static int		ft_parse_width(t_format *parsed, int i);
 static int		ft_parse_prec(t_format *parsed, int i);
 
@@ -26,7 +26,7 @@ void	ft_parse_bonus(va_list ap, t_format *p)
 	{
 		if (p->str[i] == '%' && p->str[i + 1] != '\0')
 		{
-			i = ft_parse_specif(p, i);
+			i = ft_parse_flag(p, i);
 			if ((p->str[i] != '\0') && (p->specifier > 0))
 				ft_print_arg(p, p->str[i], ap);
 			else if (p->str[i])
@@ -37,7 +37,7 @@ void	ft_parse_bonus(va_list ap, t_format *p)
 	}
 }
 
-static int	ft_parse_specif(t_format *p, int i)
+static int	ft_parse_flag(t_format *p, int i)
 {
 	while (p->str[++i] && ft_isflag(p->str[i]))
 	{
@@ -89,7 +89,9 @@ static void	ft_print_arg(t_format *p, char type, va_list ap)
 static int	ft_parse_width(t_format *p, int i)
 {
 	int		width_set;
+	int		j;
 
+	j = 0;
 	width_set = 0;
 	while (p->str[i] != '.' && !ft_strchr(SPECIFIERS, p->str[i]))
 	{
@@ -100,6 +102,14 @@ static int	ft_parse_width(t_format *p, int i)
 			p->width = ft_atoi(p->str + i);
 			width_set = 1;
 		}
+		++i;
+	}
+	if (p->str[i] == '.')
+	{
+		p->dot = 1;
+		while (ft_isdigit(p->str[i + j]))
+			++j;
+		p->precision = ft_atoi(&p->str[i + 1]);
 		++i;
 	}
 	return (i);
@@ -116,7 +126,7 @@ static int	ft_parse_prec(t_format *p, int i)
 		while (ft_isdigit(p->str[i + j]))
 			++j;
 		p->precision = ft_atoi(&p->str[i]);
-
+		++i;
 	}
-	;return (j);
+	return (j);
 }
