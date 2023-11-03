@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:33:18 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/02 19:44:03 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/03 08:52:07 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_printf(const char *format, ...)
 		return (0);
 	fmt_len = 0;
 	va_start(ap, format);
-	fmt_len = ft_parse_bonus(str, ap);
+	ft_parse_bonus(str, ap, &fmt_len);
 	va_end(ap);
 	free(str);
 	return (fmt_len);

@@ -6,7 +6,7 @@
 #    By: zedr0 <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/19 12:13:19 by zedr0             #+#    #+#              #
-#    Updated: 2023/11/02 19:32:08 by passunca         ###   ########.fr        #
+#    Updated: 2023/11/03 09:27:08 by passunca         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,7 +62,7 @@ bonus: $(OBJSB)
 
 clean:
 	$(MAKE) $(LIBFT_PATH) clean
-	$(RM) $(OBJS)
+	$(RM) $(OBJS) $(OBJSB)
 
 fclean: clean
 	$(MAKE) $(LIBFT_PATH) fclean

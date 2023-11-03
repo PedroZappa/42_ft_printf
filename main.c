@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 13:01:44 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/02 19:42:07 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/03 09:24:21 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,11 @@ void test_s(void)
 	ft_test(1, "'%3.s'", s_hidden);
 	ft_test(2, "'%10.s'", s_hidden);
 	ft_test(3, "'%3.s'", NULL);
-	ft_test(4, "'%10.s'", NULL);
-	// ft_test(5, "'%10s'", NULL);
-	// ft_putstr_fd(SEP, 1);
-	// printf("'%.3s%.2s'\n","Zedr0", "Blah blah");
-	// ft_printf("'%.3s%.2s'\n","Zedr0", "Blah blah");
+	ft_test(4, "'%10s'", NULL);
+	ft_test(5, "'%10s'", NULL);
+	ft_putstr_fd(SEP, 1);
+	printf("'%3s%2s'\n","Zedr0 ", "Blah blah");
+	ft_printf("'%3s%2s'\n","Zedr0 ", "Blah blah");
 	
 	// ft_test(3, "'%3.s'", "Zedr0\0crashTest");
 	// ft_test(4, "'%.0s'", "Zedr0");
