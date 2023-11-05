@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:24:58 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/05 18:47:01 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/05 19:37:30 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static int	ft_parse_flag(const char *str, t_format *p, int i)
 			p->zero = 1;
 		else if (ft_isdigit(str[i]))
 			i += ft_parse_widthprec(str, p, i);
-		else if (ft_isspecif(str[i]))
+		if (ft_isspecif(str[i]))
 		{
 			p->specifier = str[i];
 			break ;
@@ -99,7 +99,7 @@ static int	ft_parse_widthprec(const char *str, t_format *p, int i)
 	
 	numlen = 0;
 	width_set = 0;
-	while (str[i] != '.' && !ft_strchr(SPECIFIERS, str[i]))
+	while (str[i] != '.' && !ft_isspecif(str[i]))
 	{
 		if (str[i] == '0' && !ft_isdigit(str[i + 1]))
 			p->zero = 1;
