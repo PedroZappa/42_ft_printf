@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:33:18 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/05 18:22:25 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/05 20:31:54 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,3 @@ int	ft_printf(const char *format, ...)
 	return (p.len);
 	// return (len);
 }
-
