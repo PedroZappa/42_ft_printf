@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 20:41:49 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/05 12:05:51 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/05 17:14:00 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@
 typedef struct s_format
 {
 	int		c;
-	char	*str;
-	char	*substr;
 	int		len;
 	char	specifier;
 	char	flag;
@@ -49,7 +47,8 @@ int			ft_printf(const char *format, ...);
 t_format	ft_newformat(void);
 /* Parsing */
 int			ft_parse(char *str, va_list ap);
-int			ft_parse_bonus(const char *str, va_list ap);
+// int			ft_parse_bonus(const char *str, va_list ap);
+int			ft_parse_bonus(const char *str, va_list ap, t_format *p);
 /* Check & Convert */
 int			ft_isflag(int c);
 int			ft_isspecif(int c);
@@ -58,7 +57,7 @@ int			ft_isflagtype(int c);
 t_format	ft_flag_left(t_format prsd);
 t_format	ft_flag_digit(t_format prsd);
 t_format	ft_flag_width(t_format prsd);
-int			ft_flag_prec(int pos, t_format *prsd);
+int			ft_flag_prec(const char *str, int pos, t_format *prsd);
 int			ft_pad_width(int total_width, int size, int zero);
 char		*ft_xtoa(unsigned long int nb, int isupper);
 

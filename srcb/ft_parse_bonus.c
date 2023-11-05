@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:24:58 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/05 12:11:01 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/05 18:19:03 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,33 +17,35 @@ static int		ft_parse_flag(const char *str, t_format *p, int i);
 static int		ft_parse_widthprec(const char *str, t_format *parsed, int i);
 static void		ft_print_format(t_format p);
 
-int	ft_parse_bonus(const char *str, va_list ap)
+int	ft_parse_bonus(const char *str, va_list ap, t_format *p)
 {
 	int		i;
-	int		speclen;
-	t_format	p;
+	// int		speclen;
+	// t_format	p;
 
-	i = -1;
-	while (str[++i])
+	i = 0;
+	while (str[i])
 	{
-		p = ft_newformat();
+		// p = ft_newformat();
 		if (str[i] == '%' && str[i + 1] != '\0')
 		{
-			// i = ft_parse_flag(p, i);
-			speclen = ft_parse_flag(str, &p, i);
-			if (p.specifier)
-				i = speclen;
-			if ((str[i] != '\0') && (p.specifier > 0)
+			// i = ft_parse_flag(str, &p, i);
+			i = ft_parse_flag(str, p, i);
+			// speclen = ft_parse_flag(str, p, i);
+			// if (p->specifier)
+			// 	i = speclen;
+			if ((str[i] != '\0') && (p->specifier > 0)
 				&& ft_isspecif(str[i]))
-				ft_print_arg(&p, str[i], ap);
-			else if (str[i])
-				p.len += ft_putchar_fd(str[i], 1);
+				ft_print_arg(p, str[i], ap);
+			else if (str[i] != '\0')
+				p->len += ft_putchar_fd(str[i], 1);
 		}
 		else
-			p.len += ft_putchar_fd(str[i], 1);
+			p->len += ft_putchar_fd(str[i], 1);
+		++i;
 	}
-	ft_print_format(p);
-	return (p.len);
+	ft_print_format(*p);
+	return (p->len);
 }
 
 static int	ft_parse_flag(const char *str, t_format *p, int i)
@@ -125,8 +127,6 @@ static void	ft_print_format(t_format p)
 {
 	printf("\nparsed from format :\n");	
 	printf("char\tc\t: %c\n", p.c);
-	printf("char\t*str\t: %s\n", p.str);
-	printf("char\t*substr\t: %s\n", p.substr);
 	printf("int\tlen\t: %d\n", p.len);
 	printf("char\tspcfr\t: %d\n", p.specifier);
 	printf("int\tminus\t: %d\n", p.minus);
