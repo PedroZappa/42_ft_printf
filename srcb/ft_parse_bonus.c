@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:24:58 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/05 11:59:45 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/05 12:11:01 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,30 +15,35 @@
 static void		ft_print_arg(t_format *p, char type, va_list ap);
 static int		ft_parse_flag(const char *str, t_format *p, int i);
 static int		ft_parse_widthprec(const char *str, t_format *parsed, int i);
+static void		ft_print_format(t_format p);
 
-void	ft_parse_bonus(const char *str, va_list ap, t_format *p)
+int	ft_parse_bonus(const char *str, va_list ap)
 {
 	int		i;
 	int		speclen;
+	t_format	p;
 
 	i = -1;
 	while (str[++i])
 	{
+		p = ft_newformat();
 		if (str[i] == '%' && str[i + 1] != '\0')
 		{
 			// i = ft_parse_flag(p, i);
-			speclen = ft_parse_flag(str, p, i);
-			if (p->specifier)
+			speclen = ft_parse_flag(str, &p, i);
+			if (p.specifier)
 				i = speclen;
-			if ((str[i] != '\0') && (p->specifier > 0)
+			if ((str[i] != '\0') && (p.specifier > 0)
 				&& ft_isspecif(str[i]))
-				ft_print_arg(p, str[i], ap);
+				ft_print_arg(&p, str[i], ap);
 			else if (str[i])
-				p->len += ft_putchar_fd(str[i], 1);
+				p.len += ft_putchar_fd(str[i], 1);
 		}
 		else
-			p->len += ft_putchar_fd(str[i], 1);
+			p.len += ft_putchar_fd(str[i], 1);
 	}
+	ft_print_format(p);
+	return (p.len);
 }
 
 static int	ft_parse_flag(const char *str, t_format *p, int i)
@@ -114,4 +119,22 @@ static int	ft_parse_widthprec(const char *str, t_format *p, int i)
 		numlen += ft_numlen(p->precision, 10);
 	}
 	return (numlen);
+}
+
+static void	ft_print_format(t_format p)
+{
+	printf("\nparsed from format :\n");	
+	printf("char\tc\t: %c\n", p.c);
+	printf("char\t*str\t: %s\n", p.str);
+	printf("char\t*substr\t: %s\n", p.substr);
+	printf("int\tlen\t: %d\n", p.len);
+	printf("char\tspcfr\t: %d\n", p.specifier);
+	printf("int\tminus\t: %d\n", p.minus);
+	printf("int\tplus\t: %d\n", p.plus);
+	printf("int\twidth\t: %d\n", p.width);
+	printf("int\tprec\t: %d\n", p.precision);
+	printf("int\tzero\t: %d\n", p.zero);
+	printf("int\tdot\t: %d\n", p.dot);
+	printf("int\tspace\t: %d\n", p.space);
+	printf("int\tsharp\t: %d\n", p.sharp);
 }
