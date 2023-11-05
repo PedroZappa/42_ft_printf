@@ -6,58 +6,62 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:24:58 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/03 22:41:46 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/05 11:59:45 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 
 static void		ft_print_arg(t_format *p, char type, va_list ap);
-static int		ft_parse_flag(t_format *p, int i);
-static int		ft_parse_widthprec(t_format *parsed, int i);
+static int		ft_parse_flag(const char *str, t_format *p, int i);
+static int		ft_parse_widthprec(const char *str, t_format *parsed, int i);
 
-void	ft_parse_bonus(va_list ap, t_format *p)
+void	ft_parse_bonus(const char *str, va_list ap, t_format *p)
 {
-	int			i;
+	int		i;
+	int		speclen;
 
 	i = -1;
-	while (p->str[++i])
+	while (str[++i])
 	{
-		if (p->str[i] == '%' && p->str[i + 1] != '\0')
+		if (str[i] == '%' && str[i + 1] != '\0')
 		{
-			i = ft_parse_flag(p, i);
-			if ((p->str[i] != '\0') && (p->specifier > 0)
-				&& ft_isspecif(p->str[i]))
-				ft_print_arg(p, p->str[i], ap);
-			else if (p->str[i])
-				p->len += ft_putchar_fd(p->str[i], 1);
+			// i = ft_parse_flag(p, i);
+			speclen = ft_parse_flag(str, p, i);
+			if (p->specifier)
+				i = speclen;
+			if ((str[i] != '\0') && (p->specifier > 0)
+				&& ft_isspecif(str[i]))
+				ft_print_arg(p, str[i], ap);
+			else if (str[i])
+				p->len += ft_putchar_fd(str[i], 1);
 		}
 		else
-			p->len += ft_putchar_fd(p->str[i], 1);
+			p->len += ft_putchar_fd(str[i], 1);
 	}
 }
 
-static int	ft_parse_flag(t_format *p, int i)
+static int	ft_parse_flag(const char *str, t_format *p, int i)
 {
-	while (p->str[++i] && ft_isflag(p->str[i]))
+	while (str[++i] && ft_isflag(str[i]))
 	{
-		if (p->str[i] == '-')
+		if (str[i] == '-')
 			*p = ft_flag_left(*p);
-		else if (p->str[i] == '#')
+		else if (str[i] == '#')
 			p->sharp = 1;
-		else if (p->str[i] == ' ')
+		else if (str[i] == ' ')
 			p->space = 1;
-		else if (p->str[i] == '+')
+		else if (str[i] == '+')
 			p->plus = 1;
-		else if (p->str[i] == '0' && p->minus == 0 && p->width == 0)
+		else if (str[i] == '0' && p->minus == 0 && p->width == 0)
 			p->zero = 1;
-		else if (ft_isdigit(p->str[i]))
-			i += ft_parse_widthprec(p, i);
+		else if (ft_isdigit(str[i]))
+			i += ft_parse_widthprec(str, p, i);
 		// else if (ft_isdigit(str[i]))
 		// 	*p = ft_flag_digit(*p);
-		else if (ft_isspecif(p->str[i]))
+		else if (ft_isspecif(str[i]))
 		{
-			p->specifier = p->str[i];
+			p->specifier = str[i];
 			break ;
 		}
 	}
@@ -84,29 +88,29 @@ static void	ft_print_arg(t_format *p, char type, va_list ap)
 		p->len += ft_print_p((unsigned long int)va_arg(ap, void *), *p);
 }
 
-static int	ft_parse_widthprec(t_format *p, int i)
+static int	ft_parse_widthprec(const char *str, t_format *p, int i)
 {
 	int		width_set;
 	int		numlen;
 	
 	numlen = 0;
 	width_set = 0;
-	while (p->str[i] != '.' && !ft_strchr(SPECIFIERS, p->str[i]))
+	while (str[i] != '.' && !ft_strchr(SPECIFIERS, str[i]))
 	{
-		if (p->str[i] == '0' && !ft_isdigit(p->str[i + 1]))
+		if (str[i] == '0' && !ft_isdigit(str[i + 1]))
 			p->zero = 1;
-		else if (ft_isdigit(p->str[i]) && !width_set)
+		else if (ft_isdigit(str[i]) && !width_set)
 		{
-			p->width = ft_atoi(p->str + i);
+			p->width = ft_atoi(str + i);
 			width_set = 1;
 		}
 		++i;
 		++numlen;
 	}
-	if (p->str[i] == '.')
+	if (str[i] == '.')
 	{
 		p->dot = 1;
-		p->precision = ft_atoi(&p->str[i + 1]);
+		p->precision = ft_atoi(&str[i + 1]);
 		numlen += ft_numlen(p->precision, 10);
 	}
 	return (numlen);
