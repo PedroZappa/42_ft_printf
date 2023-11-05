@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 13:38:09 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/05 17:14:25 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/05 18:34:20 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ t_format	ft_newformat(void)
 	new_format.c = 0;
 	new_format.len = 0;
 	new_format.specifier = 0;
+	new_format.flag = 0;
 	new_format.minus = 0;
 	new_format.plus = 0;
 	new_format.width = 0;
@@ -34,12 +35,6 @@ t_format	ft_flag_left(t_format prsd)
 {
 	prsd.minus = 1;
 	prsd.zero = 0;
-	return (prsd);
-}
-
-t_format	ft_flag_digit(t_format prsd)
-{
-	prsd.width = (prsd.width * 10) + (prsd.c - '0');
 	return (prsd);
 }
 

@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:24:58 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/05 18:19:03 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/05 18:47:01 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,20 @@ static void		ft_print_format(t_format p);
 int	ft_parse_bonus(const char *str, va_list ap, t_format *p)
 {
 	int		i;
-	// int		speclen;
+	int		speclen;
 	// t_format	p;
 
-	i = 0;
-	while (str[i])
+	i = -1;
+	while (str[++i])
 	{
 		// p = ft_newformat();
 		if (str[i] == '%' && str[i + 1] != '\0')
 		{
 			// i = ft_parse_flag(str, &p, i);
-			i = ft_parse_flag(str, p, i);
-			// speclen = ft_parse_flag(str, p, i);
-			// if (p->specifier)
-			// 	i = speclen;
+			// i = ft_parse_flag(str, p, i);
+			speclen = ft_parse_flag(str, p, i);
+			if (p->specifier)
+				i = speclen;
 			if ((str[i] != '\0') && (p->specifier > 0)
 				&& ft_isspecif(str[i]))
 				ft_print_arg(p, str[i], ap);
@@ -42,7 +42,6 @@ int	ft_parse_bonus(const char *str, va_list ap, t_format *p)
 		}
 		else
 			p->len += ft_putchar_fd(str[i], 1);
-		++i;
 	}
 	ft_print_format(*p);
 	return (p->len);
@@ -64,8 +63,6 @@ static int	ft_parse_flag(const char *str, t_format *p, int i)
 			p->zero = 1;
 		else if (ft_isdigit(str[i]))
 			i += ft_parse_widthprec(str, p, i);
-		// else if (ft_isdigit(str[i]))
-		// 	*p = ft_flag_digit(*p);
 		else if (ft_isspecif(str[i]))
 		{
 			p->specifier = str[i];
