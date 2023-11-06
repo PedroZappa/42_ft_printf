@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 13:01:44 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/06 10:36:08 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/06 12:10:03 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,9 +105,13 @@ void test_di(void)
 	// printf("'%11d'\n", 42);
 	// ft_printf("'%11d'\n", 42);
 	
-	printf("Test3:\n");
-	printf("'%-11d'\n", 42);
-	ft_printf("'%-11d'\n", 42);
+	printf("Test4:\n");
+	printf("'%12d'\n", 42);
+	ft_printf("'%12d'\n", 42);
+	
+	// printf("Test5:\n");
+	// printf("'%.d'\n", 42);
+	// ft_printf("'%.d'\n", 42);
 }
 
 void test_u(void)
