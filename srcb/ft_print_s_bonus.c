@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:33:00 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/03 10:35:39 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/06 09:12:15 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,10 @@ static int	ft_putstr(const char *str, t_format p)
 		count += ft_pad_width(p.precision, ft_strlen(str), 0);
 		count += ft_print_s_precision(str, p.precision);
 	}
+	// else if (p.dot && (p.precision < 1))
+	// {
+	// 	count += ft_print_s_precision("", 0);
+	// }
 	else
 		count += ft_print_s_precision(str, ft_strlen(str));
 	return (count);

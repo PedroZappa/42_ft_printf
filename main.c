@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 13:01:44 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/05 18:20:06 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/06 09:20:24 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,11 @@ void test_s(void);
 void test_di(void);
 void test_u(void);
 void test_x(void);
+void test_p(void);
 
 int main(void)
 {
-	test_c();
+	// test_c();
 	test_s();
 	// test_di();
 	// test_u();
@@ -45,7 +46,16 @@ void test_c(void)
 	char *str = "'%-7c'\n";
 	printf(str, 'z');
 	ft_printf(str, 'z');
-
+	str = "'%7c'\n";
+	printf(str, 'z');
+	ft_printf(str, 'z');
+	str = "'%07c'\n";
+	printf(str, 'z');
+	ft_printf(str, 'z');
+	str = "'%3c...%2c'\n";
+	printf(str, 'z', 'Z');
+	ft_printf(str, 'z', 'Z');
+	
 	// ft_putstr_fd(SEP, 1);
 	// printf("'%3c'\n", 'z');
 	// ft_printf("'%3c'\n", 'z');
@@ -55,17 +65,21 @@ void test_s(void)
 {
 	ft_putstr_fd(SEP, 1);
 	printf("TESTING %%s\n");
-	// char *s_hidden = "Zedr0\0asdasd";
+	char *s_hidden = "Zedr0\0asdasd";
 	ft_putstr_fd(SEP, 1);
-	ft_test(1, "'%-7.6s'", "Zedro0");
-	// ft_printf("Hello, World!");
-	// ft_test(2, "'%10.s'", s_hidden);
-	// ft_test(3, "'%3.s'", NULL);
-	// ft_test(4, "'%10s'", NULL);
-	// ft_test(5, "'%10s'", NULL);
-	// ft_putstr_fd(SEP, 1);
-	// printf("'%3s%2s'\n","Zedr0 ", "Blah blah");
-	// ft_printf("'%3s%2s'\n","Zedr0 ", "Blah blah");
+	ft_test(1, "'%-7.3s'", "Zedro0");
+	ft_test(2, "'%7.3s'", "Zedro0");
+	ft_test(3, "'%07.3s'", "Zedro0");
+	ft_test(4, "'%10.s'", s_hidden);
+	ft_test(5, "'%3.s'", NULL);
+	ft_putstr_fd(SEP, 1);
+	ft_putstr_fd("Test6:\n", 1);
+	printf("'%3s%2s'\n","Zedr0 ", "Blah blah");
+	ft_printf("'%3s%2s'\n","Zedr0 ", "Blah blah");
+	ft_test(7, "'% 7.3s'", "Zedro0");
+	ft_test(8, "'%-7.3s'", "Zedro0");
+	ft_test(9, "'%7.3s'", "Zedro0");
+	ft_test(10, "'%.s'", "Zedro0");
 	
 	// ft_test(3, "'%3.s'", "Zedr0\0crashTest");
 	// ft_test(4, "'%.0s'", "Zedr0");

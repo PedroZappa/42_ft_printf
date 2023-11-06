@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:24:58 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/05 20:19:27 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/06 09:20:04 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static int	ft_parse_flag(const char *str, t_format *p, int i)
 			p->plus = 1;
 		else if (str[i] == '0' && p->minus == 0 && p->width == 0)
 			p->zero = 1;
-		else if (ft_isdigit(str[i]))
+		else if (ft_isdigit(str[i]) || str[i] == '.')
 			i += ft_parse_widthprec(str, p, i);
 		if (ft_isspecif(str[i]))
 		{
@@ -94,20 +94,15 @@ static void	ft_print_arg(t_format *p, char type, va_list ap)
 
 static int	ft_parse_widthprec(const char *str, t_format *p, int i)
 {
-	int		width_set;
 	int		numlen;
 	
 	numlen = 0;
-	width_set = 0;
 	while (str[i] != '.' && !ft_isspecif(str[i]))
 	{
 		if (str[i] == '0' && !ft_isdigit(str[i + 1]))
 			p->zero = 1;
-		else if (ft_isdigit(str[i]) && !width_set)
-		{
+		else if (ft_isdigit(str[i]))
 			p->width = ft_atoi(str + i);
-			width_set = 1;
-		}
 		++i;
 		++numlen;
 	}
@@ -115,6 +110,8 @@ static int	ft_parse_widthprec(const char *str, t_format *p, int i)
 	{
 		p->dot = 1;
 		p->precision = ft_atoi(&str[i + 1]);
+		if (p->dot && (p->precision < 0))
+			p->precision = 0;
 		numlen += ft_numlen(p->precision, 10);
 	}
 	return (numlen);
@@ -123,7 +120,6 @@ static int	ft_parse_widthprec(const char *str, t_format *p, int i)
 static void	ft_print_format(t_format p)
 {
 	printf("\nparsed from format :\n");	
-	printf("char\tc\t: %c\n", p.c);
 	printf("int\tlen\t: %d\n", p.len);
 	printf("char\tspcfr\t: %d\n", p.specifier);
 	printf("int\tminus\t: %d\n", p.minus);
