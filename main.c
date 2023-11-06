@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 13:01:44 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/06 09:20:24 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/06 10:36:08 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ void test_p(void);
 
 int main(void)
 {
-	// test_c();
+	test_c();
 	test_s();
-	// test_di();
+	test_di();
 	// test_u();
 	// test_x();
 
@@ -65,7 +65,7 @@ void test_s(void)
 {
 	ft_putstr_fd(SEP, 1);
 	printf("TESTING %%s\n");
-	char *s_hidden = "Zedr0\0asdasd";
+	char *s_hidden = "Zedr0\0asdasd\0";
 	ft_putstr_fd(SEP, 1);
 	ft_test(1, "'%-7.3s'", "Zedro0");
 	ft_test(2, "'%7.3s'", "Zedro0");
@@ -80,6 +80,8 @@ void test_s(void)
 	ft_test(8, "'%-7.3s'", "Zedro0");
 	ft_test(9, "'%7.3s'", "Zedro0");
 	ft_test(10, "'%.s'", "Zedro0");
+	ft_test(11, "'%.0s'", "Zedro0");
+	ft_test(12, "'%.0s'", NULL);
 	
 	// ft_test(3, "'%3.s'", "Zedr0\0crashTest");
 	// ft_test(4, "'%.0s'", "Zedr0");
@@ -88,14 +90,24 @@ void test_s(void)
 void test_di(void)
 {
 	ft_putstr_fd(SEP, 1);
-	ft_printf("TESTING %%d\n");
+	printf("TESTING %%d\n");
 
-	int len;
-	ft_putstr_fd(SEP, 1);
-	len = printf("'%7d'", -10);
-	printf("\nlen: %d\n", len);
-	len = ft_printf("'%7d'", -10);
-	printf("\nlen: %d\n", len);
+	// ft_putstr_fd(SEP, 1);
+	// printf("Test1:\n");
+	// printf("'%d'\n", 42);
+	// ft_printf("'%d'\n", 42);
+	//
+	// printf("Test2:\n");
+	// printf("'%-3d'\n", 42);
+	// ft_printf("'%-3d'\n", 42);
+	// 
+	// printf("Test3:\n");
+	// printf("'%11d'\n", 42);
+	// ft_printf("'%11d'\n", 42);
+	
+	printf("Test3:\n");
+	printf("'%-11d'\n", 42);
+	ft_printf("'%-11d'\n", 42);
 }
 
 void test_u(void)
