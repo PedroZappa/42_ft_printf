@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 13:01:44 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/06 12:31:29 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/06 13:00:39 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void test_p(void);
 
 int main(void)
 {
-	test_c();
+	// test_c();
 	// test_s();
 	test_di();
 	// test_u();
@@ -44,14 +44,14 @@ void test_c(void)
 
 	ft_putstr_fd(SEP, 1);
 	char *str = "'%-7c'\n";
-	// printf(str, 'z');
-	// ft_printf(str, 'z');
-	// str = "'%7c'\n";
-	// printf(str, 'z');
-	// ft_printf(str, 'z');
-	// str = "'%07c'\n";
-	// printf(str, 'z');	
-	// ft_printf(str, 'z');
+	printf(str, 'z');
+	ft_printf(str, 'z');
+	str = "'%7c'\n";
+	printf(str, 'z');
+	ft_printf(str, 'z');
+	str = "'%07c'\n";
+	printf(str, 'z');	
+	ft_printf(str, 'z');
 	str = "'%3c...%2c'\n";
 	printf(str, 'z', 'Z');
 	ft_printf(str, 'z', 'Z');
@@ -92,26 +92,58 @@ void test_di(void)
 	ft_putstr_fd(SEP, 1);
 	printf("TESTING %%d\n");
 
-	// ft_putstr_fd(SEP, 1);
-	// printf("Test1:\n");
-	// printf("'%d'\n", 42);
-	// ft_printf("'%d'\n", 42);
-	//
-	// printf("Test2:\n");
-	// printf("'%-3d'\n", 42);
-	// ft_printf("'%-3d'\n", 42);
-	// 
-	// printf("Test3:\n");
-	// printf("'%11d'\n", 42);
-	// ft_printf("'%11d'\n", 42);
+	ft_putstr_fd(SEP, 1);
+	printf("Test1:\n");
+	printf("'%d'\n", 42);
+	ft_printf("'%d'\n", 42);
+
+	printf("Test2:\n");
+	printf("'%-3d'\n", 42);
+	ft_printf("'%-3d'\n", 42);
+
+	printf("Test3:\n");
+	printf("'%11d'\n", 42);
+	ft_printf("'%11d'\n", 42);
 	
 	printf("Test4:\n");
-	printf("'%12d'\n", 42);
-	ft_printf("'%12d'\n", 42);
+	printf("'%-12d'\n", 42);
+	ft_printf("'%-12d'\n", 42);
 	
-	// printf("Test5:\n");
-	// printf("'%.d'\n", 42);
-	// ft_printf("'%.d'\n", 42);
+	printf("Test5:\n");
+	printf("'%07d'\n", 42);
+	ft_printf("'%07d'\n", 42);
+	
+	printf("Test6:\n");
+	printf("'%4.d'\n", 42);
+	ft_printf("'%4.d'\n", 42);
+	
+	printf("Test7:\n");
+	printf("'%.d'\n", 42);
+	ft_printf("'%.d'\n", 42);
+	
+	printf("Test8:\n");
+	printf("'%.d.%3.7d'\n", 42, 420);
+	ft_printf("'%.d.%3.7d'\n", 42, 420);
+	
+	printf("Test9:\n");
+	printf("'%.d.%3.7d'\n", 42, 420);
+	ft_printf("'%.d.%3.7d'\n", 42, 420);
+	
+	printf("Test10:\n");
+	printf("' :% d'\n", 42);
+	ft_printf("' :% d'\n", 42);
+	
+	printf("Test11:\n");
+	printf("' :% d'\n", -42);
+	ft_printf("' :% d'\n", -42);
+	
+	printf("Test12:\n");
+	printf("' :%+d'\n", 42);
+	ft_printf("' :%+d'\n", 42);
+	
+	printf("Test13:\n");
+	printf("' :%+d'\n", -42);
+	ft_printf("' :%+d'\n", -42);
 }
 
 void test_u(void)
