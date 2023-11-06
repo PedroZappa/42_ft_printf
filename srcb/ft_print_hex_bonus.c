@@ -6,14 +6,14 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:33:44 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/03 10:30:20 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/06 14:50:15 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 #include "../libft/libft.h"
 
-static int	ft_print_hexa(char *nbrstr, int n, int is_upper, t_format p);
+static int	ft_print_hexa(char *nbrstr, int n, int is_upper, t_format *p);
 static int	ft_puthex(char *nbrstr, int n, int is_upper, t_format p);
 static int	ft_putx_prefix(int is_upper);
 
@@ -31,32 +31,36 @@ int	ft_print_x(unsigned int n, int is_upper, t_format p)
 	nbrstr = ft_xtoa(n, is_upper);
 	if (!nbrstr)
 		return (0);
-	count += ft_print_hexa(nbrstr, n, is_upper, p);
+	count += ft_print_hexa(nbrstr, n, is_upper, &p);
 	free(nbrstr);
 	return (count);
 }
 
-int	ft_print_hexa(char *nbrstr, int n, int is_upper, t_format p)
+static int	ft_print_hexa(char *nbrstr, int n, int is_upper, t_format *p)
 {
 	int		count;
 
 	count = 0;
-	if (p.zero && p.sharp && n != 0)
+	if (p->zero && p->sharp && n != 0)
+	{	
 		count += ft_putx_prefix(is_upper);
-	if (p.minus)
-		count += ft_puthex(nbrstr, n, is_upper, p);
-	if ((p.precision >= 0) && ((size_t)p.precision < ft_strlen(nbrstr)))
-		p.precision = ft_strlen(nbrstr);
-	if (p.precision >= 0)
+		p->width -= 2;
+	}
+	if (p->minus)
+		count += ft_puthex(nbrstr, n, is_upper, *p);
+	if ((p->precision >= 0) && ((size_t)p->precision < ft_strlen(nbrstr)))
+		p->precision = ft_strlen(nbrstr);
+	if (p->precision >= 0)
 	{
-		p.width -= p.precision;
-		count += ft_pad_width(p.width, 0, 0);
+		p->width -= p->precision;
+		count += ft_pad_width(p->width, 0, 0);
 	}
 	else
-		count += ft_pad_width(p.width,
-				(ft_strlen(nbrstr) + (p.sharp * 2)), p.zero);
-	if (!p.minus)
-		count += ft_puthex(nbrstr, n, is_upper, p);
+		count += ft_pad_width(p->width,
+				(ft_strlen(nbrstr) + (p->sharp * 2)), p->zero);
+	if (!p->minus)
+		count += ft_puthex(nbrstr, n, is_upper, *p);
+	// p->len = count;
 	return (count);
 }
 

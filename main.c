@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 13:01:44 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/06 13:11:57 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/06 14:33:45 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ int main(void)
 	// test_c();
 	// test_s();
 	// test_di();
-	test_u();
-	// test_x();
+	// test_u();
+	test_x();
 
 	return (0);
 }
@@ -205,12 +205,26 @@ void test_u(void)
 void test_x(void)
 {
 	ft_putstr_fd(SEP, 1);
-	ft_printf("TESTING %%x\n");
+	printf("TESTING %%x\n");
 	
 	char *ptr = "Zedr0";
 	ft_putstr_fd(SEP, 1);
-	ft_test(1, "%#x", ptr);
-	ft_test(2, "%#X", ptr);
+	// ft_test(1, "'%x'", ptr);
+	// ft_test(2, "'%X'", ptr);
+	// ft_test(3, "'%#x'", ptr);
+	// ft_test(4, "'%#X'", ptr);
+	// ft_test(5, "'%#12X'", ptr);
+	// ft_test(6, "'%#12x'", ptr);
+	// ft_test(7, "'%#-12X'", ptr);
+	// ft_test(8, "'%#012x'", ptr);
+	// ft_test(9, "'%#012X'", ptr);
+	// ft_test(10, "'%#2.13X'", ptr);
+	// ft_test(11, "'%02.13X'", ptr);
+	// ft_test(12, "'%-02.13X'", ptr);
+	// ft_test(13, "'%-#2.13X'", ptr);
+	// ft_test(14, "'%-13.3X'", ptr);
+	ft_test(15, "'%#13.3X'", ptr);
+	ft_test(16, "'%-#13.3X'", ptr);
 }
 
 static void ft_test(int n, char *frmt, char *specif)
