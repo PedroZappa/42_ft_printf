@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 13:01:44 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/06 12:31:29 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/06 12:17:35 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int main(void)
 {
 	test_c();
 	// test_s();
-	test_di();
+	// test_di();
 	// test_u();
 	// test_x();
 
@@ -50,7 +50,7 @@ void test_c(void)
 	// printf(str, 'z');
 	// ft_printf(str, 'z');
 	// str = "'%07c'\n";
-	// printf(str, 'z');	
+	// printf(str, 'z');
 	// ft_printf(str, 'z');
 	str = "'%3c...%2c'\n";
 	printf(str, 'z', 'Z');

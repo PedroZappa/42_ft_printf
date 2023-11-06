@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:24:58 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/06 12:09:16 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/06 12:32:47 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,9 @@ static int	ft_parse_flag(const char *str, t_format *p, int i)
 static void	ft_print_arg(t_format *p, char type, va_list ap)
 {
 	if (type == '%')
-		p->len += ft_print_c('%', *p);
+		p->len += ft_print_c('%', p);
 	else if (type == 'c')
-		p->len += ft_print_c(va_arg(ap, int), *p);
+		p->len += ft_print_c(va_arg(ap, int), p);
 	else if (type == 's')
 		p->len += ft_print_s(va_arg(ap, const char *), *p);
 	else if (type == 'd' || type == 'i')
@@ -97,7 +97,7 @@ static int	ft_parse_widthprec(const char *str, t_format *p, int i)
 	{
 		if (str[i] == '0' && !ft_isdigit(str[i + 1]))
 			p->zero = 1;
-		else if (ft_isdigit(str[i]) && p->width == 0)
+		else if (ft_isdigit(str[i]) && !p->width)
 			p->width = ft_atoi(str + i);
 		++i;
 		++numlen;
