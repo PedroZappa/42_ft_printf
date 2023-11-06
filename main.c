@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 13:01:44 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/06 13:00:39 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/06 13:11:57 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <stdarg.h>
 
 #define SEP "~~~~~~~~~~~~~~~~~~~~\n"
+#define RLR "12345678901234567890\n"
 
 static void ft_test(int n, char *frmt, char *specif);
 
@@ -29,8 +30,8 @@ int main(void)
 {
 	// test_c();
 	// test_s();
-	test_di();
-	// test_u();
+	// test_di();
+	test_u();
 	// test_x();
 
 	return (0);
@@ -151,29 +152,53 @@ void test_u(void)
 	ft_putstr_fd(SEP, 1);
 	ft_printf("TESTING %%u\n");
 
-	int len;
 	ft_putstr_fd(SEP, 1);
-	len = printf(" %u ", 42);
-	printf("\nlen: %d", len);
+	printf("Test1:\n");
+	printf("' %u '", 42);
 	printf("\n");
-	len = ft_printf(" %u ", 42);
-	printf("\nlen: %d", len);
+	ft_printf("' %u '", 42);
 	printf("\n");
 	
 	ft_putstr_fd(SEP, 1);
-	len = printf(" %u ", -7);
-	printf("\nlen: %d", len);
+	printf("Test2:\n");
+	printf("' %-u '", -7);
 	printf("\n");
-	len = ft_printf(" %u ", -7);
-	printf("\nlen: %d", len);
+	ft_printf("' %-u '", -7);
 	printf("\n");
 
 	ft_putstr_fd(SEP, 1);
-	len = printf(" %u ", -99);
-	printf("\nlen: %d", len);
+	printf("Test3:\n");
+	printf("' %-22u '", -99);
 	printf("\n");
-	len = ft_printf(" %u ", -99);
-	printf("\nlen: %d", len);
+	ft_printf("' %-22u '", -99);
+	printf("\n");
+
+	ft_putstr_fd(SEP, 1);
+	printf("Test4:\n");
+	printf("' %22u '", -99);
+	printf("\n");
+	ft_printf("' %22u '", -99);
+	printf("\n");
+
+	ft_putstr_fd(SEP, 1);
+	printf("Test5:\n");
+	printf("' %020u '", -99);
+	printf("\n");
+	ft_printf("' %020u '", -99);
+	printf("\n");
+
+	ft_putstr_fd(SEP, 1);
+	printf("Test5:\n");
+	printf("' %20.10u '", 5);
+	printf("\n");
+	ft_printf("' %20.10u '", 5);
+	printf("\n");
+
+	ft_putstr_fd(SEP, 1);
+	printf("Test5:\n");
+	printf("' %10.u '", 5);
+	printf("\n");
+	ft_printf("' %10.u '", 5);
 	printf("\n");
 }
 
@@ -195,6 +220,6 @@ static void ft_test(int n, char *frmt, char *specif)
 	printf("\n");
 	ft_printf(frmt, specif);
 	printf("\n");
-	ft_putstr_fd(SEP, 1);
+	ft_putstr_fd(RLR, 1);
 		
 }
