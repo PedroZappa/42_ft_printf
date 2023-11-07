@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:24:58 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/07 13:10:29 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/07 20:06:24 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	ft_parse_bonus(const char *str, va_list ap, t_format *p)
 	i = -1;
 	while (str[++i] != '\0')
 	{
+		ft_resetformat(p);
 		if (str[i] == '%')
 		{
 			speclen = ft_parse_flag(str, p, i);
