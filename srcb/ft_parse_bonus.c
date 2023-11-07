@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:24:58 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/06 15:01:23 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/07 13:10:29 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,7 @@ int	ft_parse_bonus(const char *str, va_list ap, t_format *p)
 			speclen = ft_parse_flag(str, p, i);
 			if (p->specifier)
 				i = speclen;
-			if ((str[i] != '\0') && (p->specifier > 0)
-				&& ft_isspecif(str[i]))
+			if (str[i] && (p->specifier > 0) && ft_isspecif(str[i]))
 				ft_print_arg(p, str[i], ap);
 			else if (str[i] != '\0')
 				p->len += ft_putchar_fd(str[i], 1);
@@ -39,7 +38,6 @@ int	ft_parse_bonus(const char *str, va_list ap, t_format *p)
 		else
 			p->len += ft_putchar_fd(str[i], 1);
 	}
-	// ft_print_format(*p);
 	return (p->len);
 }
 
