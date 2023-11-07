@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/31 20:41:49 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/07 18:09:44 by passunca         ###   ########.fr       */
+/*   Created: 2023/11/07 20:20:24 by passunca          #+#    #+#             */
+/*   Updated: 2023/11/07 20:20:27 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct s_format
 int			ft_printf(const char *format, ...);
 /* Initializes a t_format struct with all members set to 0 */
 t_format	ft_newformat(void);
+void		ft_resetformat(t_format *prsd);
 /* Parsing */
 int			ft_parse(char *str, va_list ap);
 int			ft_parse_bonus(const char *str, va_list ap);
