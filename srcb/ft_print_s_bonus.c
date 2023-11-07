@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:33:00 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/07 12:32:29 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/07 14:58:14 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int	ft_print_s(const char *str, t_format p)
 		str = "(null)";
 	if ((p.precision >= 0) && ((size_t)p.precision > ft_strlen(str)))
 		p.precision = ft_strlen(str);
-	
 	if (p.minus)
 		count += ft_putstr(str, p);
 	if (p.precision >= 0)
@@ -48,10 +47,6 @@ static int	ft_putstr(const char *str, t_format p)
 		count += ft_pad_width(p.precision, ft_strlen(str), 0);
 		count += ft_print_s_precision(str, p.precision);
 	}
-	// else if (p.dot && (p.precision < 1))
-	// {
-	// 	count += ft_print_s_precision("", 0);
-	// }
 	else
 		count += ft_print_s_precision(str, ft_strlen(str));
 	return (count);

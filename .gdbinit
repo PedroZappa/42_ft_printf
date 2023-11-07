@@ -34,16 +34,17 @@ set auto-load safe-path /
 # Debug %s
 break ft_print_s
 run
-# target record
+# target record-full
 refresh
 display count
-display *str
+display str
 display p
-n
+next
 
 define db_parse
 	display i
 	display speclen
+	display str
 	display str[i]
 	display *p
 	next

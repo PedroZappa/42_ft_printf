@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 13:01:44 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/07 13:07:06 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/07 14:56:40 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void test_s(void)
 	// ft_test(12, "'%.0s'", NULL);
 	
 	ft_putstr_fd(SEP, 1);
-	str = "'%3.7s.%7.7s'\n";
+	str = "'%3.7s%7.7s'\n";
 	printf(str, "hello", "whirl");
 	ft_printf(str, "hello", "whirl");	
 	// ft_putstr_fd(SEP, 1);
