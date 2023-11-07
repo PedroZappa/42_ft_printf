@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 13:01:44 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/07 10:07:40 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/07 12:00:55 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ void test_p(void);
 
 int main(void)
 {
-	// test_c();
+	test_c();
 	// test_s();
 	// test_di();
 	// test_u();
-	test_x();
+	// test_x();
 
 	return (0);
 }
@@ -42,24 +42,33 @@ void test_c(void)
 	ft_putstr_fd(SEP, 1);
 	printf("TESTING %%c\n");
 	ft_putstr_fd(SEP, 1);
+	char *str = NULL;
 
-	ft_putstr_fd(SEP, 1);
-	char *str = "'%-7c'\n";
-	printf(str, 'z');
-	ft_printf(str, 'z');
-	str = "'%7c'\n";
-	printf(str, 'z');
-	ft_printf(str, 'z');
-	str = "'%07c'\n";
-	printf(str, 'z');	
-	ft_printf(str, 'z');
-	str = "'%3c...%2c'\n";
-	printf(str, 'z', 'Z');
-	ft_printf(str, 'z', 'Z');
-	
 	// ft_putstr_fd(SEP, 1);
-	// printf("'%3c'\n", 'z');
-	// ft_printf("'%3c'\n", 'z');
+	// str = "'%-7c'\n";
+	// printf(str, 'z');
+	// ft_printf(str, 'z');
+	// str = "'%7c'\n";
+	// printf(str, 'z');
+	// ft_printf(str, 'z');
+	// str = "'%07c'\n";
+	// printf(str, 'z');	
+	// ft_printf(str, 'z');
+	// str = "'%3c...%2c'\n";
+	// printf(str, 'z', 'Z');
+	// ft_printf(str, 'z', 'Z');
+	// %%
+	// ft_putstr_fd(SEP, 1);
+	// printf("'%5%'\n");
+	// ft_printf("'%5%'\n");	
+	// ft_putstr_fd(SEP, 1);
+	// printf("'%-5%'\n");
+	// ft_printf("'%-5%'\n");
+	
+	ft_putstr_fd(SEP, 1);
+	str = "'%3.7s%7.7s'\n";
+	printf(str, "Zedr0 ", "Blah blah");
+	ft_printf(str, "Zedr0 ", "Blah blah");	
 }
 
 void test_s(void)
