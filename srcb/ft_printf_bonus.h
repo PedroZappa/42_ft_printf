@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/07 20:20:24 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/07 20:20:27 by passunca         ###   ########.fr       */
+/*   Created: 2023/10/31 20:41:49 by passunca          #+#    #+#             */
+/*   Updated: 2023/11/07 20:09:32 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ t_format	ft_newformat(void);
 void		ft_resetformat(t_format *prsd);
 /* Parsing */
 int			ft_parse(char *str, va_list ap);
-int			ft_parse_bonus(const char *str, va_list ap);
+// int			ft_parse_bonus(const char *str, va_list ap);
+int			ft_parse_bonus(const char *str, va_list ap, t_format *p);
 /* Check & Convert */
 int			ft_isflag(int c);
 int			ft_isspecif(int c);
