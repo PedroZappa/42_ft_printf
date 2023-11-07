@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:24:58 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/07 13:10:29 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/07 18:09:05 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,28 +17,30 @@ static int		ft_parse_flag(const char *str, t_format *p, int i);
 static int		ft_parse_widthprec(const char *str, t_format *parsed, int i);
 // static void		ft_print_format(t_format p);
 
-int	ft_parse_bonus(const char *str, va_list ap, t_format *p)
+int	ft_parse_bonus(const char *str, va_list ap)
 {
-	int		i;
-	int		speclen;
+	int			i;
+	int			speclen;
+	t_format	p;
 
 	i = -1;
 	while (str[++i] != '\0')
 	{
+		p = ft_newformat();
 		if (str[i] == '%')
 		{
-			speclen = ft_parse_flag(str, p, i);
-			if (p->specifier)
+			speclen = ft_parse_flag(str, &p, i);
+			if (p.specifier)
 				i = speclen;
-			if (str[i] && (p->specifier > 0) && ft_isspecif(str[i]))
-				ft_print_arg(p, str[i], ap);
+			if (str[i] && (p.specifier > 0) && ft_isspecif(str[i]))
+				ft_print_arg(&p, str[i], ap);
 			else if (str[i] != '\0')
-				p->len += ft_putchar_fd(str[i], 1);
+				p.len += ft_putchar_fd(str[i], 1);
 		}
 		else
-			p->len += ft_putchar_fd(str[i], 1);
+			p.len += ft_putchar_fd(str[i], 1);
 	}
-	return (p->len);
+	return (p.len);
 }
 
 static int	ft_parse_flag(const char *str, t_format *p, int i)

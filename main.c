@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 13:01:44 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/07 14:56:40 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/07 18:19:14 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ void test_p(void);
 
 int main(void)
 {
-	// test_c();
+	test_c();
 	test_s();
-	// test_di();
-	// test_u();
-	// test_x();
+	test_di();
+	test_u();
+	test_x();
 
 	return (0);
 }
@@ -42,20 +42,20 @@ void test_c(void)
 	ft_putstr_fd(SEP, 1);
 	printf("TESTING %%c\n");
 	ft_putstr_fd(SEP, 1);
-	// char *str = NULL;
-	// ft_putstr_fd(SEP, 1);
-	// str = "'%-7c'\n";
-	// printf(str, 'z');
-	// ft_printf(str, 'z');
-	// str = "'%7c'\n";
-	// printf(str, 'z');
-	// ft_printf(str, 'z');
-	// str = "'%07c'\n";
-	// printf(str, 'z');	
-	// ft_printf(str, 'z');
-	// str = "'%3c...%2c'\n";
-	// printf(str, 'z', 'Z');
-	// ft_printf(str, 'z', 'Z');
+	char *str = NULL;
+	ft_putstr_fd(SEP, 1);
+	str = "'%-7c'\n";
+	printf(str, 'z');
+	ft_printf(str, 'z');
+	str = "'%7c'\n";
+	printf(str, 'z');
+	ft_printf(str, 'z');
+	str = "'%07c'\n";
+	printf(str, 'z');	
+	ft_printf(str, 'z');
+	str = "'%3c...%2c'\n";
+	printf(str, 'z', 'Z');
+	ft_printf(str, 'z', 'Z');
 	// %%
 	// ft_putstr_fd(SEP, 1);
 	// printf("'%5%'\n");
@@ -229,20 +229,20 @@ void test_x(void)
 	
 	char *ptr = "Zedr0";
 	ft_putstr_fd(SEP, 1);
-	// ft_test(1, "'%x'", ptr);
-	// ft_test(2, "'%X'", ptr);
-	// ft_test(3, "'%#x'", ptr);
-	// ft_test(4, "'%#X'", ptr);
-	// ft_test(5, "'%#12X'", ptr);
-	// ft_test(6, "'%#12x'", ptr);
-	// ft_test(7, "'%#-12X'", ptr);
-	// ft_test(8, "'%#012x'", ptr);
-	// ft_test(9, "'%#012X'", ptr);
-	// ft_test(10, "'%#2.13X'", ptr);
-	// ft_test(11, "'%02.13X'", ptr);
-	// ft_test(12, "'%-02.13X'", ptr);
-	// ft_test(13, "'%-#2.13X'", ptr);
-	// ft_test(14, "'%-13.3X'", ptr);
+	ft_test(1, "'%x'", ptr);
+	ft_test(2, "'%X'", ptr);
+	ft_test(3, "'%#x'", ptr);
+	ft_test(4, "'%#X'", ptr);
+	ft_test(5, "'%#12X'", ptr);
+	ft_test(6, "'%#12x'", ptr);
+	ft_test(7, "'%#-12X'", ptr);
+	ft_test(8, "'%#012x'", ptr);
+	ft_test(9, "'%#012X'", ptr);
+	ft_test(10, "'%#2.13X'", ptr);
+	ft_test(11, "'%02.13X'", ptr);
+	ft_test(12, "'%-02.13X'", ptr);
+	ft_test(13, "'%-#2.13X'", ptr);
+	ft_test(14, "'%-13.3X'", ptr);
 	ft_test(15, "'%#13.3X'", ptr);
 	ft_test(16, "'%-#13.3X'", ptr);
 }
