@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 13:01:44 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/07 18:19:14 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/07 19:16:40 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ void test_p(void);
 
 int main(void)
 {
-	test_c();
+	// test_c();
 	test_s();
-	test_di();
-	test_u();
-	test_x();
+	// test_di();
+	// test_u();
+	// test_x();
 
 	return (0);
 }
@@ -66,7 +66,7 @@ void test_c(void)
 	
 	// ft_putstr_fd(SEP, 1);
 	// str = "'%3.7s.%7.7s'\n";
-	// printf(str, "hello", "whirl");
+	// printf(str, "hello", "whirl");flag
 	// ft_printf(str, "hello", "whirl");	
 	
 	
@@ -76,7 +76,7 @@ void test_s(void)
 {
 	ft_putstr_fd(SEP, 1);
 	printf("TESTING %%s\n");
-	char *str = NULL;
+	// char *str = NULL;
 	// char *s_hidden = "Zedr0\0asdasd\0";
 	// ft_putstr_fd(SEP, 1);
 	// ft_test(1, "'%-7.3s'", "Zedro0");
@@ -95,17 +95,19 @@ void test_s(void)
 	// ft_test(11, "'%.0s'", "Zedro0");
 	// ft_test(12, "'%.0s'", NULL);
 	
-	ft_putstr_fd(SEP, 1);
-	str = "'%3.7s%7.7s'\n";
-	printf(str, "hello", "whirl");
-	ft_printf(str, "hello", "whirl");	
+	// ft_putstr_fd(SEP, 1);
+	// str = "'%3.7s%7.7s'\n";
+	// printf(str, "hello", "whirl");
+	// ft_printf(str, "hello", "whirl");	
 	// ft_putstr_fd(SEP, 1);
 	// str = "'%7.7s%3.7s'\n";
 	// printf(str, "hello", "whirl");
 	// ft_printf(str, "hello", "whirl");	
 		//
-	// ft_test(3, "'%3.s'", "Zedr0\0crashTest");
-	// ft_test(4, "'%.0s'", "Zedr0");
+	// ft_test(2, "'%3.s'", "Zedr0\0crashTest");
+	// ft_test(3, "'%.0s'", s_hidden);
+	// ft_test(4, "'%.09s'", s_hidden);
+	ft_test(4, "'%.7s'", "Zedr0");
 }
 
 void test_di(void)
