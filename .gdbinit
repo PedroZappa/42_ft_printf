@@ -13,15 +13,15 @@ set auto-load safe-path /
 # next
 
 
-# Debug parse digits
-# break ft_parse_bonus
-# run
-# refresh
-# display i
-# display speclen
-# display str[i]
-# display p
-# n
+# Debug parse
+break ft_parse_bonus
+run
+refresh
+display i
+display speclen
+display str[i]
+display *p
+n
 
 # Debug %s
 # break ft_print_s
@@ -34,16 +34,16 @@ set auto-load safe-path /
 # next
 
 # Debug print hex
-break ft_print_x
+# break ft_print_x
 # break ft_print_hexa
-run
-target record-full
-refresh
-display n
-display count
-display nbrstr
-display p
-n
+# run
+# target record-full
+# refresh
+# display n
+# display count
+# display nbrstr
+# display p
+# n
 
 define db_print_integer
 	display n
