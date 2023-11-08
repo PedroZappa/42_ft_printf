@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 20:41:49 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/08 19:51:00 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/08 19:53:18 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int			ft_isspecif(int c);
 int			ft_isflag(int c);
 int			ft_isflagtype(int c);
 t_format	ft_flag_minus(t_format prsd);
-t_format	ft_flag_width(t_format prsd);
+// t_format	ft_flag_width(t_format prsd);
 int			ft_pad_width(int total_width, int size, int zero);
 char		*ft_xtoa(unsigned long int nb, int isupper);
 /* Printing */
