@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:24:58 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/08 17:52:30 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/08 18:21:52 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,9 +95,9 @@ void ft_parse_width(const char *str, t_format *p, int i)
 {
 	while (str[i] != '.' && !ft_isspecif(str[i]))
 	{
-		if (str[i] == '0' && !ft_isdigit(str[i + 1]))
-			p->zero = 1;
-		else if (ft_isdigit(str[i]) && !p->width)
+		// if (str[i] == '0' && !ft_isdigit(str[i + 1]))
+		// 	p->zero = 1;
+		if (ft_isdigit(str[i]) && !p->width)
 			p->width = ft_atoi(str + i);
 		++i;
 	}
