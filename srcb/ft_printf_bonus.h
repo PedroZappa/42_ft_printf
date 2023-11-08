@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 20:41:49 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/08 17:52:08 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/08 18:55:37 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,6 @@ t_format	ft_flag_width(t_format prsd);
 int			ft_flag_prec(const char *str, int pos, t_format *prsd);
 int			ft_pad_width(int total_width, int size, int zero);
 char		*ft_xtoa(unsigned long int nb, int isupper);
-
-int			ft_check_flag_spec(char c, char *spec);
-int			ft_num_specs(const char *format, t_format prsd, va_list ap);
-int			ft_char_specs(const char *format, t_format prsd, va_list ap);
 /* Printing */
 int			ft_print_specifier(const char *format, t_format prsd, va_list ap);
 int			ft_print_c(char c, t_format *prsd);
