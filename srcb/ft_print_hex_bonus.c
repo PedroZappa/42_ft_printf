@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:33:44 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/08 14:36:41 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/08 18:32:21 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static int	ft_print_hexa(char *nbrstr, size_t n, int is_upper, t_format *p)
 
 	count = 0;
 	if (p->zero && p->sharp && n != 0)
-	{	
+	{
 		count += ft_putx_prefix(is_upper);
 		p->width -= 2;
 	}

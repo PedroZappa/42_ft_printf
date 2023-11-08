@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:24:58 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/08 18:21:52 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/08 18:30:23 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,6 @@ static int	ft_parse_flag(const char *str, t_format *p, int i)
 			p->plus = 1;
 		else if (str[i] == '0' && p->minus == 0 && p->width == 0)
 			p->zero = 1;
-		// if (ft_isdigit(str[i]) || str[i] == '.')
-		// 	i += ft_parse_widthprec(str, p, i);
 		if (ft_isdigit(str[i]) && !p->width && str[i - 1] != '.')
 			ft_parse_width(str, p, i);
 		if (str[i] == '.')
@@ -91,19 +89,17 @@ static void	ft_print_arg(t_format *p, char type, va_list ap)
 		p->len += ft_print_p((unsigned long int)va_arg(ap, void *), *p);
 }
 
-void ft_parse_width(const char *str, t_format *p, int i)
+void	ft_parse_width(const char *str, t_format *p, int i)
 {
 	while (str[i] != '.' && !ft_isspecif(str[i]))
 	{
-		// if (str[i] == '0' && !ft_isdigit(str[i + 1]))
-		// 	p->zero = 1;
 		if (ft_isdigit(str[i]) && !p->width)
 			p->width = ft_atoi(str + i);
 		++i;
 	}
 }
 
-void ft_parse_prec(const char *str, t_format *p, int i)
+void	ft_parse_prec(const char *str, t_format *p, int i)
 {
 	p->dot = 1;
 	if (str[i + 1] == '0')

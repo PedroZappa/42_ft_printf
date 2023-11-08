@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 12:35:25 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/03 10:35:14 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/08 18:31:14 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	ft_print_p(unsigned long int n, t_format p)
 	count = 0;
 	if (n == 0)
 		p.width -= ft_strlen("(nil)") - 1;
-	else 
+	else
 		p.width -= 2;
 	if (p.minus)
 		count += ft_print_ptr(n);

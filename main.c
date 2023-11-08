@@ -1,19 +1,18 @@
-	/* ************************************************************************** */
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/31 13:01:44 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/08 13:06:25 by passunca         ###   ########.fr       */
+/*   Created: 2023/11/08 18:34:25 by passunca          #+#    #+#             */
+/*   Updated: 2023/11/08 18:38:47 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "srcb/ft_printf_bonus.h"
 #include "libft/libft.h"
 #include <limits.h>
-#include <stdarg.h>
 
 #define SEP "~~~~~~~~~~~~~~~~~~~~\n"
 #define RLR "12345678901234567890\n"
@@ -69,8 +68,6 @@ void test_c(void)
 	// str = "'%3.7s.%7.7s'\n";
 	// printf(str, "hello", "whirl");flag
 	// ft_printf(str, "hello", "whirl");	
-	
-	
 }
 
 void test_s(void)
