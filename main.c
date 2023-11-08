@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 18:34:25 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/08 18:38:47 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/08 20:28:20 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void test_s(void)
 	printf("TESTING %%s\n");
 	// char *str = NULL;
 	// char *s_hidden = "Zedr0\0asdasd\0";
-	static char *s_hidden = "hi low\0don't print me lol\0";
+	// static char *s_hidden = "hi low\0don't print me lol\0";
 	// ft_putstr_fd(SEP, 1);
 	// ft_test(1, "'%-7.3s'", "Zedro0");
 	// ft_test(2, "'%7.3s'", "Zedro0");
@@ -106,8 +106,9 @@ void test_s(void)
 	// ft_test(2, "'%3.s'", "Zedr0\0crashTest");
 	// ft_test(3, "'%.0s'", s_hidden);
 	// ft_test(4, "'%.7s'", "Zedr0");
-	// ft_test(6, "' %.1s'", "");
-	ft_test(5, "'%.09s'", s_hidden);
+	// ft_test(5, "' %.1s'", "");
+	// ft_test(6, "'%.09s'", s_hidden);
+	ft_test(7, "'%.03s'", NULL);
 }
 
 void test_di(void)

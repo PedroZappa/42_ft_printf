@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:33:00 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/08 19:05:36 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/08 20:48:35 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	ft_print_s(const char *str, t_format p)
 
 	count = 0;
 	if ((str == NULL) && (p.precision >= 0) && (p.precision < 6))
+		str = "";
+	else if ((str == NULL) && (p.precision >= 0) && (p.precision < 6))
 		count += ft_pad_width(p.precision, 0, 0);
 	if (!str)
 		str = "(null)";

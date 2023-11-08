@@ -60,11 +60,6 @@ define db_print_i
 	next
 end
 
-define db_print_str
-	display str
-	display len
-end
-
 define db_parse
 	display i
 	display speclen
@@ -72,6 +67,27 @@ define db_parse
 	display str[i]
 	display *p
 	next
+end
+
+define db_parse_arg
+	display i
+	display type
+	display ap
+	display *p
+	next
+end
+
+define db_parse_prec
+	display i
+	display str
+	display *p
+	next
+end
+
+define db_print_str
+	display str
+	display count
+	display p
 end
 
 define db_parse_flag
