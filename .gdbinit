@@ -1,16 +1,16 @@
 set auto-load safe-path /
 
 ## Debug ft_print_di.c
-break ft_print_di
-run
-target record-full
-refresh
-display n
-display nbr
-display numstr
-display count
-display p
-next
+# break ft_print_di
+# run
+# target record-full
+# refresh
+# display n
+# display nbr
+# display numstr
+# display count
+# display p
+# next
 
 
 # Debug parse digits
@@ -22,6 +22,26 @@ next
 # display str[i]
 # display p
 # n
+
+# Debug print hex
+# break ft_print_x
+# run
+# refresh
+# display n
+# display count
+# display nbrstr
+# display *p
+# n
+
+# Debug %s
+break ft_print_s
+run
+target record-full
+refresh
+display count
+display str
+display p
+next
 
 define db_print_integer
 	display n
@@ -42,26 +62,6 @@ define db_print_str
 	display str
 	display len
 end
-
-# Debug print hex
-# break ft_print_x
-# run
-# refresh
-# display n
-# display count
-# display nbrstr
-# display *p
-# n
-
-# Debug %s
-# break ft_print_s
-# run
-# target record-full
-# refresh
-# display count
-# display str
-# display p
-# next
 
 define db_parse
 	display i

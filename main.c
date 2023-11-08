@@ -6,12 +6,13 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 13:01:44 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/08 08:30:58 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/08 10:56:35 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "srcb/ft_printf_bonus.h"
 #include "libft/libft.h"
+#include <limits.h>
 #include <stdarg.h>
 
 #define SEP "~~~~~~~~~~~~~~~~~~~~\n"
@@ -29,8 +30,8 @@ void test_p(void);
 int main(void)
 {
 	// test_c();
-	// test_s();
-	test_di();
+	test_s();
+	// test_di();
 	// test_u();
 	// test_x();
 
@@ -106,8 +107,9 @@ void test_s(void)
 		//
 	// ft_test(2, "'%3.s'", "Zedr0\0crashTest");
 	// ft_test(3, "'%.0s'", s_hidden);
-	// ft_test(4, "'%.09s'", s_hidden);
-	ft_test(4, "'%.7s'", "Zedr0");
+	// ft_test(4, "'%.7s'", "Zedr0");
+	// ft_test(5, "'%.09s'", s_hidden);
+	ft_test(6, "' %.1s'", "");
 }
 
 void test_di(void)
@@ -234,24 +236,31 @@ void test_x(void)
 	ft_putstr_fd(SEP, 1);
 	printf("TESTING %%x\n");
 	
-	char *ptr = "Zedr0";
-	ft_putstr_fd(SEP, 1);
-	ft_test(1, "'%x'", ptr);
-	ft_test(2, "'%X'", ptr);
-	ft_test(3, "'%#x'", ptr);
-	ft_test(4, "'%#X'", ptr);
-	ft_test(5, "'%#12X'", ptr);
-	ft_test(6, "'%#12x'", ptr);
-	ft_test(7, "'%#-12X'", ptr);
-	ft_test(8, "'%#012x'", ptr);
-	ft_test(9, "'%#012X'", ptr);
-	ft_test(10, "'%#2.13X'", ptr);
-	ft_test(11, "'%02.13X'", ptr);
-	ft_test(12, "'%-02.13X'", ptr);
-	ft_test(13, "'%-#2.13X'", ptr);
-	ft_test(14, "'%-13.3X'", ptr);
-	ft_test(15, "'%#13.3X'", ptr);
-	ft_test(16, "'%-#13.3X'", ptr);
+	// char *ptr = "Zedr0";
+	// ft_putstr_fd(SEP, 1);
+	// ft_test(1, "'%x'", ptr);
+	// ft_test(2, "'%X'", ptr);
+	// ft_test(3, "'%#x'", ptr);
+	// ft_test(4, "'%#X'", ptr);
+	// ft_test(5, "'%#12X'", ptr);
+	// ft_test(6, "'%#12x'", ptr);
+	// ft_test(7, "'%#-12X'", ptr);
+	// ft_test(8, "'%#012x'", ptr);
+	// ft_test(9, "'%#012X'", ptr);
+	// ft_test(10, "'%#2.13X'", ptr);
+	// ft_test(11, "'%02.13X'", ptr);
+	// ft_test(12, "'%-02.13X'", ptr);
+	// ft_test(13, "'%-#2.13X'", ptr);
+	// ft_test(14, "'%-13.3X'", ptr);
+	// ft_test(15, "'%#13.3X'", ptr);
+	// ft_test(16, "'%-#13.3X'", ptr);
+	
+	// ft_putstr_fd(SEP, 1);
+	// printf("Test LONG_MAX:\n");
+	// printf("'%-11x'", LONG_MAX);
+	// printf("\n");
+	// ft_printf("'%-11x'", LONG_MAX);
+	// printf("\n");
 }
 
 static void ft_test(int n, char *frmt, char *specif)
