@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 13:01:44 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/07 19:16:40 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/08 08:30:58 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ void test_p(void);
 int main(void)
 {
 	// test_c();
-	test_s();
-	// test_di();
+	// test_s();
+	test_di();
 	// test_u();
 	// test_x();
 
@@ -115,58 +115,63 @@ void test_di(void)
 	ft_putstr_fd(SEP, 1);
 	printf("TESTING %%d\n");
 
-	ft_putstr_fd(SEP, 1);
-	printf("Test1:\n");
-	printf("'%d'\n", 42);
-	ft_printf("'%d'\n", 42);
-
-	printf("Test2:\n");
-	printf("'%-3d'\n", 42);
-	ft_printf("'%-3d'\n", 42);
-
-	printf("Test3:\n");
-	printf("'%11d'\n", 42);
-	ft_printf("'%11d'\n", 42);
+	// ft_putstr_fd(SEP, 1);
+	// printf("Test1:\n");
+	// printf("'%d'\n", 42);
+	// ft_printf("'%d'\n", 42);
+	//
+	// printf("Test2:\n");
+	// printf("'%-3d'\n", 42);
+	// ft_printf("'%-3d'\n", 42);
+	//
+	// printf("Test3:\n");
+	// printf("'%11d'\n", 42);
+	// ft_printf("'%11d'\n", 42);
+	// 
+	// printf("Test4:\n");
+	// printf("'%-12d'\n", 42);
+	// ft_printf("'%-12d'\n", 42);
+	// 
+	// printf("Test5:\n");
+	// printf("'%07d'\n", 42);
+	// ft_printf("'%07d'\n", 42);
+	// 
+	// printf("Test6:\n");
+	// printf("'%4.d'\n", 42);
+	// ft_printf("'%4.d'\n", 42);
+	// 
+	// printf("Test7:\n");
+	// printf("'%.d'\n", 42);
+	// ft_printf("'%.d'\n", 42);
+	// 
+	// printf("Test8:\n");
+	// printf("'%.d.%3.7d'\n", 42, 420);
+	// ft_printf("'%.d.%3.7d'\n", 42, 420);
+	// 
+	// printf("Test9:\n");
+	// printf("'%.d.%3.7d'\n", 42, 420);
+	// ft_printf("'%.d.%3.7d'\n", 42, 420);
+	// 
+	// printf("Test10:\n");
+	// printf("' :% d'\n", 42);
+	// ft_printf("' :% d'\n", 42);
+	// 
+	// printf("Test11:\n");
+	// printf("' :% d'\n", -42);
+	// ft_printf("' :% d'\n", -42);
+	// 
+	// printf("Test12:\n");
+	// printf("' :%+d'\n", 42);
+	// ft_printf("' :%+d'\n", 42);
+	// 
+	// printf("Test13:\n");
+	// printf("' :%+d'\n", -42);
+	// ft_printf("' :%+d'\n", -42);
 	
-	printf("Test4:\n");
-	printf("'%-12d'\n", 42);
-	ft_printf("'%-12d'\n", 42);
-	
-	printf("Test5:\n");
-	printf("'%07d'\n", 42);
-	ft_printf("'%07d'\n", 42);
-	
-	printf("Test6:\n");
-	printf("'%4.d'\n", 42);
-	ft_printf("'%4.d'\n", 42);
-	
-	printf("Test7:\n");
-	printf("'%.d'\n", 42);
-	ft_printf("'%.d'\n", 42);
-	
-	printf("Test8:\n");
-	printf("'%.d.%3.7d'\n", 42, 420);
-	ft_printf("'%.d.%3.7d'\n", 42, 420);
-	
-	printf("Test9:\n");
-	printf("'%.d.%3.7d'\n", 42, 420);
-	ft_printf("'%.d.%3.7d'\n", 42, 420);
-	
-	printf("Test10:\n");
-	printf("' :% d'\n", 42);
-	ft_printf("' :% d'\n", 42);
-	
-	printf("Test11:\n");
-	printf("' :% d'\n", -42);
-	ft_printf("' :% d'\n", -42);
-	
-	printf("Test12:\n");
-	printf("' :%+d'\n", 42);
-	ft_printf("' :%+d'\n", 42);
-	
-	printf("Test13:\n");
-	printf("' :%+d'\n", -42);
-	ft_printf("' :%+d'\n", -42);
+	printf("Test14:\n");
+	char *str = "'%-9d'\n";
+	printf(str, INT_MIN);
+	ft_printf(str, INT_MIN);
 }
 
 void test_u(void)

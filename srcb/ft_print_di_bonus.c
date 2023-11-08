@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:33:30 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/03 10:33:17 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/08 09:29:58 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,17 @@ int	ft_print_i(char *nbrstr, int n, t_format p);
 
 int	ft_print_di(int n, t_format p)
 {
-	char	*numstr;
+	char			*numstr;
 	long	nbr;
-	int		count;
+	int				count;
 
 	nbr = (long)n;
 	count = 0;
 	if (nbr < 0)
 	{
-		nbr *= -1;
+		if (nbr == -2147483648)
+			return (ft_putstr_fd("-2147483648", 1));
+		nbr = -nbr;
 		if (!p.zero)
 			--p.width;
 	}
@@ -91,7 +93,7 @@ int	ft_print_sign_precision(int n, t_format *p)
 }
 
 int	ft_print_i(char *nbrstr, int n, t_format p)
-{
+{		
 	int	count;
 
 	count = 0;
