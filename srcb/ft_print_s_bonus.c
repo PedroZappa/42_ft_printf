@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:33:00 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/07 14:58:14 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/08 13:28:46 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	ft_print_str(const char *str)
 {
 	int	len;
 
-	if (!str)
+	if (str == NULL)
 		return (ft_putstrn_fd("(null)", 1, 6));
 	len = ft_strlen(str);
 	return (ft_putstrn_fd((char *)str, 1, len));

@@ -6,13 +6,12 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:33:44 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/08 12:22:43 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/08 14:36:41 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 #include "../libft/libft.h"
-#include <limits.h>
 
 static int	ft_print_hexa(char *nbrstr, size_t n, int is_upper, t_format *p);
 static int	ft_puthex(char *nbrstr, size_t n, int is_upper, t_format p);

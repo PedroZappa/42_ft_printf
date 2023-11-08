@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 13:01:44 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/08 11:21:14 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/08 13:06:25 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ void test_p(void);
 int main(void)
 {
 	// test_c();
-	// test_s();
+	test_s();
 	// test_di();
 	// test_u();
-	test_x();
+	// test_x();
 
 	return (0);
 }
