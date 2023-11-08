@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 13:01:44 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/08 10:56:35 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/08 11:21:14 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ void test_p(void);
 int main(void)
 {
 	// test_c();
-	test_s();
+	// test_s();
 	// test_di();
 	// test_u();
-	// test_x();
+	test_x();
 
 	return (0);
 }
@@ -79,6 +79,7 @@ void test_s(void)
 	printf("TESTING %%s\n");
 	// char *str = NULL;
 	// char *s_hidden = "Zedr0\0asdasd\0";
+	static char *s_hidden = "hi low\0don't print me lol\0";
 	// ft_putstr_fd(SEP, 1);
 	// ft_test(1, "'%-7.3s'", "Zedro0");
 	// ft_test(2, "'%7.3s'", "Zedro0");
@@ -108,8 +109,8 @@ void test_s(void)
 	// ft_test(2, "'%3.s'", "Zedr0\0crashTest");
 	// ft_test(3, "'%.0s'", s_hidden);
 	// ft_test(4, "'%.7s'", "Zedr0");
-	// ft_test(5, "'%.09s'", s_hidden);
-	ft_test(6, "' %.1s'", "");
+	// ft_test(6, "' %.1s'", "");
+	ft_test(5, "'%.09s'", s_hidden);
 }
 
 void test_di(void)
@@ -259,7 +260,7 @@ void test_x(void)
 	// printf("Test LONG_MAX:\n");
 	// printf("'%-11x'", LONG_MAX);
 	// printf("\n");
-	// ft_printf("'%-11x'", LONG_MAX);
+	ft_printf("'%-11x'", LONG_MAX);
 	// printf("\n");
 }
 

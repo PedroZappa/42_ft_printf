@@ -23,25 +23,27 @@ set auto-load safe-path /
 # display p
 # n
 
-# Debug print hex
-# break ft_print_x
-# run
-# refresh
-# display n
-# display count
-# display nbrstr
-# display *p
-# n
-
 # Debug %s
-break ft_print_s
+# break ft_print_s
+# run
+# target record-full
+# refresh
+# display count
+# display str
+# display p
+# next
+
+# Debug print hex
+break ft_print_x
+# break ft_print_hexa
 run
 target record-full
 refresh
+display n
 display count
-display str
+display nbrstr
 display p
-next
+n
 
 define db_print_integer
 	display n
@@ -86,18 +88,11 @@ define db_print_arg
 	next
 end
 
-define db_widthprec
-	display i
-	display numlen
-	display str[i]
-	display *p
-	next
-end
-
 define db_print_hexa
 	display n
 	display nbrstr
 	display count
-	display p
+	display *p
+	next
 end
 

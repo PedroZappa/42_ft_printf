@@ -6,18 +6,19 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:33:44 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/06 14:50:15 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/08 12:22:43 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 #include "../libft/libft.h"
+#include <limits.h>
 
-static int	ft_print_hexa(char *nbrstr, int n, int is_upper, t_format *p);
-static int	ft_puthex(char *nbrstr, int n, int is_upper, t_format p);
+static int	ft_print_hexa(char *nbrstr, size_t n, int is_upper, t_format *p);
+static int	ft_puthex(char *nbrstr, size_t n, int is_upper, t_format p);
 static int	ft_putx_prefix(int is_upper);
 
-int	ft_print_x(unsigned int n, int is_upper, t_format p)
+int	ft_print_x(size_t n, int is_upper, t_format p)
 {
 	char	*nbrstr;
 	int		count;
@@ -36,7 +37,7 @@ int	ft_print_x(unsigned int n, int is_upper, t_format p)
 	return (count);
 }
 
-static int	ft_print_hexa(char *nbrstr, int n, int is_upper, t_format *p)
+static int	ft_print_hexa(char *nbrstr, size_t n, int is_upper, t_format *p)
 {
 	int		count;
 
@@ -60,11 +61,10 @@ static int	ft_print_hexa(char *nbrstr, int n, int is_upper, t_format *p)
 				(ft_strlen(nbrstr) + (p->sharp * 2)), p->zero);
 	if (!p->minus)
 		count += ft_puthex(nbrstr, n, is_upper, *p);
-	// p->len = count;
 	return (count);
 }
 
-static int	ft_puthex(char *nbrstr, int n, int is_upper, t_format p)
+static int	ft_puthex(char *nbrstr, size_t n, int is_upper, t_format p)
 {
 	int	count;
 

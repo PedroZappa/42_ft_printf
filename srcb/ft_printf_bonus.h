@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 20:41:49 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/07 20:09:32 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/08 12:21:07 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int			ft_print_di(int n, t_format prsd);
 int			ft_print_u(unsigned n, t_format prsd);
 int			ft_print_p(unsigned long int n, t_format prsd);
 int			ft_print_hex(t_format prsd, va_list ap);
-int			ft_print_x(unsigned int n, int isupper, t_format p);
+int			ft_print_x(size_t n, int isupper, t_format p);
 int			ft_flags(t_format prsd, int nbr);
 
 #endif
