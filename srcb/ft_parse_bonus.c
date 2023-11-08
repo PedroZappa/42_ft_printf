@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:24:58 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/08 14:30:34 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/08 17:52:30 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static void		ft_print_arg(t_format *p, char type, va_list ap);
 static int		ft_parse_flag(const char *str, t_format *p, int i);
-void ft_parse_width(const char *str, t_format *p, int i);
-void ft_parse_prec(const char *str, t_format *p, int i);
+void			ft_parse_width(const char *str, t_format *p, int i);
+void			ft_parse_prec(const char *str, t_format *p, int i);
 
 int	ft_parse_bonus(const char *str, va_list ap, t_format *p)
 {
@@ -47,7 +47,7 @@ static int	ft_parse_flag(const char *str, t_format *p, int i)
 	while (str[++i] && ft_isflag(str[i]))
 	{
 		if (str[i] == '-')
-			*p = ft_flag_left(*p);
+			*p = ft_flag_minus(*p);
 		else if (str[i] == '#')
 			p->sharp = 1;
 		else if (str[i] == ' ')
