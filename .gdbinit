@@ -1,27 +1,27 @@
 set auto-load safe-path /
 
 ## Debug ft_print_di.c
-# break ft_print_di
-# run
-# target record-full
-# refresh
-# display n
-# display nbr
-# display numstr
-# display count
-# display p
-# next
+break ft_print_di
+run
+target record-full
+refresh
+display n
+display nbr
+display numstr
+display count
+display p
+next
 
 
 # Debug parse
-break ft_parse_bonus
-run
-refresh
-display i
-display speclen
-display str[i]
-display *p
-n
+# break ft_parse_bonus
+# run
+# refresh
+# display i
+# display speclen
+# display str[i]
+# display *p
+# n
 
 # Debug %s
 # break ft_print_s
@@ -47,6 +47,7 @@ n
 
 define db_print_integer
 	display n
+	display numstr
 	display count
 	display p
 	next

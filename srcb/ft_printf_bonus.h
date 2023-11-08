@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 20:41:49 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/08 19:53:18 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/08 21:56:59 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 typedef struct s_format
 {
 	int		len;
+	int		neg;
 	char	specifier;
 	char	flag;
 	int		minus;
@@ -54,7 +55,6 @@ int			ft_isspecif(int c);
 int			ft_isflag(int c);
 int			ft_isflagtype(int c);
 t_format	ft_flag_minus(t_format prsd);
-// t_format	ft_flag_width(t_format prsd);
 int			ft_pad_width(int total_width, int size, int zero);
 char		*ft_xtoa(unsigned long int nb, int isupper);
 /* Printing */
@@ -62,7 +62,7 @@ int			ft_print_specifier(const char *format, t_format prsd, va_list ap);
 int			ft_print_c(char c, t_format *prsd);
 int			ft_print_s(const char *str, t_format prsd);
 int			ft_print_str(const char *str);
-int			ft_print_di(int n, t_format prsd);
+int			ft_print_di(int n, t_format p);
 int			ft_print_u(unsigned n, t_format prsd);
 int			ft_print_p(unsigned long int n, t_format prsd);
 int			ft_print_hex(t_format prsd, va_list ap);

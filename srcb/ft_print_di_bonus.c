@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:33:30 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/08 20:04:28 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/08 21:57:13 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int	ft_print_sign_precision(int n, t_format *p)
 int	ft_print_i(char *nbrstr, int n, t_format p)
 {
 	int	count;
-
+	
 	count = 0;
 	if (n < 0)
 	{
