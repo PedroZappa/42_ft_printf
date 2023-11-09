@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 18:34:25 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/08 21:25:44 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/09 11:38:56 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,15 +174,15 @@ void test_di(void)
 	// printf(str, INT_MIN);
 	// ft_printf(str, INT_MIN);
 	// 
-	// printf("Test15:\n");
-	// char *str = "'%7i'\n";
-	// printf(str, -14);
-	// ft_printf(str, -14);
+	printf("Test15:\n");
+	char *str = "'%7i'\n";
+	printf(str, -14);
+	ft_printf(str, -14);
 
-	printf("Test16:\n");
-	char *str = "'%10.5i'\n";
-	printf(str, -216);
-	ft_printf(str, -216);
+	// printf("Test16:\n");
+	// char *str = "'%10.5i'\n";
+	// printf(str, -216);
+	// ft_printf(str, -216);
 }
 
 void test_u(void)
