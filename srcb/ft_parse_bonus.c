@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:24:58 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/08 21:56:53 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/09 08:10:04 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ static int	ft_parse_flag(const char *str, t_format *p, int i)
 			p->plus = 1;
 		else if (str[i] == '0' && p->minus == 0 && p->width == 0)
 			p->zero = 1;
-		// if (ft_isdigit(str[i]) && !p->width && str[i - 1] != '.')
 		if (ft_isdigit(str[i]) && !p->width && !p->dot)
 			ft_parse_width(str, p, i);
 		if (str[i] == '.')
@@ -79,7 +78,7 @@ static void	ft_print_arg(t_format *p, char type, va_list ap)
 	else if (type == 's')
 		p->len += ft_print_s(va_arg(ap, const char *), *p);
 	else if (type == 'd' || type == 'i')
-		p->len += ft_print_di(va_arg(ap, int), *p);
+		p->len += ft_print_di(va_arg(ap, int), p);
 	else if (type == 'u')
 		p->len += ft_print_u(va_arg(ap, unsigned int), *p);
 	else if (type == 'x')

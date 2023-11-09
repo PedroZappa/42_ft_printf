@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 20:41:49 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/08 21:56:59 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/09 08:09:03 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,8 @@ int			ft_print_specifier(const char *format, t_format prsd, va_list ap);
 int			ft_print_c(char c, t_format *prsd);
 int			ft_print_s(const char *str, t_format prsd);
 int			ft_print_str(const char *str);
-int			ft_print_di(int n, t_format p);
+// int			ft_print_di(int n, t_format p);
+int			ft_print_di(int n, t_format *p);
 int			ft_print_u(unsigned n, t_format prsd);
 int			ft_print_p(unsigned long int n, t_format prsd);
 int			ft_print_hex(t_format prsd, va_list ap);

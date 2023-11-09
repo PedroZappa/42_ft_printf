@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:33:30 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/08 21:57:13 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/09 08:09:21 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_print_integer(char *numstr, int n, t_format p);
 int	ft_print_sign_precision(int n, t_format *p);
 int	ft_print_i(char *nbrstr, int n, t_format p);
 
-int	ft_print_di(int n, t_format p)
+int	ft_print_di(int n, t_format *p)
 {
 	char		*numstr;
 	long		nbr;
@@ -30,18 +30,18 @@ int	ft_print_di(int n, t_format p)
 		if (nbr == -2147483648)
 			return (ft_putstr_fd("-2147483648", 1));
 		nbr = -nbr;
-		if (!p.zero)
-			--p.width;
+		if (!p->zero)
+			--p->width;
 	}
-	if (p.precision == 0 && n == 0)
+	if (p->precision == 0 && n == 0)
 	{
-		count += ft_pad_width(p.width, 0, 0);
+		count += ft_pad_width(p->width, 0, 0);
 		return (count);
 	}
 	numstr = ft_itoa(nbr);
 	if (!numstr)
 		return (0);
-	count += ft_print_integer(numstr, n, p);
+	count += ft_print_integer(numstr, n, *p);
 	free(numstr);
 	return (count);
 }
