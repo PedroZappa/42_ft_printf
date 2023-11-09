@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:24:58 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/09 13:27:59 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/09 14:04:07 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,5 +108,4 @@ void	ft_parse_prec(const char *str, t_format *p, int i)
 	p->precision = ft_atoi(&str[i + 1]);
 	if (p->dot && (p->precision < 0))
 		p->precision = 0;
-	
 }
