@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:24:58 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/09 12:13:12 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/09 13:27:59 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static int	ft_parse_flag(const char *str, t_format *p, int i)
 static void	ft_print_arg(t_format *p, char type, va_list ap)
 {
 	if (type == '%')
-		p->len += ft_print_c('%', p);
+		p->len += ft_putchar_fd('%', 1);
 	else if (type == 'c')
 		p->len += ft_print_c(va_arg(ap, int), p);
 	else if (type == 's')

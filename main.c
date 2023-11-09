@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 18:34:25 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/09 11:38:56 by passunca         ###   ########.fr       */
+/*   Updated: 2023/11/09 13:06:31 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ void test_p(void);
 
 int main(void)
 {
-	// test_c();
+	test_c();
 	// test_s();
-	test_di();
+	// test_di();
 	// test_u();
 	// test_x();
 
@@ -39,23 +39,23 @@ int main(void)
 
 void test_c(void)
 {
-	ft_putstr_fd(SEP, 1);
-	printf("TESTING %%c\n");
-	ft_putstr_fd(SEP, 1);
+	// ft_putstr_fd(SEP, 1);
+	// printf("TESTING %%c\n");
+	// ft_putstr_fd(SEP, 1);
 	char *str = NULL;
-	ft_putstr_fd(SEP, 1);
-	str = "'%-7c'\n";
-	printf(str, 'z');
-	ft_printf(str, 'z');
-	str = "'%7c'\n";
-	printf(str, 'z');
-	ft_printf(str, 'z');
-	str = "'%07c'\n";
-	printf(str, 'z');	
-	ft_printf(str, 'z');
-	str = "'%3c...%2c'\n";
-	printf(str, 'z', 'Z');
-	ft_printf(str, 'z', 'Z');
+	// ft_putstr_fd(SEP, 1);
+	// str = "'%-7c'\n";
+	// printf(str, 'z');
+	// ft_printf(str, 'z');
+	// str = "'%7c'\n";
+	// printf(str, 'z');
+	// ft_printf(str, 'z');
+	// str = "'%07c'\n";
+	// printf(str, 'z');	
+	// ft_printf(str, 'z');
+	// str = "'%3c...%2c'\n";
+	// printf(str, 'z', 'Z');
+	// ft_printf(str, 'z', 'Z');
 	// %%
 	// ft_putstr_fd(SEP, 1);
 	// printf("'%5%'\n");
@@ -65,9 +65,16 @@ void test_c(void)
 	// ft_printf("'%-5%'\n");
 	
 	// ft_putstr_fd(SEP, 1);
-	// str = "'%3.7s.%7.7s'\n";
-	// printf(str, "hello", "whirl");flag
-	// ft_printf(str, "hello", "whirl");	
+	// str = "%1c%2c%3c%4c%1c%2c%3c%4c%1c%2c%3c%4c%1c%2c%3c%4c%1c%2c%3c%4c%1c%2c%3c%4c%1c%2c%3c%4c%1c%2c%3c%4c%1c%2c%3c%4c%1c%2c%3c%4c%1c%2c%3c%4c%1c%2c%3c%4c%1c%2c%3c%4c%1c%2c%3c%4c//%1c%2c%3c%4c%1c%2c%3c%4c%1c%2c%3c%4c%1c%2c%3c%4c%1c%2c%3c%4c%1c%2c%3c%4c%1c%2c%3c%4c%1c%2c%3c%4c%1c%2c%3c%4c%1c%2c";
+	// printf(str, ' ','!','"','#','$', '%','&','\'','(',')','*','+',',','-','.','/','0','1','2','3','4','5','6','7','8','9',':', ';','<','=','>','?','@','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q', 'R','S','T','U', 'V','W','X','Y','Z','[','\\',']','^','_','`','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p', 'q','r','s','t','u','v','w','x','y','z','{','|','~');
+	// printf("\n");
+	// ft_printf(str, ' ','!','"','#','$', '%','&','\'','(',')','*','+',',','-','.','/','0','1','2','3','4','5','6','7','8','9',':', ';','<','=','>','?','@','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q', 'R','S','T','U', 'V','W','X','Y','Z','[','\\',']','^','_','`','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p', 'q','r','s','t','u','v','w','x','y','z','{','|','~');
+
+	ft_putstr_fd(SEP, 1);
+	str =		"%1c %2c %3c %4c %1c %2c %3c %4c %1c";
+	printf(str, ' ','!','"','#','$', '%','&','\'');
+	printf("\n");
+	ft_printf(str, ' ','!','"','#','$', '%','&','\'');
 }
 
 void test_s(void)
