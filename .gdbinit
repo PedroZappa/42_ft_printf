@@ -9,7 +9,7 @@ display n
 display nbr
 display numstr
 display count
-display p
+display *p
 next
 
 
