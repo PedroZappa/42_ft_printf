@@ -65,7 +65,7 @@ git submodule update --recursive --remote
 
 4. Build the project:
 ```shell
-make
+make bonus
 ```
 
 
@@ -122,7 +122,7 @@ void	ft_printf(const char *format, ...);
 
 - The library has to be built using the command `ar`;
 
-## Bonus Requirements:poop:
+## Bonus Requirements :money_mouth_face:
 
 - Handle any combination of the following **flags** and **minimum field width** under all conversions;
 
@@ -135,7 +135,7 @@ void	ft_printf(const char *format, ...);
     | .precision | Description |
     |-----------|---------|
     | `.number` | For integer specifiers (`%d`, `%i`, `%u`, `%x`, `%X`) - specifies the minimum number of digits to be written. If the value to be written is shorter than this number the result is padded with leading zeroes. The value is not truncated even if the result is longer. A precision of 0 mean that no value is written for the value '0'; For `s`, this is the maximum numbers of characters to be printed. By default all characters are printed until the null terminator is found; |
-    | `.*` | The precision is not specified in the format string, but as an additional integer value argument preceding the argument that has to be formatted;
+    | `.` | The precision is not specified in the format string, but as an additional integer value argument preceding the argument that has to be formatted;
 
     |   Width    | Description |
     |------------|---------|
