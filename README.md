@@ -334,7 +334,7 @@ graph LR;
     ft_print_integer-->ft_pad_width;
     ft_print_i-->ft_pad_width;
     ft_print_i-->ft_print_str;
-    ft_print_x-->ft_print_hexa;
+    ft_print_x -->ft_print_hexa;
     ft_print_x-->ft_pad_width;
     ft_print_hexa-->ft_putx_prefix
     ft_print_hexa-->ft_puthex
