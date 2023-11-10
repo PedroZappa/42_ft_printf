@@ -38,7 +38,7 @@ ___
 
 > Because `ft_putnbr()` and `ft_putstr()` aren't enough!
 
-This project is an exploration into how `printf()` works. The objective is to write a library that mimics the behaviour of `printf()`. A re-code challenge with the aiming of revealing how `variadic functions` work in C. This project is a exercise on how to build a well-planned, well-structured extensible code base.
+This project is an exploration into how `printf()` works. The objective is to write a library that mimics the behaviour of `printf()`. A re-code challenge with the aim of revealing how `variadic functions` work in C. This project is a exercise on how to build a well-planned, well-structured extensible code base.
 
 [ft_printf (Subject English)](/libft.en.subject.pdf)
 
@@ -85,7 +85,7 @@ void	ft_printf(const char *format, ...);
 
 ## Constrains 
 
-- To accomplish this, the implementation is limited to the use of [libft](https://github.com/PedroZappa/libft) (which makes it's performance slower than the standard `printf()`) and a restricted set of standard functions.
+- To accomplish this, the implementation is limited to the use of [libft](https://github.com/PedroZappa/libft) (which makes its performance slower than the standard `printf()`) and a restricted set of standard functions.
 
     > For **memory allocation** and **deallocation**: `malloc()` and `free()`; 
     >
