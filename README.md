@@ -193,7 +193,7 @@ classDiagram
     File5 : ft_sharp()
 ```
 
-### Processing Flow
+### Mandatory Processing Flow
 
 The subprocesses of `ft_printf` are called in the following order:
 
@@ -265,7 +265,8 @@ classDiagram
     ft_flag_utils : ft_isflagtype()
     ft_flag_utils : ft_pad_width()
     ft_flags : ft_newformat()
-    ft_flags : ft_flag_left()
+    ft_flags : ft_resetformat()
+    ft_flags : ft_flag_minus()
     ft_flags : ft_flag_digit()
     ft_flags : ft_flag_width()
     ft_flags : ft_flag_prec()
@@ -297,7 +298,7 @@ classDiagram
     ft_print_u : ft_print_unsigned()
 ```
 
-### Processing Flow
+### Bonus Processing Flow
 
 ```mermaid
 ---
@@ -305,14 +306,14 @@ title ft_printf Bonus Processing Flow
 ---
 graph LR;
     ft_printf-->ft_newformat;
-    ft_printf-->ft_parse;
-    ft_parse-->ft_parse_flags;
-    ft_parse-->ft_parse_arg;
-    ft_parse_flags-->ft_flag_left;
+    ft_printf-->ft_parse_bonus;
+    ft_parse_bonus-->ft_parse_flags;
+    ft_parse_bonus-->ft_parse_arg;
+    ft_parse_flags-->ft_flag_minus;
     ft_parse_flags-->ft_parse_width;
     ft_parse_flags-->ft_parse_prec;
-    ft_parse_flags-->ft_parse_digit;
     ft_parse_flags-->ft_isspecif;
+    ft_parse_arg-->ft_putchar_fd;
     ft_parse_arg-->ft_print_c;
     ft_parse_arg-->ft_print_s;
     ft_parse_arg-->ft_print_di;
@@ -320,6 +321,7 @@ graph LR;
     ft_parse_arg-->ft_print_x;
     ft_parse_arg-->ft_print_p;
 
+    ft_print_c-->ft_putchar_fd;
     ft_print_c-->ft_pad_width;
     ft_print_s-->ft_pad_width;
     ft_print_s-->ft_putstr;
@@ -332,9 +334,10 @@ graph LR;
     ft_print_integer-->ft_pad_width;
     ft_print_i-->ft_pad_width;
     ft_print_i-->ft_print_str;
-    ft_print_x-->ft_pad_width;
     ft_print_x-->ft_print_hexa;
+    ft_print_x-->ft_pad_width;
     ft_print_hexa-->ft_putx_prefix
+    ft_print_hexa-->ft_puthex
     ft_print_hexa-->ft_pad_width;
     ft_puthex-->ft_putx_prefix;
     ft_puthex-->ft_pad_width;
