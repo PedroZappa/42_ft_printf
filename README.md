@@ -22,7 +22,7 @@ ___
     <a href="#usage-checkered_flag">Usage</a> ~
     <a href="#implementation-scroll">Implementation</a> ~
     <a href="#structure-construction">Structure</a> ~
-    <a href="#license-memo">License</a> ~
+    <a href="#license-copyright">License</a> ~
 </p>
 <div/>
 
@@ -352,7 +352,7 @@ graph LR;
 </div>
 ___
 
-### License :memo:
+### License :copyright:
 
 This work is published under the terms of <a href="https://github.com/PedroZappa/ft_printf/blob/master/LICENSE">42 Unlicense</a>.
 
