@@ -151,7 +151,7 @@ void	ft_printf(const char *format, ...);
 
 ## Structure :construction:
 
-#### Mandatory Files & Folders Structure
+#### Mandatory Files & Folder Structure
 
 `ft_printf()`s mandatory code base has the following file structure:
 
@@ -195,7 +195,7 @@ classDiagram
 
 ### Mandatory Processing Flow
 
-The subprocesses of `ft_printf` are called in the following order:
+The subprocesses of `ft_printf` mandatory implementation are called in the following order:
 
 ```mermaid
 ---
@@ -220,10 +220,13 @@ graph LR;
     ft_print_ptr-->ft_print_recur_hex;
 ```
 
+___
 
 ### Bonus Structure:exclamation:
 
-#### Files & Folders
+#### Bonus Files & Folder Structure
+
+`ft_printf()`s bonus code base has the following file structure:
 
 ```mermaid
 ---
@@ -300,6 +303,8 @@ classDiagram
 
 ### Bonus Processing Flow
 
+The subprocesses of `ft_printf` bonus implementation are called in the following order:
+
 ```mermaid
 ---
 title ft_printf Bonus Processing Flow
@@ -350,6 +355,7 @@ graph LR;
     ft_print_address-->ft_print_address;
 ```
 </div>
+
 ___
 
 ### License :copyright:
