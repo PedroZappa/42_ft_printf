@@ -19,10 +19,10 @@ ___
 <p>
     ~
     <a href="#about-pushpin">About</a> ~
-    <a href="#usage-scroll">Usage</a> ~
-    <a href="#implementation-exclamation">Implementation</a> ~
-    <a href="#structure-bar_chart">Structure</a> ~
-    <a href="#license">License</a> ~
+    <a href="#usage-checkered_flag">Usage</a> ~
+    <a href="#implementation-scroll">Implementation</a> ~
+    <a href="#structure-construction">Structure</a> ~
+    <a href="#license-memo">License</a> ~
 </p>
 <div/>
 
@@ -149,11 +149,11 @@ void	ft_printf(const char *format, ...);
     | ` ` | If no sign is going to be written, print a space before the value |
     | `+` | Forces a plus or minus sign before printing the result |
 
-### Mandatory Requirements:exclamation:
+## Structure :construction:
 
-#### Files & Folders
+#### Mandatory Files & Folders Structure
 
-`ft_printf()`s library code base is split into the following file structure:
+`ft_printf()`s mandatory code base has the following file structure:
 
 ```mermaid
 ---
@@ -221,7 +221,7 @@ graph LR;
 ```
 
 
-### Bonus Requirements:exclamation:
+### Bonus Structure:exclamation:
 
 #### Files & Folders
 
@@ -352,7 +352,7 @@ graph LR;
 </div>
 ___
 
-### License
+### License :memo:
 
 This work is published under the terms of <a href="https://github.com/PedroZappa/ft_printf/blob/master/LICENSE">42 Unlicense</a>.
 
