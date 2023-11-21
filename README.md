@@ -38,7 +38,7 @@ ___
 
 > Because `ft_putnbr()` and `ft_putstr()` aren't enough!
 
-This project is an exploration into how `printf()` works. The objective is to write a library that mimics the behaviour of `printf()`. A re-code challenge with the aim of revealing how `variadic functions` work in C. This project is a exercise on how to build a well-planned, well-structured extensible code base.
+This project is an exploration into how `printf()` works. The objective is to write a library that mimics the behaviour of `printf()`. A re-code challenge with the aim of revealing how `variadic functions` work in C. This project is an exercise on how to build a well-planned, well-structured extensible code base.
 
 [ft_printf (Subject English)](/ft_printf.en.subject.pdf)
 
@@ -130,7 +130,7 @@ void	ft_printf(const char *format, ...);
     |-----------|---------|
     |      `-`  | Left justify within given **field width** |
     |      `0`  | Left-pads the number with zeroes (0) where padding is specified |
-    | `.`       | Precison |
+    | `.`       | Precision |
 
     | .precision | Description |
     |-----------|---------|
