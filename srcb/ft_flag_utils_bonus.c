@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 13:28:29 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/05 18:54:52 by passunca         ###   ########.fr       */
+/*   Updated: 2024/02/11 21:51:23 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	ft_isflag(int c)
 int	ft_isspecif(int c)
 {
 	if (c == 'c' || c == 's' || c == 'd' || c == 'i' || c == 'u'
-		|| c == 'x' || c == 'X' || c == 'p' || c == '%')
+		|| c == 'x' || c == 'X' || c == 'p' || c == '%' || c == 'f')
 		return (1);
 	return (0);
 }
