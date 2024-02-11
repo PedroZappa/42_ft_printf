@@ -6,7 +6,7 @@
 #    By: zedr0 <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/19 12:13:19 by zedr0             #+#    #+#              #
-#    Updated: 2024/02/11 16:11:23 by passunca         ###   ########.fr        #
+#    Updated: 2024/02/11 19:15:28 by passunca         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,8 +18,10 @@ NAME		= libftprintf.a
 
 SRC_PATH	= src
 SRCB_PATH	= srcb
-LIBFT_PATH	= libft/
+INC_PATH	= inc/
 BUILD_PATH	= .build
+
+LIBFT_PATH	= $(INC_PATH)libft/
 LIBFT_ARC	= $(LIBFT_PATH)libft.a
 
 SRC 		= $(addprefix $(SRC_PATH)/, ft_printf.c ft_parse.c \
@@ -34,7 +36,6 @@ SRCB		= $(addprefix $(SRCB_PATH)/, ft_printf_bonus.c ft_parse_bonus.c \
 
 OBJS = $(addprefix $(BUILD_PATH)/,$(notdir $(SRC:.c=.o)))
 OBJSB = $(addprefix $(BUILD_PATH)/,$(notdir $(SRCB:.c=.o)))
-
 
 #==============================================================================#
 #                            FLAGS & CMDS                                      #
@@ -86,6 +87,22 @@ bonus: $(LIBFT_ARC) $(BUILD_PATH) $(OBJSB)	## Compile ft_printf with bonus
 	$(AR) $(NAME) $(OBJSB)
 	@echo "\n\t$(GRN)SUCCESS!$(D)\n"
 
+deps:			## Download/Update libft
+	@if test ! -d "$(LIBFT_PATH)"; then make get_libft; \
+		else echo "$(YEL)[libft]$(D) folder found"; fi
+	@make update_modules
+
+update_modules:	## Update modules
+	@echo "[$(CYA)Updating submodules$(D)]"
+	git submodule init
+	git submodule update --recursive --remote
+	@echo "[$(GRN)Submodules successfully updated$(D)]"
+
+get_libft:
+	@echo "[$(CYA)Getting Libft submodule$(D)]"
+	git clone git@github.com:PedroZappa/libft.git $(LIBFT_PATH)
+	@echo "[$(GRN)Libft submodule successfully downloaded$(D)]"
+
 ##@ Clean-up Rules 󰃢
 
 clean:			## Remove ft_printf object files
@@ -100,7 +117,14 @@ fclean: clean	## Remove ft_printf object files and executable
 	$(RM) $(NAME)
 	@echo "[$(GRN)$(NAME) Successfully removed!$(D)]\n"
 
-re: bonus fclean all
+libclean: fclean	## Remove libft & mlx
+	@echo "[$(RED)Cleaning libft 󰃢$(D)]"
+	$(RM) $(LIBFT_PATH)
+	@echo "==> $(GRN)libft successfully removed!$(D)\n"
+	$(RM) $(INC_PATH)
+	@echo "==> $(GRN)inc folder successfully removed!$(D)\n"
+
+re: bonus fclean all	## Purge and Recompile
 
 ##@ Help 󰛵
 
