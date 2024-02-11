@@ -6,7 +6,7 @@
 #    By: zedr0 <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/19 12:13:19 by zedr0             #+#    #+#              #
-#    Updated: 2024/02/11 19:15:28 by passunca         ###   ########.fr        #
+#    Updated: 2024/02/11 20:04:52 by passunca         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@
 #==============================================================================#
 
 NAME		= libftprintf.a
+EXEC 		= a.out
 
 SRC_PATH	= src
 SRCB_PATH	= srcb
@@ -46,7 +47,7 @@ SHELL := zsh
 MAKE		= make -C
 CFLAGS		= -Wall -Wextra -Werror
 CFLAGS		+= -g
-INC			= -I .
+INC			= -I.
 
 CC			= cc
 RM			= rm -rf
@@ -63,11 +64,11 @@ all: $(NAME)	## Compile ft_printf
 
 $(BUILD_PATH)/%.o: $(SRC_PATH)/%.c
 	@echo -n "$(CYA)█$(D)"
-	$(CC) $(CFLAGS) $(INC) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 $(BUILD_PATH)/%.o: $(SRCB_PATH)/%.c
 	@echo -n "$(CYA)█$(D)"
-	$(CC) $(CFLAGS) $(INC) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 $(BUILD_PATH):
 	$(MKDIR_P) $(BUILD_PATH)
@@ -79,7 +80,7 @@ $(LIBFT_ARC):
 
 $(NAME): $(LIBFT_ARC) $(BUILD_PATH) $(OBJS)
 	@echo "Compiling ft_printf..."
-	$(AR) $(NAME) $(OBJS)
+	$(AR) $(NAME) $(OBJS) $(LIBFT_ARC) -o $(NAME)
 	@echo "\n\t$(GRN)SUCCESS!$(D)\n"
 
 bonus: $(LIBFT_ARC) $(BUILD_PATH) $(OBJSB)	## Compile ft_printf with bonus
@@ -103,6 +104,11 @@ get_libft:
 	git clone git@github.com:PedroZappa/libft.git $(LIBFT_PATH)
 	@echo "[$(GRN)Libft submodule successfully downloaded$(D)]"
 
+test:			## Run ft_printf
+	@echo "[$(YEL)Compiling test$(D)]"
+	$(CC) $(CFLAGS) main.c $(SRCB) $(LIBFT_ARC) -o $(EXEC)
+	./$(EXEC)
+
 ##@ Clean-up Rules 󰃢
 
 clean:			## Remove ft_printf object files
@@ -124,7 +130,7 @@ libclean: fclean	## Remove libft & mlx
 	$(RM) $(INC_PATH)
 	@echo "==> $(GRN)inc folder successfully removed!$(D)\n"
 
-re: bonus fclean all	## Purge and Recompile
+re: fclean bonus	## Purge and Recompile
 
 ##@ Help 󰛵
 
@@ -137,7 +143,7 @@ help: 			## Display this help page
 		/^##@/ { \
 			printf "\n=> %s\n", substr($$0, 5) } ' Makefile
 
-.PHONY: all bonus clean fclean re
+.PHONY: all bonus deps update_modules get_libft test clean fclean re
 
 #==============================================================================#
 #                                  UTILS                                       #
