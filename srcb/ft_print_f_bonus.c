@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 11:37:52 by passunca          #+#    #+#             */
-/*   Updated: 2024/02/11 12:03:10 by passunca         ###   ########.fr       */
+/*   Updated: 2024/02/11 21:31:42 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int		ft_print_sign_precision(int n, t_format *p);
 static int		ft_print_integer(char *numstr, int n, t_format *p);
 static int		ft_print_i(char *nbrstr, int n, t_format *p);
 
-int	ft_print_f(int n, t_format *p)
+int	ft_print_f(double n, t_format *p)
 {
 	char		*numstr;
 	long		nbr;

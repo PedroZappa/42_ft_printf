@@ -1,49 +1,13 @@
-set auto-load safe-path /
+define rfr
+	refresh
+end
 
-## Debug ft_print_di.c
-break ft_print_di
-run
-target record-full
-refresh
-display n
-display nbr
-display numstr
-display count
-display *p
-next
-
-
-# Debug parse
-# break ft_parse_bonus
-# run
-# refresh
-# display i
-# display speclen
-# display str[i]
-# display *p
-# n
-
-# Debug %s
-# break ft_print_s
-# run
-# target record-full
-# refresh
-# display count
-# display str
-# display p
-# next
-
-# Debug print hex
-# break ft_print_x
-# break ft_print_hexa
-# run
-# target record-full
-# refresh
-# display n
-# display count
-# display nbrstr
-# display p
-# n
+define ft_printf
+	display format
+	display ap
+	display str
+	display p
+end
 
 define db_print_integer
 	display n
@@ -113,3 +77,53 @@ define db_print_hexa
 	next
 end
 
+
+
+## Start at main
+break main
+run
+
+
+## Debug ft_print_di.c
+# break ft_print_di
+# run
+# target record-full
+# refresh
+# display n
+# display nbr
+# display numstr
+# display count
+# display *p
+# next
+
+# Debug parse
+# break ft_parse_bonus
+# run
+# refresh
+# display i
+# display speclen
+# display str[i]
+# display *p
+# n
+
+# Debug %s
+# break ft_print_s
+# run
+# target record-full
+# refresh
+# display count
+# display str
+# display p
+# next
+
+# Debug print hex
+# break ft_print_x
+# break ft_print_hexa
+# run
+# target record-full
+# refresh
+# display n
+# display count
+# display nbrstr
+# display p
+# n
