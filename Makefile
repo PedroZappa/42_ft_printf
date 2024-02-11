@@ -6,7 +6,7 @@
 #    By: zedr0 <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/19 12:13:19 by zedr0             #+#    #+#              #
-#    Updated: 2024/02/11 20:04:52 by passunca         ###   ########.fr        #
+#    Updated: 2024/02/11 20:08:14 by passunca         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -104,8 +104,10 @@ get_libft:
 	git clone git@github.com:PedroZappa/libft.git $(LIBFT_PATH)
 	@echo "[$(GRN)Libft submodule successfully downloaded$(D)]"
 
-test:			## Run ft_printf
-	@echo "[$(YEL)Compiling test$(D)]"
+##@ Debug & Testing Rules 󰃢
+
+test:			## Run ft_printf's test
+	@echo "[$(YEL)Compiling main.c for test$(D)]"
 	$(CC) $(CFLAGS) main.c $(SRCB) $(LIBFT_ARC) -o $(EXEC)
 	./$(EXEC)
 
@@ -123,7 +125,7 @@ fclean: clean	## Remove ft_printf object files and executable
 	$(RM) $(NAME)
 	@echo "[$(GRN)$(NAME) Successfully removed!$(D)]\n"
 
-libclean: fclean	## Remove libft & mlx
+libclean: fclean	## Remove libft
 	@echo "[$(RED)Cleaning libft 󰃢$(D)]"
 	$(RM) $(LIBFT_PATH)
 	@echo "==> $(GRN)libft successfully removed!$(D)\n"
