@@ -6,12 +6,11 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:33:30 by passunca          #+#    #+#             */
-/*   Updated: 2023/10/31 20:19:40 by passunca         ###   ########.fr       */
+/*   Updated: 2024/02/11 11:59:27 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "../libft/libft.h"
 
 int		ft_putunbr(unsigned int n);
 char	*ft_uitoa(unsigned int nb);

@@ -6,12 +6,11 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:33:00 by passunca          #+#    #+#             */
-/*   Updated: 2023/10/31 22:31:57 by passunca         ###   ########.fr       */
+/*   Updated: 2024/02/11 11:58:33 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "../libft/libft.h"
 
 int	ft_print_char(t_format p, va_list ap)
 {

@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:24:58 by passunca          #+#    #+#             */
-/*   Updated: 2023/11/09 14:04:07 by passunca         ###   ########.fr       */
+/*   Updated: 2024/02/11 11:39:45 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,8 @@ static void	ft_print_arg(t_format *p, char type, va_list ap)
 		p->len += ft_print_x(va_arg(ap, unsigned int), 1, *p);
 	else if (type == 'p')
 		p->len += ft_print_p((unsigned long int)va_arg(ap, void *), *p);
+	else if (type == 'f')
+		p->len += ft_print_f(va_arg(ap, double), p);
 }
 
 void	ft_parse_width(const char *str, t_format *p, int i)

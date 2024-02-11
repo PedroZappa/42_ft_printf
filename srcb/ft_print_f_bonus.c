@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_di_bonus.c                                :+:      :+:    :+:   */
+/*   ft_print_f_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/26 19:33:30 by passunca          #+#    #+#             */
-/*   Updated: 2024/02/11 12:00:15 by passunca         ###   ########.fr       */
+/*   Created: 2024/02/11 11:37:52 by passunca          #+#    #+#             */
+/*   Updated: 2024/02/11 12:03:10 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int		ft_print_sign_precision(int n, t_format *p);
 static int		ft_print_integer(char *numstr, int n, t_format *p);
 static int		ft_print_i(char *nbrstr, int n, t_format *p);
 
-int	ft_print_di(int n, t_format *p)
+int	ft_print_f(int n, t_format *p)
 {
 	char		*numstr;
 	long		nbr;
@@ -109,3 +109,4 @@ static int	ft_print_i(char *nbrstr, int n, t_format *p)
 	count += ft_print_str(nbrstr);
 	return (count);
 }
+

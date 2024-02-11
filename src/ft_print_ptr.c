@@ -6,12 +6,11 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 12:35:25 by passunca          #+#    #+#             */
-/*   Updated: 2023/10/31 20:20:11 by passunca         ###   ########.fr       */
+/*   Updated: 2024/02/11 11:59:14 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "../libft/libft.h"
 
 static void	ft_putptr(unsigned long nb, t_format p);
 static int	ft_hexlen(unsigned long nb);
