@@ -6,14 +6,14 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:34:01 by passunca          #+#    #+#             */
-/*   Updated: 2024/02/11 11:58:11 by passunca         ###   ########.fr       */
+/*   Updated: 2024/02/11 19:19:52 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include "../libft/libft/libft.h"
+# include "../inc/libft/libft/libft.h"
 # include <stdarg.h>
 
 /* Constants */
