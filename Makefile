@@ -6,7 +6,7 @@
 #    By: zedr0 <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/19 12:13:19 by zedr0             #+#    #+#              #
-#    Updated: 2024/02/11 20:32:01 by passunca         ###   ########.fr        #
+#    Updated: 2024/02/12 10:58:59 by passunca         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,14 +29,12 @@ SRC 		= $(addprefix $(SRC_PATH)/, ft_printf.c ft_parse.c \
 			  ft_print_chars.c ft_print_diu.c ft_print_hex.c ft_print_ptr.c)
 
 SRCB		= $(addprefix $(SRCB_PATH)/, ft_printf_bonus.c ft_parse_bonus.c \
-			  ft_print_c_bonus.c ft_print_s_bonus.c \
-			  ft_print_di_bonus.c ft_print_u_bonus.c \
-			  ft_print_hex_bonus.c ft_print_p_bonus.c \
-			  ft_flags_bonus.c ft_flag_utils_bonus.c \
-			  ft_print_f_bonus.c)
+			  ft_print_c_bonus.c ft_print_s_bonus.c ft_print_di_bonus.c \
+			  ft_print_u_bonus.c ft_print_hex_bonus.c ft_print_p_bonus.c \
+			  ft_flags_bonus.c ft_flag_utils_bonus.c ft_print_f_bonus.c)
 
-OBJS = $(addprefix $(BUILD_PATH)/,$(notdir $(SRC:.c=.o)))
-OBJSB = $(addprefix $(BUILD_PATH)/,$(notdir $(SRCB:.c=.o)))
+OBJS 		= $(addprefix $(BUILD_PATH)/,$(notdir $(SRC:.c=.o)))
+OBJSB 		= $(addprefix $(BUILD_PATH)/,$(notdir $(SRCB:.c=.o)))
 
 #==============================================================================#
 #                            FLAGS & CMDS                                      #
@@ -47,6 +45,7 @@ SHELL := zsh
 MAKE		= make -C
 CFLAGS		= -Wall -Wextra -Werror
 CFLAGS		+= -g
+CFLAGS		+= -lm
 INC			= -I.
 
 CC			= cc

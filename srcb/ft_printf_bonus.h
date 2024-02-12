@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 20:41:49 by passunca          #+#    #+#             */
-/*   Updated: 2024/02/11 21:32:08 by passunca         ###   ########.fr       */
+/*   Updated: 2024/02/11 22:17:00 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,21 +24,21 @@
 # define INT_MIN	-2147483648
 
 /* Struct to track format parameters */
-typedef struct s_format
-{
-	int		len;
-	int		neg;
-	char	specifier;
-	char	flag;
-	int		minus;
-	int		plus;
-	int		width;
-	int		precision;
-	int		zero;
-	int		dot;
-	int		space;
-	int		sharp;
-}	t_format;
+// typedef struct s_format
+// {
+// 	int		len;
+// 	int		neg;
+// 	char	specifier;
+// 	char	flag;
+// 	int		minus;
+// 	int		plus;
+// 	int		width;
+// 	int		precision;
+// 	int		zero;
+// 	int		dot;
+// 	int		space;
+// 	int		sharp;
+// }	t_format;
 
 /* Function Prototypes */
 /* Formats and prints input 'format' data */

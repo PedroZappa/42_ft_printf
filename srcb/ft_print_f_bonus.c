@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 11:37:52 by passunca          #+#    #+#             */
-/*   Updated: 2024/02/11 21:31:42 by passunca         ###   ########.fr       */
+/*   Updated: 2024/02/11 21:54:32 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	ft_print_f(double n, t_format *p)
 		count += ft_pad_width(p->width, 0, 0);
 		return (count);
 	}
-	numstr = ft_itoa(nbr);
+	numstr = ft_dtoa(nbr);
 	if (!numstr)
 		return (0);
 	count += ft_print_integer(numstr, n, p);
