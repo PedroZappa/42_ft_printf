@@ -25,6 +25,15 @@ define db_print_i
 	next
 end
 
+define db_print_f
+	display n
+	display nbr
+	display nbrstr
+	display count
+	display p
+	next
+end
+
 define db_parse
 	display i
 	display speclen
@@ -80,9 +89,9 @@ end
 
 
 ## Start at main
+fs cmd
 break main
 run
-
 
 ## Debug ft_print_di.c
 # break ft_print_di

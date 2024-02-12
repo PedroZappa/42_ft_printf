@@ -6,7 +6,7 @@
 /*   By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 18:34:25 by passunca          #+#    #+#             */
-/*   Updated: 2024/02/11 21:39:33 by passunca         ###   ########.fr       */
+/*   Updated: 2024/02/12 11:10:03 by passunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -287,11 +287,11 @@ void test_f(void)
 	ft_putstr_fd(SEP, 1);
 	printf("TESTING %%f\n");
 
-	printf("'%d'\n", 42);
-	ft_printf("'%d'\n", 42);
+	printf("OG : '%d'\n", 42);
+	ft_printf("FT : '%d'\n", 42);
 
-	printf("'%f'\n", 42.42);
-	ft_printf("'%f'\n", 42.42);
+	printf("OG : '%f'\n", -42.4242);
+	ft_printf("FT : '%f'\n", -42.4242);
 
 }
 
