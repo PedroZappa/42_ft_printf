@@ -7,23 +7,35 @@
 
 <p>
     <img src="https://img.shields.io/badge/score-125%20%2F%20100-success?style=for-the-badge" />
-    <img src="https://img.shields.io/github/repo-size/PedroZappa/ft_printf?style=for-the-badge&logo=github">
-    <img src="https://img.shields.io/github/languages/count/PedroZappa/ft_printf?style=for-the-badge&logo=" />
-    <img src="https://img.shields.io/github/languages/top/PedroZappa/ft_printf?style=for-the-badge" />
-    <img src="https://img.shields.io/github/last-commit/PedroZappa/ft_printf?style=for-the-badge" />
+    <img src="https://img.shields.io/github/repo-size/PedroZappa/42_ft_printf?style=for-the-badge&logo=github">
+    <img src="https://img.shields.io/github/languages/count/PedroZappa/42_ft_printf?style=for-the-badge&logo=" />
+    <img src="https://img.shields.io/github/languages/top/PedroZappa/42_ft_printf?style=for-the-badge" />
+    <img src="https://img.shields.io/github/last-commit/PedroZappa/42_ft_printf?style=for-the-badge" />
 </p>
 
 ___
 
 <h3>Table o'Contents</h3>
-<p>
-    ~
-    <a href="#about-pushpin">About</a> ~
-    <a href="#usage-checkered_flag">Usage</a> ~
-    <a href="#implementation-scroll">Implementation</a> ~
-    <a href="#structure-construction">Structure</a> ~
-    <a href="#license-copyright">License</a> ~
-</p>
+
+
+<!-- mtoc-start -->
+
+* [About :pushpin:](#about-pushpin)
+* [Usage :checkered_flag:](#usage-checkered_flag)
+* [Implementation :scroll:](#implementation-scroll)
+* [Constrains ](#constrains-)
+* [Mandatory Requirements:exclamation:](#mandatory-requirementsexclamation)
+* [Bonus Requirements :money_mouth_face:](#bonus-requirements-money_mouth_face)
+* [Structure :construction:](#structure-construction)
+  * [Mandatory Files & Folder Structure](#mandatory-files--folder-structure)
+  * [Mandatory Processing Flow](#mandatory-processing-flow)
+  * [Bonus Structure:exclamation:](#bonus-structureexclamation)
+    * [Bonus Files & Folder Structure](#bonus-files--folder-structure)
+  * [Bonus Processing Flow](#bonus-processing-flow)
+  * [License :copyright:](#license-copyright)
+
+<!-- mtoc-end -->
+
 <div/>
 
 ___
@@ -50,7 +62,7 @@ ___
 
 1. Clone the repo:
 ```shell
-git clone git@github.com:PedroZappa/ft_printf.git 
+git clone git@github.com:PedroZappa/42_ft_printf.git 
 ```
 
 2. Initialize local submodules configuration:
