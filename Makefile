@@ -45,7 +45,7 @@ SHELL := zsh
 MAKE		= make -C
 CFLAGS		= -Wall -Wextra -Werror
 CFLAGS		+= -g
-CFLAGS		+= -lm
+# CFLAGS		+= -lm
 INC			= -I.
 
 CC			= cc
