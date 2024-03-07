@@ -40,7 +40,7 @@ OBJSB 		= $(addprefix $(BUILD_PATH)/,$(notdir $(SRCB:.c=.o)))
 #                            FLAGS & CMDS                                      #
 #==============================================================================#
 
-SHELL := zsh
+# SHELL := zsh
 
 MAKE		= make -C
 CFLAGS		= -Wall -Wextra -Werror
