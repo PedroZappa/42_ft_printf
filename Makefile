@@ -59,7 +59,7 @@ MKDIR_P		= mkdir -p
 
 ##@ ft_printf Compilation Rules 🏗
 
-all: $(NAME)	## Compile ft_printf
+all: deps $(NAME)	## Compile ft_printf
 
 $(BUILD_PATH)/%.o: $(SRC_PATH)/%.c
 	@echo -n "$(CYA)█$(D)"
