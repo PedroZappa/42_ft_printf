@@ -143,6 +143,8 @@ help: 			## Display this help page
 			printf "\t$(GRN)%-15s$(D) %s\n", $$1, $$2 } \
 		/^##@/ { \
 			printf "\n=> %s\n", substr($$0, 5) } ' Makefile
+## Tweaked from source:
+### https://www.padok.fr/en/blog/beautiful-makefile-awk
 
 .PHONY: all bonus deps update_modules get_libft test clean fclean re
 
