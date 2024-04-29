@@ -105,7 +105,7 @@ get_libft:
 
 ##@ Debug & Testing Rules 󰃢
 
-test:			## Run ft_printf's test
+test: all		## Run ft_printf's test
 	@echo "[$(YEL)Compiling main.c for test$(D)]"
 	$(CC) $(CFLAGS) main.c $(SRCB) $(LIBFT_ARC) -o $(EXEC)
 	./$(EXEC)

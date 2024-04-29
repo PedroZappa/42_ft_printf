@@ -13,7 +13,6 @@
 
 #include "srcb/ft_printf_bonus.h"
 #include "inc/libft/libft/libft.h"
-#include <limits.h>
 
 #define SEP "~~~~~~~~~~~~~~~~~~~~\n"
 #define RLR "12345678901234567890\n"

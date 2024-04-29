@@ -23,21 +23,21 @@
 # define HEX_UPPER	"0123456789ABCDEF"
 
 /* Struct to track format parameters */
-// typedef struct s_format
-// {
-// 	int		len;
-// 	int		neg;
-// 	char	specifier;
-// 	char	flag;
-// 	int		minus;
-// 	int		plus;
-// 	int		width;
-// 	int		precision;
-// 	int		zero;
-// 	int		dot;
-// 	int		space;
-// 	int		sharp;
-// }	t_format;
+typedef struct s_format
+{
+	int		len;
+	int		neg;
+	char	specifier;
+	char	flag;
+	int		minus;
+	int		plus;
+	int		width;
+	int		precision;
+	int		zero;
+	int		dot;
+	int		space;
+	int		sharp;
+}	t_format;
 
 /* Function Prototypes */
 /* Formats and prints input 'format' data */
