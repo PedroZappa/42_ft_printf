@@ -21,7 +21,6 @@
 # define FLAGS		"0# +-"
 # define HEX_LOWER	"0123456789abcdef"
 # define HEX_UPPER	"0123456789ABCDEF"
-# define INT_MIN	-2147483648
 
 /* Struct to track format parameters */
 // typedef struct s_format
