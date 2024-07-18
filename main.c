@@ -273,7 +273,7 @@ void test_f(void)
 
 static void ft_test(int n, char *frmt, char *specif)
 {
-	printf("Test%d:\n", n);
+	printf(GRN"Test%d:\n"NC, n);
 	printf(frmt, specif);
 	printf("\n");
 	ft_printf(frmt, specif);
