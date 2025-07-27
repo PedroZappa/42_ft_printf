@@ -1,3 +1,6 @@
+**Note** : If you found this repo you should stop for a second and [read this](https://atomys.me/en/s42-sunset-story/)
+
+
 <a name="readme-top"></a>
 <div align="center">
 
